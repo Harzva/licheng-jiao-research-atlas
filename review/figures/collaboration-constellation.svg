@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Collaboration constellation</title>
+  <desc id="desc">The twenty most frequent coauthor names in the corpus are ranked by record-level co-occurrence with Licheng Jiao.</desc>
+  <rect width="1600" height="900" fill="#071923"/>
+  <style>
+    .sans{font-family:Verdana,sans-serif}
+    .serif{font-family:Georgia,serif}
+    .mono{font-family:Courier,monospace}
+    .fg{fill:#eef5f2}
+    .muted{fill:#8da9a8}
+  </style>
+  <g fill="#eef5f2">
+    
+    <text x="112" y="82" class="mono" fill="#55dce0" font-size="17" font-weight="700" letter-spacing="3">FIGURE 04 · COLLABORATION STRUCTURE</text>
+    <text x="112" y="148" class="serif fg" font-size="50">Collaboration constellation</text>
+    <text x="112" y="188" class="sans muted" font-size="18">2,163 normalized coauthor names · bars show record-level co-occurrence, not contribution rank</text>
+    
+      <text x="112" y="246" class="mono muted" font-size="12">01</text>
+      <text x="152" y="246" class="sans fg" font-size="17">Fang Liu</text>
+      <rect x="354" y="231" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="231" width="430" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="246" text-anchor="end" class="serif" fill="#55dce0" font-size="21">433</text>
+      <text x="112" y="303" class="mono muted" font-size="12">02</text>
+      <text x="152" y="303" class="sans fg" font-size="17">Shuyuan Yang</text>
+      <rect x="354" y="288" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="288" width="294.94226327944574" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="303" text-anchor="end" class="serif" fill="#55dce0" font-size="21">297</text>
+      <text x="112" y="360" class="mono muted" font-size="12">03</text>
+      <text x="152" y="360" class="sans fg" font-size="17">Lingling Li</text>
+      <rect x="354" y="345" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="345" width="247.27482678983833" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="360" text-anchor="end" class="serif" fill="#55dce0" font-size="21">249</text>
+      <text x="112" y="417" class="mono muted" font-size="12">04</text>
+      <text x="152" y="417" class="sans fg" font-size="17">Xiangrong Zhang</text>
+      <rect x="354" y="402" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="402" width="243.30254041570439" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="417" text-anchor="end" class="serif" fill="#55dce0" font-size="21">245</text>
+      <text x="112" y="474" class="mono muted" font-size="12">05</text>
+      <text x="152" y="474" class="sans fg" font-size="17">Xu Liu</text>
+      <rect x="354" y="459" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="459" width="236.35103926097" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="474" text-anchor="end" class="serif" fill="#55dce0" font-size="21">238</text>
+      <text x="112" y="531" class="mono muted" font-size="12">06</text>
+      <text x="152" y="531" class="sans fg" font-size="17">Biao Hou</text>
+      <rect x="354" y="516" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="516" width="235.35796766743653" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="531" text-anchor="end" class="serif" fill="#55dce0" font-size="21">237</text>
+      <text x="112" y="588" class="mono muted" font-size="12">07</text>
+      <text x="152" y="588" class="sans fg" font-size="17">Ronghua Shang</text>
+      <rect x="354" y="573" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="573" width="175.77367205542726" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="588" text-anchor="end" class="serif" fill="#55dce0" font-size="21">177</text>
+      <text x="112" y="645" class="mono muted" font-size="12">08</text>
+      <text x="152" y="645" class="sans fg" font-size="17">Shuang Wang</text>
+      <rect x="354" y="630" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="630" width="156.905311778291" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="645" text-anchor="end" class="serif" fill="#55dce0" font-size="21">158</text>
+      <text x="112" y="702" class="mono muted" font-size="12">09</text>
+      <text x="152" y="702" class="sans fg" font-size="17">Wenping Ma</text>
+      <rect x="354" y="687" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="687" width="137.04387990762126" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="702" text-anchor="end" class="serif" fill="#55dce0" font-size="21">138</text>
+      <text x="112" y="759" class="mono muted" font-size="12">10</text>
+      <text x="152" y="759" class="sans fg" font-size="17">Yangyang Li</text>
+      <rect x="354" y="744" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="354" y="744" width="134.0646651270208" height="17" rx="8" fill="#55dce0" fill-opacity=".75"/>
+      <text x="804" y="759" text-anchor="end" class="serif" fill="#55dce0" font-size="21">135</text>
+      <text x="854" y="246" class="mono muted" font-size="12">11</text>
+      <text x="894" y="246" class="sans fg" font-size="17">Xu Tang</text>
+      <rect x="1096" y="231" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="231" width="126.12009237875287" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="246" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">127</text>
+      <text x="854" y="303" class="mono muted" font-size="12">12</text>
+      <text x="894" y="303" class="sans fg" font-size="17">Maoguo Gong</text>
+      <rect x="1096" y="288" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="288" width="111.22401847575058" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="303" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">112</text>
+      <text x="854" y="360" class="mono muted" font-size="12">13</text>
+      <text x="894" y="360" class="sans fg" font-size="17">Puhua Chen</text>
+      <rect x="1096" y="345" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="345" width="109.23787528868361" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="360" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">110</text>
+      <text x="854" y="417" class="mono muted" font-size="12">14</text>
+      <text x="894" y="417" class="sans fg" font-size="17">Jie Feng</text>
+      <rect x="1096" y="402" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="402" width="82.42494226327945" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="417" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">83</text>
+      <text x="854" y="474" class="mono muted" font-size="12">15</text>
+      <text x="894" y="474" class="sans fg" font-size="17">Jingjing Ma</text>
+      <rect x="1096" y="459" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="459" width="69.51501154734412" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="474" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">70</text>
+      <text x="854" y="531" class="mono muted" font-size="12">16</text>
+      <text x="894" y="531" class="sans fg" font-size="17">Shuiping Gou</text>
+      <rect x="1096" y="516" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="516" width="55.61200923787529" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="531" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">56</text>
+      <text x="854" y="588" class="mono muted" font-size="12">17</text>
+      <text x="894" y="588" class="sans fg" font-size="17">Hao Zhu</text>
+      <rect x="1096" y="573" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="573" width="53.62586605080831" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="588" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">54</text>
+      <text x="854" y="645" class="mono muted" font-size="12">18</text>
+      <text x="894" y="645" class="sans fg" font-size="17">Bo Ren</text>
+      <rect x="1096" y="630" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="630" width="49.65357967667436" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="645" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">50</text>
+      <text x="854" y="702" class="mono muted" font-size="12">19</text>
+      <text x="894" y="702" class="sans fg" font-size="17">Shuo Li</text>
+      <rect x="1096" y="687" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="687" width="49.65357967667436" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="702" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">50</text>
+      <text x="854" y="759" class="mono muted" font-size="12">20</text>
+      <text x="894" y="759" class="sans fg" font-size="17">Dou Quan</text>
+      <rect x="1096" y="744" width="430" height="17" rx="8" fill="#ffffff" fill-opacity=".06"/>
+      <rect x="1096" y="744" width="48.660508083140876" height="17" rx="8" fill="#e1b75d" fill-opacity=".75"/>
+      <text x="1546" y="759" text-anchor="end" class="serif" fill="#e1b75d" font-size="21">49</text>
+    <line x1="796" y1="222" x2="796" y2="812" stroke="#8da9a8" stroke-opacity=".2"/>
+    <text x="112" y="860" class="mono muted" font-size="13">Frequent collaboration reveals durable research groups spanning optimization, remote sensing, imaging, and visual learning.</text>
+  </g>
+</svg>

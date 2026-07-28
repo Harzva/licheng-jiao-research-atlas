@@ -17,6 +17,422 @@
     "imaging": 70,
     "evolution": 236
   },
+  "taskCounts": {
+    "frontier_state_space": 10,
+    "remote_classification": 244,
+    "vision_segmentation": 87,
+    "vision_matching": 2,
+    "frontier_multimodal": 33,
+    "remote_detection": 50,
+    "vision_tracking": 23,
+    "remote_sar": 87,
+    "frontier_foundation": 6,
+    "general_communications": 18,
+    "frontier_transformer": 54,
+    "general_multimedia": 20,
+    "learning_representation": 5,
+    "learning_semisupervised": 29,
+    "general_geometry": 19,
+    "remote_hyperspectral": 170,
+    "remote_registration": 38,
+    "frontier_generative": 31,
+    "learning_fewshot": 16,
+    "remote_caption": 3,
+    "remote_change": 75,
+    "imaging_superresolution": 18,
+    "frontier_vlm_prompt": 14,
+    "vision_recognition": 53,
+    "imaging_restoration": 5,
+    "general_data_mining": 93,
+    "general_methods": 226,
+    "evolution_algorithm": 99,
+    "vision_detection": 22,
+    "vision_medical": 2,
+    "general_quantum": 10,
+    "frontier_architecture": 1,
+    "imaging_computational": 7,
+    "evolution_nas": 10,
+    "vision_video": 9,
+    "learning_neural": 21,
+    "general_mathematical": 24,
+    "general_medical": 12,
+    "evolution_multiobjective": 100,
+    "imaging_multiscale": 22,
+    "general_security": 7,
+    "imaging_fusion": 4,
+    "learning_transfer": 2,
+    "general_industrial": 5,
+    "imaging_reconstruction": 14,
+    "evolution_swarm": 21,
+    "evolution_clustering": 3,
+    "evolution_combinatorial": 3
+  },
+  "tasks": [
+    {
+      "key": "frontier_state_space",
+      "topic": "frontier",
+      "label": "状态空间与 Mamba",
+      "short": "State space · Mamba",
+      "color": "#38b9c8"
+    },
+    {
+      "key": "frontier_foundation",
+      "topic": "frontier",
+      "label": "基础模型与预训练",
+      "short": "Foundation models",
+      "color": "#7ee9e7"
+    },
+    {
+      "key": "frontier_vlm_prompt",
+      "topic": "frontier",
+      "label": "视觉语言与提示学习",
+      "short": "Vision-language · Prompt",
+      "color": "#56dce0"
+    },
+    {
+      "key": "frontier_generative",
+      "topic": "frontier",
+      "label": "生成式与扩散学习",
+      "short": "Generative · Diffusion",
+      "color": "#78cde4"
+    },
+    {
+      "key": "frontier_multimodal",
+      "topic": "frontier",
+      "label": "多模态融合与理解",
+      "short": "Multimodal learning",
+      "color": "#3fc5d2"
+    },
+    {
+      "key": "frontier_transformer",
+      "topic": "frontier",
+      "label": "Transformer 与注意力",
+      "short": "Transformer · Attention",
+      "color": "#9bece8"
+    },
+    {
+      "key": "frontier_architecture",
+      "topic": "frontier",
+      "label": "前沿模型架构",
+      "short": "Emerging architectures",
+      "color": "#279dab"
+    },
+    {
+      "key": "remote_sar",
+      "topic": "remote",
+      "label": "SAR 与 PolSAR 解译",
+      "short": "SAR · PolSAR",
+      "color": "#f0c459"
+    },
+    {
+      "key": "remote_hyperspectral",
+      "topic": "remote",
+      "label": "高光谱与多光谱",
+      "short": "Hyperspectral · Multispectral",
+      "color": "#f4d77f"
+    },
+    {
+      "key": "remote_change",
+      "topic": "remote",
+      "label": "遥感变化检测",
+      "short": "Change detection",
+      "color": "#d89b3e"
+    },
+    {
+      "key": "remote_caption",
+      "topic": "remote",
+      "label": "遥感图文理解",
+      "short": "Caption · Retrieval",
+      "color": "#f2bd86"
+    },
+    {
+      "key": "remote_detection",
+      "topic": "remote",
+      "label": "目标检测与跟踪",
+      "short": "Detection · Tracking",
+      "color": "#dbaa4b"
+    },
+    {
+      "key": "remote_registration",
+      "topic": "remote",
+      "label": "配准、融合与定位",
+      "short": "Registration · Fusion",
+      "color": "#f7df9d"
+    },
+    {
+      "key": "remote_classification",
+      "topic": "remote",
+      "label": "地物分类与场景识别",
+      "short": "Classification · Mapping",
+      "color": "#c68b34"
+    },
+    {
+      "key": "vision_detection",
+      "topic": "vision",
+      "label": "目标检测",
+      "short": "Object detection",
+      "color": "#f48c78"
+    },
+    {
+      "key": "vision_segmentation",
+      "topic": "vision",
+      "label": "图像分割",
+      "short": "Segmentation",
+      "color": "#ffad98"
+    },
+    {
+      "key": "vision_tracking",
+      "topic": "vision",
+      "label": "目标跟踪与重识别",
+      "short": "Tracking · Re-ID",
+      "color": "#df6f68"
+    },
+    {
+      "key": "vision_matching",
+      "topic": "vision",
+      "label": "匹配、定位与检索",
+      "short": "Matching · Localization",
+      "color": "#d87f97"
+    },
+    {
+      "key": "vision_medical",
+      "topic": "vision",
+      "label": "医学视觉",
+      "short": "Medical vision",
+      "color": "#f2b28d"
+    },
+    {
+      "key": "vision_video",
+      "topic": "vision",
+      "label": "视频与行为理解",
+      "short": "Video understanding",
+      "color": "#e45f55"
+    },
+    {
+      "key": "vision_recognition",
+      "topic": "vision",
+      "label": "分类与视觉识别",
+      "short": "Recognition · Classification",
+      "color": "#ff9a79"
+    },
+    {
+      "key": "evolution_multiobjective",
+      "topic": "evolution",
+      "label": "多目标与多目标优化",
+      "short": "Multiobjective optimization",
+      "color": "#a8d779"
+    },
+    {
+      "key": "evolution_nas",
+      "topic": "evolution",
+      "label": "神经架构搜索",
+      "short": "Neural architecture search",
+      "color": "#c8e59b"
+    },
+    {
+      "key": "evolution_swarm",
+      "topic": "evolution",
+      "label": "群体智能",
+      "short": "Swarm intelligence",
+      "color": "#7bbb72"
+    },
+    {
+      "key": "evolution_combinatorial",
+      "topic": "evolution",
+      "label": "调度与组合优化",
+      "short": "Scheduling · Combinatorial",
+      "color": "#73aa84"
+    },
+    {
+      "key": "evolution_clustering",
+      "topic": "evolution",
+      "label": "聚类与社区发现",
+      "short": "Clustering · Community",
+      "color": "#b9d8a4"
+    },
+    {
+      "key": "evolution_transfer",
+      "topic": "evolution",
+      "label": "知识迁移与多任务进化",
+      "short": "Transfer · Multitask",
+      "color": "#8dc899"
+    },
+    {
+      "key": "evolution_algorithm",
+      "topic": "evolution",
+      "label": "进化算法与黑盒优化",
+      "short": "Evolutionary algorithms",
+      "color": "#d5e8ae"
+    },
+    {
+      "key": "learning_fewshot",
+      "topic": "learning",
+      "label": "小样本、零样本与增量学习",
+      "short": "Few-shot · Incremental",
+      "color": "#b19ce2"
+    },
+    {
+      "key": "learning_graph",
+      "topic": "learning",
+      "label": "图学习",
+      "short": "Graph learning",
+      "color": "#927bd0"
+    },
+    {
+      "key": "learning_transfer",
+      "topic": "learning",
+      "label": "迁移学习与域适应",
+      "short": "Transfer · Adaptation",
+      "color": "#819bd7"
+    },
+    {
+      "key": "learning_semisupervised",
+      "topic": "learning",
+      "label": "自监督、半监督与无监督",
+      "short": "Self · Semi · Unsupervised",
+      "color": "#c5a7e0"
+    },
+    {
+      "key": "learning_representation",
+      "topic": "learning",
+      "label": "表示、度量与对比学习",
+      "short": "Representation · Metric",
+      "color": "#9e8ed8"
+    },
+    {
+      "key": "learning_brain",
+      "topic": "learning",
+      "label": "脉冲神经与类脑学习",
+      "short": "Spiking · Brain-inspired",
+      "color": "#d7c8ee"
+    },
+    {
+      "key": "learning_neural",
+      "topic": "learning",
+      "label": "神经网络与机器学习",
+      "short": "Neural · Machine learning",
+      "color": "#7c68b8"
+    },
+    {
+      "key": "imaging_superresolution",
+      "topic": "imaging",
+      "label": "超分辨率",
+      "short": "Super-resolution",
+      "color": "#8abbd9"
+    },
+    {
+      "key": "imaging_restoration",
+      "topic": "imaging",
+      "label": "图像恢复、去噪与增强",
+      "short": "Restoration · Denoising",
+      "color": "#b2d4e8"
+    },
+    {
+      "key": "imaging_fusion",
+      "topic": "imaging",
+      "label": "图像融合与全色锐化",
+      "short": "Fusion · Pansharpening",
+      "color": "#73c1c7"
+    },
+    {
+      "key": "imaging_reconstruction",
+      "topic": "imaging",
+      "label": "重建与逆问题",
+      "short": "Reconstruction · Inverse",
+      "color": "#679bc3"
+    },
+    {
+      "key": "imaging_multiscale",
+      "topic": "imaging",
+      "label": "小波、轮廓波与稀疏表示",
+      "short": "Wavelet · Sparse",
+      "color": "#9ab3db"
+    },
+    {
+      "key": "imaging_compression",
+      "topic": "imaging",
+      "label": "压缩与编码",
+      "short": "Compression · Coding",
+      "color": "#568bb5"
+    },
+    {
+      "key": "imaging_computational",
+      "topic": "imaging",
+      "label": "计算成像与信号处理",
+      "short": "Computational imaging",
+      "color": "#c1d9e8"
+    },
+    {
+      "key": "general_communications",
+      "topic": "general",
+      "label": "通信、雷达与调制识别",
+      "short": "Communications · Radar",
+      "color": "#9fb9b3"
+    },
+    {
+      "key": "general_medical",
+      "topic": "general",
+      "label": "医学与生物计算",
+      "short": "Medical · Bioinformatics",
+      "color": "#bfd0c9"
+    },
+    {
+      "key": "general_quantum",
+      "topic": "general",
+      "label": "量子与类脑计算",
+      "short": "Quantum · Brain-inspired",
+      "color": "#8e9fba"
+    },
+    {
+      "key": "general_multimedia",
+      "topic": "general",
+      "label": "多媒体与视频理解",
+      "short": "Multimedia · Video",
+      "color": "#8db7b2"
+    },
+    {
+      "key": "general_geometry",
+      "topic": "general",
+      "label": "三维视觉与几何感知",
+      "short": "3D vision · Geometry",
+      "color": "#9daec5"
+    },
+    {
+      "key": "general_data_mining",
+      "topic": "general",
+      "label": "数据挖掘与知识发现",
+      "short": "Data mining · Knowledge",
+      "color": "#7ca7a4"
+    },
+    {
+      "key": "general_security",
+      "topic": "general",
+      "label": "安全、隐私与对抗学习",
+      "short": "Security · Privacy",
+      "color": "#b6a99a"
+    },
+    {
+      "key": "general_mathematical",
+      "topic": "general",
+      "label": "数学建模与决策方法",
+      "short": "Mathematical methods",
+      "color": "#8da8a2"
+    },
+    {
+      "key": "general_industrial",
+      "topic": "general",
+      "label": "工业系统与交叉应用",
+      "short": "Systems · Applications",
+      "color": "#aabda5"
+    },
+    {
+      "key": "general_methods",
+      "topic": "general",
+      "label": "交叉方法与新兴应用",
+      "short": "Interdisciplinary methods",
+      "color": "#718f91"
+    }
+  ],
   "yearCounts": [
     {
       "year": 1998,

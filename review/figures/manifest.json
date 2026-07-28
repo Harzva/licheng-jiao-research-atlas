@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-07-28",
+  "publicBase": "https://harzva.github.io/licheng-jiao-research-atlas/review/figures",
+  "figures": [
+    {
+      "slug": "research-program-framework",
+      "title": "A unified view of the research program",
+      "description": "Four interacting layers connect structure-aware representation, adaptive search, intelligent perception, and domain-grounded interpretation, with multimodal and foundation models as a contemporary convergence frontier.",
+      "svg": "./research-program-framework.svg",
+      "png": "./research-program-framework.png",
+      "qrSvg": "../qr/research-program-framework.svg",
+      "qrPng": "../qr/research-program-framework.png",
+      "publicUrl": "https://harzva.github.io/licheng-jiao-research-atlas/review/figures/research-program-framework.svg"
+    },
+    {
+      "slug": "research-evolution-timeline",
+      "title": "Research evolution and first-venue milestones",
+      "description": "A four-phase timeline from 1998 to 2026 combines annual publication volume with the first appearance of selected journals and conferences in the DBLP-anchored corpus.",
+      "svg": "./research-evolution-timeline.svg",
+      "png": "./research-evolution-timeline.png",
+      "qrSvg": "../qr/research-evolution-timeline.svg",
+      "qrPng": "../qr/research-evolution-timeline.png",
+      "publicUrl": "https://harzva.github.io/licheng-jiao-research-atlas/review/figures/research-evolution-timeline.svg"
+    },
+    {
+      "slug": "hierarchical-task-taxonomy",
+      "title": "Seven-domain, fine-task taxonomy",
+      "description": "The 1,827-record corpus is organized into seven broad domains and 48 observed fine-grained tasks using transparent title-level rules.",
+      "svg": "./hierarchical-task-taxonomy.svg",
+      "png": "./hierarchical-task-taxonomy.png",
+      "qrSvg": "../qr/hierarchical-task-taxonomy.svg",
+      "qrPng": "../qr/hierarchical-task-taxonomy.png",
+      "publicUrl": "https://harzva.github.io/licheng-jiao-research-atlas/review/figures/hierarchical-task-taxonomy.svg"
+    },
+    {
+      "slug": "collaboration-constellation",
+      "title": "Collaboration constellation",
+      "description": "The twenty most frequent coauthor names in the corpus are ranked by record-level co-occurrence with Licheng Jiao.",
+      "svg": "./collaboration-constellation.svg",
+      "png": "./collaboration-constellation.png",
+      "qrSvg": "../qr/collaboration-constellation.svg",
+      "qrPng": "../qr/collaboration-constellation.png",
+      "publicUrl": "https://harzva.github.io/licheng-jiao-research-atlas/review/figures/collaboration-constellation.svg"
+    },
+    {
+      "slug": "citation-impact-landscape",
+      "title": "Crossref citation landscape",
+      "description": "Publication year is plotted against logarithmic Crossref Cited-by count. Cohort-relative high-impact papers and the most cited records are emphasized.",
+      "svg": "./citation-impact-landscape.svg",
+      "png": "./citation-impact-landscape.png",
+      "qrSvg": "../qr/citation-impact-landscape.svg",
+      "qrPng": "../qr/citation-impact-landscape.png",
+      "publicUrl": "https://harzva.github.io/licheng-jiao-research-atlas/review/figures/citation-impact-landscape.svg"
+    }
+  ]
+}

@@ -16,10 +16,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Check JavaScript syntax
-        run: |
-          node --check app.js
-          node --check scripts/build-data.mjs
-          node --check scripts/check-public-safety.mjs
-      - name: Check public data boundary
-        run: node scripts/check-public-safety.mjs
+          cache: npm
+      - name: Install review asset tooling
+        run: npm ci
+      - name: Check syntax and public data boundary
+        run: npm run check

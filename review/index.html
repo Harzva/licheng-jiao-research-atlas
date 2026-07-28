@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A systematic, data-driven review of Licheng Jiao's research landscape from 1998 to 2026, with an original taxonomy, figures, venue milestones, collaboration analysis, and citation evidence.">
+  <meta name="theme-color" content="#071923">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none';">
+  <title>Research Review · Licheng Jiao Research Atlas</title>
+  <link rel="stylesheet" href="./review.css">
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+
+  <header class="review-header">
+    <a class="review-brand" href="../">
+      <i aria-hidden="true">焦</i>
+      <span>LICHENG JIAO · RESEARCH ATLAS</span>
+    </a>
+    <nav class="review-actions" aria-label="Review resources">
+      <a href="../">Interactive atlas</a>
+      <a href="./main.pdf">PDF</a>
+      <a href="./main.tex">LaTeX source</a>
+    </nav>
+  </header>
+
+  <header class="paper-head">
+    <p class="eyebrow">Open systematic mapping review · 1998—2026</p>
+    <h1>
+      From Neural Computation to Multimodal Remote Sensing Intelligence
+      <em>A systematic, data-driven review of Licheng Jiao’s research landscape</em>
+    </h1>
+    <p class="paper-meta">
+      <span>Prepared by <strong>Licheng Jiao Research Atlas Project</strong></span>
+      <span>Data snapshot <strong>28 July 2026</strong></span>
+      <span>Corpus <strong>1,827 records</strong></span>
+      <span>Method <strong>Systematic mapping + bibliometric synthesis</strong></span>
+    </p>
+  </header>
+
+  <main class="review-layout" id="article">
+    <nav class="toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#framing"><span>01</span>Framing and contributions</a></li>
+        <li><a href="#method"><span>02</span>Corpus and protocol</a></li>
+        <li><a href="#framework"><span>03</span>Unifying framework</a></li>
+        <li><a href="#evolution"><span>04</span>Evolution and firsts</a></li>
+        <li><a href="#taxonomy"><span>05</span>Domains and tasks</a></li>
+        <li><a href="#collaboration"><span>06</span>Collaboration</a></li>
+        <li><a href="#impact"><span>07</span>Impact structure</a></li>
+        <li><a href="#synthesis"><span>08</span>Cross-cutting synthesis</a></li>
+        <li><a href="#agenda"><span>09</span>Open agenda</a></li>
+        <li><a href="#limits"><span>10</span>Limits and reproducibility</a></li>
+        <li><a href="#references"><span>11</span>References</a></li>
+      </ol>
+      <a class="toc-download" href="./main.pdf">Download review PDF</a>
+    </nav>
+
+    <article class="manuscript">
+      <section class="abstract" aria-labelledby="abstract-title">
+        <h2 id="abstract-title">Abstract</h2>
+        <p>
+          This review maps 1,827 bibliographic records associated with Licheng
+          Jiao from 1998 to 2026. It introduces a reproducible seven-domain,
+          fine-task taxonomy; reconstructs four phases of research evolution;
+          identifies corpus-scoped first appearances at selected journals and
+          conferences; and analyzes collaboration and Crossref Cited-by evidence.
+          The synthesis suggests a durable research logic connecting
+          structure-aware representation, adaptive search, intelligent
+          perception, and domain-grounded interpretation. Contemporary
+          multimodal and foundation-model work is therefore interpreted as a
+          recombination of earlier methodological commitments rather than an
+          isolated turn. Evidence boundaries remain explicit: the current
+          release is a bibliometric and title-level systematic mapping, not a
+          substitute for source-verified full-text review.
+        </p>
+      </section>
+
+      <section id="framing">
+        <p class="eyebrow">01 / Framing and contributions</p>
+        <h2>Reading a research career as an evolving system</h2>
+        <p class="lead">
+          A long publication list records outputs. A survey should explain the
+          organizing ideas that connect them, how those ideas changed, and where
+          the evidence remains incomplete.
+        </p>
+        <p>
+          Research programs that span several decades are often summarized
+          through a handful of representative papers. That approach is readable,
+          but it can hide continuity across methods, application domains, and
+          generations of collaborators. This review instead treats the
+          publication record as a longitudinal system. Its central question is
+          how a program rooted in neural computation, evolutionary search, and
+          multiscale signal analysis expanded into visual intelligence,
+          remote-sensing interpretation, and contemporary multimodal models.
+        </p>
+        <p>
+          The presentation follows a systems-survey pattern: an overview figure
+          defines the full research map; an explicit corpus protocol fixes the
+          evidence boundary; a hierarchical taxonomy organizes detailed
+          discussion; and cross-cutting synthesis reconnects themes that a
+          single-label classification necessarily separates.
+        </p>
+
+        <div class="contribution-grid" aria-label="Review contributions">
+          <article>
+            <span>01</span>
+            <h3>Reproducible corpus</h3>
+            <p>DBLP identity anchoring, DOI linkage, public field allowlists, and versioned generation scripts make every count inspectable.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Hierarchical taxonomy</h3>
+            <p>Seven broad domains and 48 observed tasks connect a large publication landscape without hiding the classification rules.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Longitudinal synthesis</h3>
+            <p>Four phases and selected first-venue milestones show when methodological and institutional frontiers entered the corpus.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Relational evidence</h3>
+            <p>Collaboration, venue, and Crossref citation layers complement topic counts and support questions for deeper full-text study.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="method">
+        <p class="eyebrow">02 / Corpus and protocol</p>
+        <h2>A navigable corpus with visible evidence boundaries</h2>
+        <p class="lead">
+          The unit of analysis is a bibliographic record associated with DBLP
+          author profile <code>40/3714</code>, not a deduplicated intellectual work.
+        </p>
+        <div class="fact-grid" aria-label="Corpus summary">
+          <div><strong>1,827</strong><span>Bibliographic records</span></div>
+          <div><strong>1,764</strong><span>Records with DOI</span></div>
+          <div><strong>2,163</strong><span>Distinct coauthors</span></div>
+          <div><strong>260</strong><span>Publication venues</span></div>
+          <div><strong>1,369</strong><span>Journal records</span></div>
+          <div><strong>453</strong><span>Conference records</span></div>
+          <div><strong>7</strong><span>Broad research domains</span></div>
+          <div><strong>48</strong><span>Observed research tasks</span></div>
+        </div>
+
+        <h3>Collection and inclusion</h3>
+        <p>
+          The corpus is anchored to a public DBLP identity and retains records
+          carrying the associated author identity. DOI, DBLP key, publication
+          type, year, venue, and public landing URL are normalized into a strict
+          public schema. Records are included when they can be traced to the
+          profile; local download state, private annotations, credentials, and
+          machine paths are excluded from the public dataset.
+        </p>
+
+        <h3>Coding protocol</h3>
+        <p>
+          Ordered, human-readable keyword rules assign each title first to a
+          broad domain and then to a fine-grained task. Rules are evaluated
+          deterministically and kept with the site source. This favors auditability
+          over opaque embedding clusters. A single label remains a compression:
+          papers combining optimization, remote sensing, and multimodal learning
+          may have several legitimate interpretations.
+        </p>
+
+        <h3>Measures and verification</h3>
+        <p>
+          Coauthor frequency is record-level co-occurrence after name
+          normalization. Citation counts are retrieved by DOI from Crossref
+          Cited-by. Selected first-venue milestones are the earliest matching year
+          in this corpus. When several records share that first year, they are
+          grouped rather than assigned a false within-conference chronology.
+        </p>
+
+        <aside class="method-note">
+          <strong>Evidence boundary</strong>
+          <p>
+            The public catalog does not yet contain source-verified abstracts or
+            full text for the complete corpus. This review therefore does not
+            infer experimental superiority, numerical performance, or method
+            novelty from titles alone.
+          </p>
+        </aside>
+      </section>
+
+      <section id="framework">
+        <p class="eyebrow">03 / Unifying framework</p>
+        <h2>Four interacting layers, one convergence frontier</h2>
+        <p>
+          The corpus supports a four-layer reading of the research program.
+          <em>Structure-aware representation</em> describes repeated attention to
+          multiscale, sparse, spectral–spatial, geometric, and attentive
+          representations. <em>Adaptive search</em> captures evolutionary,
+          multiobjective, transfer, and architecture-level optimization.
+          <em>Intelligent perception</em> includes classification, detection,
+          segmentation, tracking, restoration, and matching. Finally,
+          <em>domain-grounded interpretation</em> reflects sustained engagement
+          with SAR, PolSAR, hyperspectral, aerial, and satellite data.
+        </p>
+        <p>
+          The layers are not historical stages. They interact across time:
+          remote-sensing constraints motivate new representations; search
+          procedures choose features and architectures; perception tasks provide
+          evaluation settings; and modern multimodal systems recombine all four.
+        </p>
+
+        <figure class="survey-figure" id="figure-framework">
+          <a class="figure-image-link" href="./figures/research-program-framework.svg">
+            <img src="./figures/research-program-framework.svg" alt="Four-layer framework connecting structure-aware representation, adaptive search and optimization, intelligent perception, and domain-grounded interpretation to a multimodal and foundation-model convergence frontier.">
+          </a>
+          <figcaption>
+            <span>Figure 1</span>
+            Original synthesis framework for the research program. The diagram
+            summarizes recurring methodological relations inferred from the
+            longitudinal bibliographic landscape; it is not an author-supplied
+            taxonomy.
+          </figcaption>
+          <div class="figure-qr">
+            <img src="./qr/research-program-framework.svg" alt="QR code opening the full-resolution research-program framework.">
+            <span>Scan to open full-resolution figure<br><b>扫码查看原图</b></span>
+          </div>
+        </figure>
+      </section>
+
+      <section id="evolution">
+        <p class="eyebrow">04 / Evolution and first-venue milestones</p>
+        <h2>Four phases of accumulation and recombination</h2>
+        <ol class="phase-list">
+          <li>
+            <time datetime="1998">1998—2007<br>179 records</time>
+            <div>
+              <h3>Neural and natural computation</h3>
+              <p>Neural networks, evolutionary computation, clustering, wavelets, and early pattern recognition establish the methodological base.</p>
+            </div>
+          </li>
+          <li>
+            <time datetime="2008">2008—2014<br>293 records</time>
+            <div>
+              <h3>Optimization meets imaging and remote sensing</h3>
+              <p>Multiobjective optimization, sparse representation, image fusion, SAR, and remote-sensing classification become increasingly connected.</p>
+            </div>
+          </li>
+          <li>
+            <time datetime="2015">2015—2020<br>530 records</time>
+            <div>
+              <h3>Deep remote-sensing interpretation</h3>
+              <p>Deep visual learning expands across hyperspectral data, change detection, scene recognition, detection, segmentation, and multimodal fusion.</p>
+            </div>
+          </li>
+          <li>
+            <time datetime="2021">2021—2026<br>825 records</time>
+            <div>
+              <h3>Multimodal and foundation-model convergence</h3>
+              <p>Transformers, prompts, vision–language interaction, diffusion, Mamba, state-space models, and foundation-model adaptation recombine earlier themes.</p>
+            </div>
+          </li>
+        </ol>
+
+        <figure class="survey-figure" id="figure-evolution">
+          <a class="figure-image-link" href="./figures/research-evolution-timeline.svg">
+            <img src="./figures/research-evolution-timeline.svg" loading="lazy" alt="Timeline from 1998 to 2026 showing four phases, annual publication volume, and the first appearance of selected venues in the public corpus.">
+          </a>
+          <figcaption>
+            <span>Figure 2</span>
+            Research evolution and selected first-venue milestones. Markers
+            denote the first appearance in the current DBLP-anchored corpus, not
+            a claim about records outside the dataset.
+          </figcaption>
+          <div class="figure-qr">
+            <img src="./qr/research-evolution-timeline.svg" alt="QR code opening the full-resolution research evolution timeline.">
+            <span>Scan to open full-resolution figure<br><b>扫码查看原图</b></span>
+          </div>
+        </figure>
+
+        <h3>Selected corpus-scoped firsts</h3>
+        <div class="milestone-grid" aria-label="Selected first venue records">
+          <article><time>2019</time><strong>AAAI</strong><p>Multi-Precision Quantized Neural Networks via Encoding Decomposition of {-1, +1}.</p></article>
+          <article><time>2019</time><strong>ICCV · first year, 2 records</strong><p>AFD-Net and Better and Faster: Exponential Loss for Image Patch Matching.</p></article>
+          <article><time>2020</time><strong>ECCV</strong><p>Supervised Edge Attention Network for Accurate Image Instance Segmentation.</p></article>
+          <article><time>2020</time><strong>ACM MM</strong><p>A Novel Object Re-Track Framework for 3D Point Clouds.</p></article>
+          <article><time>2021</time><strong>IEEE TPAMI</strong><p>Accelerated Variance Reduction Stochastic ADMM for Large-Scale Machine Learning.</p></article>
+          <article><time>2023</time><strong>CVPR · first year, 2 records</strong><p>Curvature-Balanced Feature Manifold Learning and an online self-training study for semantic segmentation.</p></article>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Extended first-appearance ledger for selected venues in the current corpus.</caption>
+            <thead><tr><th scope="col">Year</th><th scope="col">Venue coordinate</th><th scope="col">First-year record</th></tr></thead>
+            <tbody>
+              <tr><td>1998</td><td>Corpus start</td><td>Total least mean squares algorithm</td></tr>
+              <tr><td>2001</td><td>IEEE TNN / TNNLS</td><td>Multiwavelet neural network and its approximation properties</td></tr>
+              <tr><td>2002</td><td>Pattern Recognition</td><td>Linear programming support vector machines</td></tr>
+              <tr><td>2005</td><td>NeurIPS / NIPS</td><td>Response Analysis of Neuronal Population with Synaptic Depression</td></tr>
+              <tr><td>2006</td><td>IEEE TEVC</td><td>An organizational coevolutionary algorithm for classification</td></tr>
+              <tr><td>2008</td><td>IEEE TIP</td><td>Wavelet-Based Bayesian Image Estimation</td></tr>
+              <tr><td>2008</td><td>IEEE TGRS</td><td>Spectral Clustering Ensemble Applied to SAR Image Segmentation</td></tr>
+              <tr><td>2019</td><td>IJCAI</td><td>Accelerated Incremental Gradient Descent using Momentum Acceleration with Scaling Factor</td></tr>
+              <tr><td>2023</td><td>ICLR</td><td>Delving into Semantic Scale Imbalance</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="taxonomy">
+        <p class="eyebrow">05 / Domains and tasks</p>
+        <h2>Seven domains, 48 observed research tasks</h2>
+        <p>
+          Remote-sensing interpretation is the largest single-label domain with
+          667 records. Interdisciplinary methods contribute 434, evolutionary
+          optimization 236, visual perception 198, frontier models 149, neural
+          learning 73, and computational imaging 70. The lower-level tasks reveal
+          the internal structure hidden by these broad counts: remote sensing
+          separates into classification, hyperspectral, SAR, change detection,
+          detection, registration, and captioning; optimization separates into
+          multiobjective search, general evolutionary algorithms, swarm
+          intelligence, architecture search, clustering, and combinatorial
+          problems.
+        </p>
+
+        <figure class="survey-figure wide" id="figure-taxonomy">
+          <a class="figure-image-link" href="./figures/hierarchical-task-taxonomy.svg">
+            <img src="./figures/hierarchical-task-taxonomy.svg" loading="lazy" alt="Seven-domain taxonomy showing task labels and record counts for remote sensing, interdisciplinary methods, evolutionary optimization, visual perception, frontier models, neural learning, and computational imaging.">
+          </a>
+          <figcaption>
+            <span>Figure 3</span>
+            Hierarchical thematic map. Task colors are variations within each
+            domain family, matching the interactive paper graph.
+          </figcaption>
+          <div class="figure-qr">
+            <img src="./qr/hierarchical-task-taxonomy.svg" alt="QR code opening the full-resolution hierarchical task taxonomy.">
+            <span>Scan to open full-resolution figure<br><b>扫码查看原图</b></span>
+          </div>
+        </figure>
+
+        <div class="domain-grid">
+          <section style="--domain-color:#e1b75d">
+            <strong>667</strong><h3>Remote sensing</h3>
+            <p>Scene and land-cover classification, hyperspectral and multispectral learning, SAR/PolSAR, change detection, detection, tracking, registration, fusion, and captioning.</p>
+          </section>
+          <section style="--domain-color:#9fb5b3">
+            <strong>434</strong><h3>Interdisciplinary methods</h3>
+            <p>Communications, biomedical computing, data mining, mathematical methods, security, 3D geometry, multimedia, and emerging applications.</p>
+          </section>
+          <section style="--domain-color:#a7d48b">
+            <strong>236</strong><h3>Evolutionary optimization</h3>
+            <p>Multiobjective and many-objective optimization, evolutionary algorithms, swarm intelligence, architecture search, and combinatorial tasks.</p>
+          </section>
+          <section style="--domain-color:#ee8e78">
+            <strong>198</strong><h3>Visual perception</h3>
+            <p>Segmentation, recognition, tracking, re-identification, detection, video understanding, matching, localization, and medical vision.</p>
+          </section>
+          <section style="--domain-color:#55dce0">
+            <strong>149</strong><h3>Frontier models</h3>
+            <p>Transformers, multimodal learning, diffusion and generative models, prompting, state-space models, and foundation models.</p>
+          </section>
+          <section style="--domain-color:#a998e4">
+            <strong>73</strong><h3>Neural learning</h3>
+            <p>Self-, semi-, and unsupervised learning, few-shot and incremental learning, representation learning, and domain adaptation.</p>
+          </section>
+          <section style="--domain-color:#8ebad8">
+            <strong>70</strong><h3>Computational imaging</h3>
+            <p>Wavelets, contourlets, sparse representations, reconstruction, super-resolution, restoration, denoising, and fusion.</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="collaboration">
+        <p class="eyebrow">06 / Collaboration and venues</p>
+        <h2>A dense, intergenerational collaboration structure</h2>
+        <p>
+          The corpus contains 2,163 normalized coauthor names. The highest
+          record-level collaboration frequencies are Fang Liu (433), Shuyuan
+          Yang (297), Lingling Li (249), Xiangrong Zhang (245), Xu Liu (238),
+          Biao Hou (237), Ronghua Shang (177), Shuang Wang (158), Wenping Ma
+          (138), and Yangyang Li (135). These values do not indicate contribution
+          rank or seniority. They reveal durable publication relationships that
+          connect optimization, remote sensing, imaging, and visual learning.
+        </p>
+
+        <figure class="survey-figure" id="figure-collaboration">
+          <a class="figure-image-link" href="./figures/collaboration-constellation.svg">
+            <img src="./figures/collaboration-constellation.svg" loading="lazy" alt="Horizontal bar chart ranking the twenty most frequent coauthors by number of records shared with Licheng Jiao in the corpus.">
+          </a>
+          <figcaption>
+            <span>Figure 4</span>
+            Top twenty coauthor names by record-level co-occurrence. The full
+            searchable author list is available in the interactive Atlas.
+          </figcaption>
+          <div class="figure-qr">
+            <img src="./qr/collaboration-constellation.svg" alt="QR code opening the full-resolution collaboration ranking.">
+            <span>Scan to open full-resolution figure<br><b>扫码查看原图</b></span>
+          </div>
+        </figure>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Most frequent publication venues in the corpus.</caption>
+            <thead><tr><th scope="col">Venue</th><th scope="col">Records</th></tr></thead>
+            <tbody>
+              <tr><td>IEEE Transactions on Geoscience and Remote Sensing</td><td class="numeric">255</td></tr>
+              <tr><td>CoRR</td><td class="numeric">125</td></tr>
+              <tr><td>IGARSS</td><td class="numeric">104</td></tr>
+              <tr><td>IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing</td><td class="numeric">83</td></tr>
+              <tr><td>IEEE Geoscience and Remote Sensing Letters</td><td class="numeric">71</td></tr>
+              <tr><td>Remote Sensing</td><td class="numeric">69</td></tr>
+              <tr><td>Neurocomputing</td><td class="numeric">66</td></tr>
+              <tr><td>Pattern Recognition</td><td class="numeric">63</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="impact">
+        <p class="eyebrow">07 / Impact structure</p>
+        <h2>High citation is a layer, not a definition of quality</h2>
+        <p>
+          Of 1,764 DOI-bearing records, 1,682 matched the Crossref Cited-by
+          snapshot. Raw rankings strongly favor older work and remain sensitive
+          to deposited-reference coverage. The Atlas therefore preserves raw
+          counts while adding a publication-year cohort layer: top-decile records
+          with at least five citations receive a high-impact treatment, while a
+          stronger landmark treatment requires both the year-specific 99th
+          percentile and at least 100 citations.
+        </p>
+
+        <figure class="survey-figure" id="figure-impact">
+          <a class="figure-image-link" href="./figures/citation-impact-landscape.svg">
+            <img src="./figures/citation-impact-landscape.svg" loading="lazy" alt="Scatter plot of publication year against logarithmic Crossref citation count, with cohort-relative high-impact papers highlighted and the eight highest citation counts annotated.">
+          </a>
+          <figcaption>
+            <span>Figure 5</span>
+            Crossref citation landscape. Fluorescence makes unusually visible
+            records easier to find without equating citation with scientific
+            quality.
+          </figcaption>
+          <div class="figure-qr">
+            <img src="./qr/citation-impact-landscape.svg" alt="QR code opening the full-resolution Crossref citation landscape.">
+            <span>Scan to open full-resolution figure<br><b>扫码查看原图</b></span>
+          </div>
+        </figure>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Highest Crossref Cited-by counts among DOI-matched records, updated 28 July 2026.</caption>
+            <thead><tr><th scope="col">Citations</th><th scope="col">Year</th><th scope="col">Record</th></tr></thead>
+            <tbody>
+              <tr><td class="numeric">1,192</td><td>2019</td><td>A Survey of Deep Learning-Based Object Detection</td></tr>
+              <tr><td class="numeric">619</td><td>2014</td><td>MOEA/D with Adaptive Weight Adjustment</td></tr>
+              <tr><td class="numeric">603</td><td>2016</td><td>Change Detection in Synthetic Aperture Radar Images Based on Deep Neural Networks</td></tr>
+              <tr><td class="numeric">523</td><td>2015</td><td>Two_Arch2: An Improved Two-Archive Algorithm for Many-Objective Optimization</td></tr>
+              <tr><td class="numeric">493</td><td>2016</td><td>A Multiobjective Evolutionary Algorithm Based on Decision Variable Analyses for Problems With Large-Scale Variables</td></tr>
+              <tr><td class="numeric">486</td><td>2021</td><td>Residual Spectral-Spatial Attention Network for Hyperspectral Image Classification</td></tr>
+              <tr><td class="numeric">440</td><td>2008</td><td>Multiobjective Immune Algorithm with Nondominated Neighbor-Based Selection</td></tr>
+              <tr><td class="numeric">417</td><td>2004</td><td>Wavelet Support Vector Machine</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="synthesis">
+        <p class="eyebrow">08 / Cross-cutting synthesis</p>
+        <h2>Three recurring mechanisms connect the landscape</h2>
+        <div class="synthesis-stack">
+          <article>
+            <span>R</span>
+            <div>
+              <h3>Structure-aware representation</h3>
+              <p>Wavelets, sparse representations, spectral–spatial relations, geometric constraints, attention, and state-space models all encode structure rather than treating feature learning as undifferentiated.</p>
+            </div>
+          </article>
+          <article>
+            <span>S</span>
+            <div>
+              <h3>Search, selection, and adaptation</h3>
+              <p>Evolutionary search, multiobjective optimization, feature selection, transfer, prompting, and neural architecture search repeatedly ask how a solution process should adapt to a task.</p>
+            </div>
+          </article>
+          <article>
+            <span>D</span>
+            <div>
+              <h3>Method–domain coevolution</h3>
+              <p>Remote sensing is not merely an application destination. Its multiscale, multimodal, geometric, and physically grounded problems repeatedly motivate new representations and optimization formulations.</p>
+            </div>
+          </article>
+        </div>
+        <p>
+          These mechanisms explain why the contemporary frontier is better read
+          as convergence than replacement. Transformer, vision–language,
+          diffusion, prompt, Mamba, and foundation-model papers appear inside a
+          research environment already organized around structured signals,
+          adaptive search, and demanding perception domains.
+        </p>
+      </section>
+
+      <section id="agenda">
+        <p class="eyebrow">09 / Open agenda</p>
+        <h2>Five questions for a deeper, full-text review</h2>
+        <ol class="question-list">
+          <li><strong>How does domain structure enter modern foundation models?</strong><p>A full-text study should trace whether spectral, spatial, geometric, and physical constraints are encoded through architecture, training objective, prompting, or data construction.</p></li>
+          <li><strong>Where does evolutionary search still create unique value?</strong><p>The corpus suggests continuity from classical evolutionary computation to architecture search and adaptation. Method-level comparison is needed to separate inherited terminology from genuinely shared mechanisms.</p></li>
+          <li><strong>How do representations move across sensors and tasks?</strong><p>Version-linked experiments could reveal when a representation developed for SAR, hyperspectral, change detection, or matching transfers to other modalities.</p></li>
+          <li><strong>Can impact be analyzed beyond raw citation counts?</strong><p>Future releases should combine source-verified references, citation contexts, benchmark adoption, code availability, and field-normalized indicators.</p></li>
+          <li><strong>How does collaboration mediate research evolution?</strong><p>Affiliation-aware and author-disambiguated analysis could test how methods, domains, and new venue frontiers travel across teams and generations.</p></li>
+        </ol>
+      </section>
+
+      <section id="limits">
+        <p class="eyebrow">10 / Limits and reproducibility</p>
+        <h2>What this review can—and cannot—support</h2>
+        <p>
+          The current evidence base supports corpus mapping, descriptive
+          bibliometrics, title-level thematic coding, collaboration counts,
+          venue first appearances, and source-labeled citation analysis. It does
+          not support claims about experimental results, causal influence,
+          intellectual priority, or a paper’s technical contribution beyond
+          verified metadata.
+        </p>
+        <p>
+          Conference, preprint, and journal versions may coexist. Author-name
+          normalization cannot resolve every homonym. Crossref coverage is
+          incomplete and dynamic. A deterministic one-label taxonomy can
+          misclassify hybrid work. “First” means first appearance in the current
+          DBLP-anchored dataset, not an absolute career claim.
+        </p>
+        <p>
+          Reproducibility assets include the public field allowlist, taxonomy
+          rules, milestone generator, citation-refresh script, figure generator,
+          QR assets, semantic HTML, LaTeX manuscript, and compiled PDF. The
+          boundary can therefore be extended incrementally as verified abstracts,
+          full texts, references, and affiliations become available.
+        </p>
+      </section>
+
+      <section class="references" id="references">
+        <p class="eyebrow">11 / References and provenance</p>
+        <h2>Primary data, survey design, and formatting guidance</h2>
+        <ol>
+          <li><a href="https://dblp.org/pid/40/3714">DBLP: Licheng Jiao bibliography</a>.</li>
+          <li><a href="https://www.crossref.org/documentation/cited-by/">Crossref Cited-by documentation</a>.</li>
+          <li><a href="https://picrew.github.io/LLM-Harness/main.pdf">Li et al.: Agent Harness Engineering — A Survey</a>.</li>
+          <li><a href="https://arxiv.org/abs/2607.13104">Ren et al.: Self-Improvements in Modern Agentic Systems — A Survey</a>.</li>
+          <li><a href="https://info.arxiv.org/about/accessible_HTML.html">arXiv: HTML as an accessible format for papers</a>.</li>
+          <li><a href="https://info.arxiv.org/help/submit_latex_best_practices.html">arXiv: LaTeX markup best practices for successful HTML papers</a>.</li>
+        </ol>
+      </section>
+    </article>
+  </main>
+
+  <footer class="review-footer">
+    <span>Licheng Jiao Research Atlas · Open systematic mapping review</span>
+    <span>Data snapshot: 2026-07-28 · Citation source: Crossref Cited-by</span>
+  </footer>
+</body>
+</html>

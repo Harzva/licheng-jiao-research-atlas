@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">A unified view of the research program</title>
+  <desc id="desc">Four interacting layers connect structure-aware representation, adaptive search, intelligent perception, and domain-grounded interpretation, with multimodal and foundation models as a contemporary convergence frontier.</desc>
+  <rect width="1600" height="900" fill="#071923"/>
+  <style>
+    .sans{font-family:Verdana,sans-serif}
+    .serif{font-family:Georgia,serif}
+    .mono{font-family:Courier,monospace}
+    .fg{fill:#eef5f2}
+    .muted{fill:#8da9a8}
+  </style>
+  <g fill="#eef5f2">
+    
+    <text x="108" y="92" class="mono" fill="#55dce0" font-size="17" font-weight="700" letter-spacing="3">FIGURE 01 · SYNTHESIS FRAMEWORK</text>
+    <text x="108" y="148" class="serif fg" font-size="50" font-weight="500"><tspan x="108" dy="0">A unified view of the research program</tspan></text>
+    <text x="108" y="216" class="sans muted" font-size="18">A recurring logic inferred from the 1998–2026 bibliographic landscape</text>
+    
+      <g>
+        <rect x="108" y="246" width="1010" height="108" rx="20" fill="#8ebad8" fill-opacity=".13" stroke="#8ebad8" stroke-opacity=".65"/>
+        <rect x="108" y="246" width="12" height="108" rx="6" fill="#8ebad8"/>
+        <text x="154" y="284" class="mono" fill="#8ebad8" font-size="17" font-weight="700">01</text>
+        <text x="224" y="285" class="sans fg" font-size="25" font-weight="700" letter-spacing="1.2">STRUCTURE-AWARE REPRESENTATION</text>
+        <text x="224" y="321" class="sans muted" font-size="18">Wavelets · sparse coding · spectral–spatial structure · geometry · attention</text>
+      </g>
+      <g>
+        <rect x="108" y="384" width="1010" height="108" rx="20" fill="#a7d48b" fill-opacity=".13" stroke="#a7d48b" stroke-opacity=".65"/>
+        <rect x="108" y="384" width="12" height="108" rx="6" fill="#a7d48b"/>
+        <text x="154" y="422" class="mono" fill="#a7d48b" font-size="17" font-weight="700">02</text>
+        <text x="224" y="423" class="sans fg" font-size="25" font-weight="700" letter-spacing="1.2">ADAPTIVE SEARCH &amp; OPTIMIZATION</text>
+        <text x="224" y="459" class="sans muted" font-size="18">Evolutionary search · multiobjective optimization · transfer · architecture search</text>
+      </g>
+      <g>
+        <rect x="108" y="522" width="1010" height="108" rx="20" fill="#ee8e78" fill-opacity=".13" stroke="#ee8e78" stroke-opacity=".65"/>
+        <rect x="108" y="522" width="12" height="108" rx="6" fill="#ee8e78"/>
+        <text x="154" y="560" class="mono" fill="#ee8e78" font-size="17" font-weight="700">03</text>
+        <text x="224" y="561" class="sans fg" font-size="25" font-weight="700" letter-spacing="1.2">INTELLIGENT PERCEPTION</text>
+        <text x="224" y="597" class="sans muted" font-size="18">Classification · detection · segmentation · tracking · registration · restoration</text>
+      </g>
+      <g>
+        <rect x="108" y="660" width="1010" height="108" rx="20" fill="#e1b75d" fill-opacity=".13" stroke="#e1b75d" stroke-opacity=".65"/>
+        <rect x="108" y="660" width="12" height="108" rx="6" fill="#e1b75d"/>
+        <text x="154" y="698" class="mono" fill="#e1b75d" font-size="17" font-weight="700">04</text>
+        <text x="224" y="699" class="sans fg" font-size="25" font-weight="700" letter-spacing="1.2">DOMAIN-GROUNDED INTERPRETATION</text>
+        <text x="224" y="735" class="sans muted" font-size="18">SAR/PolSAR · hyperspectral imagery · change detection · aerial and satellite vision</text>
+      </g>
+    <path d="M613 354v28" stroke="#55dce0" stroke-width="2" stroke-dasharray="4 8"/><path d="M605 376l8 10 8-10" fill="none" stroke="#55dce0" stroke-width="2"/><path d="M613 492v28" stroke="#55dce0" stroke-width="2" stroke-dasharray="4 8"/><path d="M605 514l8 10 8-10" fill="none" stroke="#55dce0" stroke-width="2"/><path d="M613 630v28" stroke="#55dce0" stroke-width="2" stroke-dasharray="4 8"/><path d="M605 652l8 10 8-10" fill="none" stroke="#55dce0" stroke-width="2"/>
+    <g transform="translate(1192 246)">
+      <circle cx="154" cy="218" r="152" fill="none" stroke="#55dce0" stroke-width="2"/>
+      <circle cx="154" cy="218" r="124" fill="#55dce0" fill-opacity=".08" stroke="#55dce0" stroke-opacity=".36"/>
+      <circle cx="154" cy="218" r="88" fill="#55dce0" fill-opacity=".12"/>
+      <text x="154" y="184" text-anchor="middle" class="mono" fill="#55dce0" font-size="14" font-weight="700">CONVERGENCE FRONTIER</text>
+      <text x="154" y="224" text-anchor="middle" class="serif fg" font-size="31">Multimodal &amp;</text>
+      <text x="154" y="261" text-anchor="middle" class="serif fg" font-size="31">foundation models</text>
+      <text x="154" y="302" text-anchor="middle" class="sans muted" font-size="15">Transformer · prompt · diffusion</text>
+      <text x="154" y="327" text-anchor="middle" class="sans muted" font-size="15">state space · vision–language</text>
+      <path d="M-68 218H-18" stroke="#55dce0" stroke-width="2"/>
+      <path d="M-30 208l14 10-14 10" fill="none" stroke="#55dce0" stroke-width="2"/>
+    </g>
+    <text x="108" y="842" class="mono muted" font-size="14">Interpretation: methods and domains co-evolve; the frontier recombines rather than replaces earlier layers.</text>
+  </g>
+</svg>

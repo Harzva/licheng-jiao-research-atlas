@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Research evolution and first-venue milestones</title>
+  <desc id="desc">A four-phase timeline from 1998 to 2026 combines annual publication volume with the first appearance of selected journals and conferences in the DBLP-anchored corpus.</desc>
+  <rect width="1600" height="900" fill="#071923"/>
+  <style>
+    .sans{font-family:Verdana,sans-serif}
+    .serif{font-family:Georgia,serif}
+    .mono{font-family:Courier,monospace}
+    .fg{fill:#eef5f2}
+    .muted{fill:#8da9a8}
+  </style>
+  <g fill="#eef5f2">
+    
+    <text x="112" y="82" class="mono" fill="#55dce0" font-size="17" font-weight="700" letter-spacing="3">FIGURE 02 · LONGITUDINAL MAP</text>
+    <text x="112" y="148" class="serif fg" font-size="50">Research evolution and first-venue milestones</text>
+    <text x="112" y="188" class="sans muted" font-size="18">Annual output, four research phases, and corpus-scoped first appearances at selected venues</text>
+    
+      <rect x="112" y="240" width="482.2321428571397" height="166" rx="18" fill="#8ebad8" fill-opacity=".12" stroke="#8ebad8" stroke-opacity=".5"/>
+      <text x="134" y="280" class="mono" fill="#8ebad8" font-size="16" font-weight="700">1998—2007</text>
+      <text x="134" y="319" class="sans fg" font-size="20" font-weight="650"><tspan x="134" dy="0">Neural &amp; natural</tspan><tspan x="134" dy="26">computation</tspan></text>
+      <text x="134" y="380" class="serif" fill="#8ebad8" font-size="28">179 records</text>
+      <rect x="603.0714285714286" y="240" width="334.91071428571115" height="166" rx="18" fill="#a7d48b" fill-opacity=".12" stroke="#a7d48b" stroke-opacity=".5"/>
+      <text x="625.0714285714286" y="280" class="mono" fill="#a7d48b" font-size="16" font-weight="700">2008—2014</text>
+      <text x="625.0714285714286" y="319" class="sans fg" font-size="20" font-weight="650"><tspan x="625.0714285714286" dy="0">Optimization meets imaging</tspan></text>
+      <text x="625.0714285714286" y="380" class="serif" fill="#a7d48b" font-size="28">293 records</text>
+      <rect x="946.8214285714286" y="240" width="285.80357142856826" height="166" rx="18" fill="#e1b75d" fill-opacity=".12" stroke="#e1b75d" stroke-opacity=".5"/>
+      <text x="968.8214285714286" y="280" class="mono" fill="#e1b75d" font-size="16" font-weight="700">2015—2020</text>
+      <text x="968.8214285714286" y="319" class="sans fg" font-size="20" font-weight="650"><tspan x="968.8214285714286" dy="0">Deep remote-sensing</tspan><tspan x="968.8214285714286" dy="26">interpretation</tspan></text>
+      <text x="968.8214285714286" y="380" class="serif" fill="#e1b75d" font-size="28">530 records</text>
+      <rect x="1241.4642857142858" y="240" width="285.80357142856815" height="166" rx="18" fill="#55dce0" fill-opacity=".12" stroke="#55dce0" stroke-opacity=".5"/>
+      <text x="1263.4642857142858" y="280" class="mono" fill="#55dce0" font-size="16" font-weight="700">2021—2026</text>
+      <text x="1263.4642857142858" y="319" class="sans fg" font-size="20" font-weight="650"><tspan x="1263.4642857142858" dy="0">Multimodal &amp; foundation</tspan><tspan x="1263.4642857142858" dy="26">convergence</tspan></text>
+      <text x="1263.4642857142858" y="380" class="serif" fill="#55dce0" font-size="28">825 records</text>
+    
+      <line x1="112" y1="463" x2="112" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="112" cy="454" r="7" fill="#e1b75d"/>
+      <text x="124" y="459" class="mono fg" font-size="13" font-weight="700">Career record</text>
+      <line x1="259.32142857142856" y1="463" x2="259.32142857142856" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="259.32142857142856" cy="454" r="7" fill="#55dce0"/>
+      <text x="271.32142857142856" y="459" class="mono fg" font-size="13" font-weight="700">TNN · TNNLS</text>
+      <line x1="504.85714285714283" y1="463" x2="504.85714285714283" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="504.85714285714283" cy="454" r="7" fill="#55dce0"/>
+      <text x="516.8571428571429" y="459" class="mono fg" font-size="13" font-weight="700">IEEE TEVC</text>
+      <line x1="603.0714285714286" y1="463" x2="603.0714285714286" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="603.0714285714286" cy="454" r="7" fill="#55dce0"/>
+      <text x="615.0714285714286" y="459" class="mono fg" font-size="13" font-weight="700">IEEE TGRS</text>
+      <line x1="603.0714285714286" y1="421" x2="603.0714285714286" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="603.0714285714286" cy="412" r="7" fill="#55dce0"/>
+      <text x="615.0714285714286" y="417" class="mono fg" font-size="13" font-weight="700">IEEE TIP</text>
+      <line x1="1143.25" y1="463" x2="1143.25" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="1143.25" cy="454" r="7" fill="#e1b75d"/>
+      <text x="1155.25" y="459" class="mono fg" font-size="13" font-weight="700">AAAI</text>
+      <line x1="1143.25" y1="421" x2="1143.25" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="1143.25" cy="412" r="7" fill="#e1b75d"/>
+      <text x="1155.25" y="417" class="mono fg" font-size="13" font-weight="700">ICCV</text>
+      <line x1="1192.357142857143" y1="463" x2="1192.357142857143" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="1192.357142857143" cy="454" r="7" fill="#e1b75d"/>
+      <text x="1204.357142857143" y="459" class="mono fg" font-size="13" font-weight="700">ACM MM</text>
+      <line x1="1192.357142857143" y1="421" x2="1192.357142857143" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="1192.357142857143" cy="412" r="7" fill="#e1b75d"/>
+      <text x="1204.357142857143" y="417" class="mono fg" font-size="13" font-weight="700">ECCV</text>
+      <line x1="1241.4642857142858" y1="463" x2="1241.4642857142858" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="1241.4642857142858" cy="454" r="7" fill="#55dce0"/>
+      <text x="1253.4642857142858" y="459" class="mono fg" font-size="13" font-weight="700">IEEE TPAMI</text>
+      <line x1="1339.6785714285716" y1="463" x2="1339.6785714285716" y2="770" stroke="#eef5f2" stroke-opacity=".2" stroke-dasharray="3 8"/>
+      <circle cx="1339.6785714285716" cy="454" r="7" fill="#e1b75d"/>
+      <text x="1351.6785714285716" y="459" class="mono fg" font-size="13" font-weight="700">CVPR</text>
+    <polygon points="112,770 112.0,768.8 161.1,768.8 210.2,764.0 259.3,765.2 308.4,767.6 357.5,768.8 406.6,734.3 455.8,685.5 504.9,722.4 554.0,741.4 603.1,742.6 652.2,737.9 701.3,711.7 750.4,718.8 799.5,733.1 848.6,724.8 897.7,672.4 946.8,685.5 995.9,646.2 1045.0,679.5 1094.1,678.3 1143.3,636.7 1192.4,662.9 1241.5,656.9 1290.6,589.0 1339.7,589.0 1388.8,520.0 1437.9,590.2 1487.0,692.6 1487,770" fill="#55dce0" fill-opacity=".12"/>
+    <polyline points="112.0,768.8 161.1,768.8 210.2,764.0 259.3,765.2 308.4,767.6 357.5,768.8 406.6,734.3 455.8,685.5 504.9,722.4 554.0,741.4 603.1,742.6 652.2,737.9 701.3,711.7 750.4,718.8 799.5,733.1 848.6,724.8 897.7,672.4 946.8,685.5 995.9,646.2 1045.0,679.5 1094.1,678.3 1143.3,636.7 1192.4,662.9 1241.5,656.9 1290.6,589.0 1339.7,589.0 1388.8,520.0 1437.9,590.2 1487.0,692.6" fill="none" stroke="#55dce0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="112" y1="770" x2="112" y2="780" stroke="#8da9a8"/><text x="112" y="804" text-anchor="middle" class="mono muted" font-size="13">1998</text><line x1="210.21428571428572" y1="770" x2="210.21428571428572" y2="780" stroke="#8da9a8"/><text x="210.21428571428572" y="804" text-anchor="middle" class="mono muted" font-size="13">2000</text><line x1="455.75" y1="770" x2="455.75" y2="780" stroke="#8da9a8"/><text x="455.75" y="804" text-anchor="middle" class="mono muted" font-size="13">2005</text><line x1="701.2857142857142" y1="770" x2="701.2857142857142" y2="780" stroke="#8da9a8"/><text x="701.2857142857142" y="804" text-anchor="middle" class="mono muted" font-size="13">2010</text><line x1="946.8214285714286" y1="770" x2="946.8214285714286" y2="780" stroke="#8da9a8"/><text x="946.8214285714286" y="804" text-anchor="middle" class="mono muted" font-size="13">2015</text><line x1="1192.357142857143" y1="770" x2="1192.357142857143" y2="780" stroke="#8da9a8"/><text x="1192.357142857143" y="804" text-anchor="middle" class="mono muted" font-size="13">2020</text><line x1="1437.892857142857" y1="770" x2="1437.892857142857" y2="780" stroke="#8da9a8"/><text x="1437.892857142857" y="804" text-anchor="middle" class="mono muted" font-size="13">2025</text><line x1="1487" y1="770" x2="1487" y2="780" stroke="#8da9a8"/><text x="1487" y="804" text-anchor="middle" class="mono muted" font-size="13">2026</text>
+    <text x="112" y="852" class="mono muted" font-size="13">Venue markers indicate first appearance in this DBLP-anchored corpus; same-year records are grouped.</text>
+  </g>
+</svg>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Seven-domain, fine-task taxonomy</title>
+  <desc id="desc">The 1,827-record corpus is organized into seven broad domains and 48 observed fine-grained tasks using transparent title-level rules.</desc>
+  <rect width="1800" height="1200" fill="#071923"/>
+  <style>
+    .sans{font-family:Verdana,sans-serif}
+    .serif{font-family:Georgia,serif}
+    .mono{font-family:Courier,monospace}
+    .fg{fill:#eef5f2}
+    .muted{fill:#8da9a8}
+  </style>
+  <g fill="#eef5f2">
+    
+    <text x="85" y="80" class="mono" fill="#55dce0" font-size="17" font-weight="700" letter-spacing="3">FIGURE 03 · HIERARCHICAL TAXONOMY</text>
+    <text x="85" y="146" class="serif fg" font-size="50">Seven-domain, fine-task taxonomy</text>
+    <text x="85" y="184" class="sans muted" font-size="18">Broad domains preserve the field structure; task colors encode finer research problems within each domain.</text>
+    
+      <g>
+        <rect x="85" y="210" width="390" height="430" rx="18" fill="#e1b75d" fill-opacity=".07" stroke="#e1b75d" stroke-opacity=".5"/>
+        <rect x="85" y="210" width="390" height="76" rx="18" fill="#e1b75d" fill-opacity=".16"/>
+        <text x="109" y="244" class="mono" fill="#e1b75d" font-size="13" font-weight="700">01 · REMOTE</text>
+        <text x="109" y="273" class="serif fg" font-size="23">Remote sensing intelligence</text>
+        <text x="451" y="260" text-anchor="end" class="serif" fill="#e1b75d" font-size="32">667</text>
+        
+        <circle cx="113" cy="321" r="6" fill="#c68b34"/>
+        <text x="130" y="326" class="sans fg" font-size="14">Classification · Mapping</text>
+        <text x="451" y="326" text-anchor="end" class="mono" fill="#c68b34" font-size="13" font-weight="700">244</text>
+        <circle cx="113" cy="354" r="6" fill="#f4d77f"/>
+        <text x="130" y="359" class="sans fg" font-size="14">Hyperspectral · Multispectral</text>
+        <text x="451" y="359" text-anchor="end" class="mono" fill="#f4d77f" font-size="13" font-weight="700">170</text>
+        <circle cx="113" cy="387" r="6" fill="#f0c459"/>
+        <text x="130" y="392" class="sans fg" font-size="14">SAR · PolSAR</text>
+        <text x="451" y="392" text-anchor="end" class="mono" fill="#f0c459" font-size="13" font-weight="700">87</text>
+        <circle cx="113" cy="420" r="6" fill="#d89b3e"/>
+        <text x="130" y="425" class="sans fg" font-size="14">Change detection</text>
+        <text x="451" y="425" text-anchor="end" class="mono" fill="#d89b3e" font-size="13" font-weight="700">75</text>
+        <circle cx="113" cy="453" r="6" fill="#dbaa4b"/>
+        <text x="130" y="458" class="sans fg" font-size="14">Detection · Tracking</text>
+        <text x="451" y="458" text-anchor="end" class="mono" fill="#dbaa4b" font-size="13" font-weight="700">50</text>
+        <circle cx="113" cy="486" r="6" fill="#f7df9d"/>
+        <text x="130" y="491" class="sans fg" font-size="14">Registration · Fusion</text>
+        <text x="451" y="491" text-anchor="end" class="mono" fill="#f7df9d" font-size="13" font-weight="700">38</text>
+        <circle cx="113" cy="519" r="6" fill="#f2bd86"/>
+        <text x="130" y="524" class="sans fg" font-size="14">Caption · Retrieval</text>
+        <text x="451" y="524" text-anchor="end" class="mono" fill="#f2bd86" font-size="13" font-weight="700">3</text>
+      </g>
+      <g>
+        <rect x="475" y="210" width="390" height="430" rx="18" fill="#9fb5b3" fill-opacity=".07" stroke="#9fb5b3" stroke-opacity=".5"/>
+        <rect x="475" y="210" width="390" height="76" rx="18" fill="#9fb5b3" fill-opacity=".16"/>
+        <text x="499" y="244" class="mono" fill="#9fb5b3" font-size="13" font-weight="700">02 · GENERAL</text>
+        <text x="499" y="273" class="serif fg" font-size="23">Interdisciplinary methods</text>
+        <text x="841" y="260" text-anchor="end" class="serif" fill="#9fb5b3" font-size="32">434</text>
+        
+        <circle cx="503" cy="321" r="6" fill="#718f91"/>
+        <text x="520" y="326" class="sans fg" font-size="14">Interdisciplinary methods</text>
+        <text x="841" y="326" text-anchor="end" class="mono" fill="#718f91" font-size="13" font-weight="700">226</text>
+        <circle cx="503" cy="354" r="6" fill="#7ca7a4"/>
+        <text x="520" y="359" class="sans fg" font-size="14">Data mining · Knowledge</text>
+        <text x="841" y="359" text-anchor="end" class="mono" fill="#7ca7a4" font-size="13" font-weight="700">93</text>
+        <circle cx="503" cy="387" r="6" fill="#8da8a2"/>
+        <text x="520" y="392" class="sans fg" font-size="14">Mathematical methods</text>
+        <text x="841" y="392" text-anchor="end" class="mono" fill="#8da8a2" font-size="13" font-weight="700">24</text>
+        <circle cx="503" cy="420" r="6" fill="#8db7b2"/>
+        <text x="520" y="425" class="sans fg" font-size="14">Multimedia · Video</text>
+        <text x="841" y="425" text-anchor="end" class="mono" fill="#8db7b2" font-size="13" font-weight="700">20</text>
+        <circle cx="503" cy="453" r="6" fill="#9daec5"/>
+        <text x="520" y="458" class="sans fg" font-size="14">3D vision · Geometry</text>
+        <text x="841" y="458" text-anchor="end" class="mono" fill="#9daec5" font-size="13" font-weight="700">19</text>
+        <circle cx="503" cy="486" r="6" fill="#9fb9b3"/>
+        <text x="520" y="491" class="sans fg" font-size="14">Communications · Radar</text>
+        <text x="841" y="491" text-anchor="end" class="mono" fill="#9fb9b3" font-size="13" font-weight="700">18</text>
+        <circle cx="503" cy="519" r="6" fill="#bfd0c9"/>
+        <text x="520" y="524" class="sans fg" font-size="14">Medical · Bioinformatics</text>
+        <text x="841" y="524" text-anchor="end" class="mono" fill="#bfd0c9" font-size="13" font-weight="700">12</text>
+        <circle cx="503" cy="552" r="6" fill="#8e9fba"/>
+        <text x="520" y="557" class="sans fg" font-size="14">Quantum · Brain-inspired</text>
+        <text x="841" y="557" text-anchor="end" class="mono" fill="#8e9fba" font-size="13" font-weight="700">10</text>
+        <circle cx="503" cy="585" r="6" fill="#b6a99a"/>
+        <text x="520" y="590" class="sans fg" font-size="14">Security · Privacy</text>
+        <text x="841" y="590" text-anchor="end" class="mono" fill="#b6a99a" font-size="13" font-weight="700">7</text>
+        <circle cx="503" cy="618" r="6" fill="#aabda5"/>
+        <text x="520" y="623" class="sans fg" font-size="14">Systems · Applications</text>
+        <text x="841" y="623" text-anchor="end" class="mono" fill="#aabda5" font-size="13" font-weight="700">5</text>
+      </g>
+      <g>
+        <rect x="865" y="210" width="390" height="430" rx="18" fill="#a7d48b" fill-opacity=".07" stroke="#a7d48b" stroke-opacity=".5"/>
+        <rect x="865" y="210" width="390" height="76" rx="18" fill="#a7d48b" fill-opacity=".16"/>
+        <text x="889" y="244" class="mono" fill="#a7d48b" font-size="13" font-weight="700">03 · EVOLUTION</text>
+        <text x="889" y="273" class="serif fg" font-size="23">Evolutionary optimization</text>
+        <text x="1231" y="260" text-anchor="end" class="serif" fill="#a7d48b" font-size="32">236</text>
+        
+        <circle cx="893" cy="321" r="6" fill="#a8d779"/>
+        <text x="910" y="326" class="sans fg" font-size="14">Multiobjective optimization</text>
+        <text x="1231" y="326" text-anchor="end" class="mono" fill="#a8d779" font-size="13" font-weight="700">100</text>
+        <circle cx="893" cy="354" r="6" fill="#d5e8ae"/>
+        <text x="910" y="359" class="sans fg" font-size="14">Evolutionary algorithms</text>
+        <text x="1231" y="359" text-anchor="end" class="mono" fill="#d5e8ae" font-size="13" font-weight="700">99</text>
+        <circle cx="893" cy="387" r="6" fill="#7bbb72"/>
+        <text x="910" y="392" class="sans fg" font-size="14">Swarm intelligence</text>
+        <text x="1231" y="392" text-anchor="end" class="mono" fill="#7bbb72" font-size="13" font-weight="700">21</text>
+        <circle cx="893" cy="420" r="6" fill="#c8e59b"/>
+        <text x="910" y="425" class="sans fg" font-size="14">Neural architecture search</text>
+        <text x="1231" y="425" text-anchor="end" class="mono" fill="#c8e59b" font-size="13" font-weight="700">10</text>
+        <circle cx="893" cy="453" r="6" fill="#73aa84"/>
+        <text x="910" y="458" class="sans fg" font-size="14">Scheduling · Combinatorial</text>
+        <text x="1231" y="458" text-anchor="end" class="mono" fill="#73aa84" font-size="13" font-weight="700">3</text>
+        <circle cx="893" cy="486" r="6" fill="#b9d8a4"/>
+        <text x="910" y="491" class="sans fg" font-size="14">Clustering · Community</text>
+        <text x="1231" y="491" text-anchor="end" class="mono" fill="#b9d8a4" font-size="13" font-weight="700">3</text>
+      </g>
+      <g>
+        <rect x="1255" y="210" width="390" height="430" rx="18" fill="#ee8e78" fill-opacity=".07" stroke="#ee8e78" stroke-opacity=".5"/>
+        <rect x="1255" y="210" width="390" height="76" rx="18" fill="#ee8e78" fill-opacity=".16"/>
+        <text x="1279" y="244" class="mono" fill="#ee8e78" font-size="13" font-weight="700">04 · VISION</text>
+        <text x="1279" y="273" class="serif fg" font-size="23">Visual perception</text>
+        <text x="1621" y="260" text-anchor="end" class="serif" fill="#ee8e78" font-size="32">198</text>
+        
+        <circle cx="1283" cy="321" r="6" fill="#ffad98"/>
+        <text x="1300" y="326" class="sans fg" font-size="14">Segmentation</text>
+        <text x="1621" y="326" text-anchor="end" class="mono" fill="#ffad98" font-size="13" font-weight="700">87</text>
+        <circle cx="1283" cy="354" r="6" fill="#ff9a79"/>
+        <text x="1300" y="359" class="sans fg" font-size="14">Recognition · Classification</text>
+        <text x="1621" y="359" text-anchor="end" class="mono" fill="#ff9a79" font-size="13" font-weight="700">53</text>
+        <circle cx="1283" cy="387" r="6" fill="#df6f68"/>
+        <text x="1300" y="392" class="sans fg" font-size="14">Tracking · Re-ID</text>
+        <text x="1621" y="392" text-anchor="end" class="mono" fill="#df6f68" font-size="13" font-weight="700">23</text>
+        <circle cx="1283" cy="420" r="6" fill="#f48c78"/>
+        <text x="1300" y="425" class="sans fg" font-size="14">Object detection</text>
+        <text x="1621" y="425" text-anchor="end" class="mono" fill="#f48c78" font-size="13" font-weight="700">22</text>
+        <circle cx="1283" cy="453" r="6" fill="#e45f55"/>
+        <text x="1300" y="458" class="sans fg" font-size="14">Video understanding</text>
+        <text x="1621" y="458" text-anchor="end" class="mono" fill="#e45f55" font-size="13" font-weight="700">9</text>
+        <circle cx="1283" cy="486" r="6" fill="#d87f97"/>
+        <text x="1300" y="491" class="sans fg" font-size="14">Matching · Localization</text>
+        <text x="1621" y="491" text-anchor="end" class="mono" fill="#d87f97" font-size="13" font-weight="700">2</text>
+        <circle cx="1283" cy="519" r="6" fill="#f2b28d"/>
+        <text x="1300" y="524" class="sans fg" font-size="14">Medical vision</text>
+        <text x="1621" y="524" text-anchor="end" class="mono" fill="#f2b28d" font-size="13" font-weight="700">2</text>
+      </g>
+      <g>
+        <rect x="280" y="675" width="390" height="430" rx="18" fill="#55dce0" fill-opacity=".07" stroke="#55dce0" stroke-opacity=".5"/>
+        <rect x="280" y="675" width="390" height="76" rx="18" fill="#55dce0" fill-opacity=".16"/>
+        <text x="304" y="709" class="mono" fill="#55dce0" font-size="13" font-weight="700">05 · FRONTIER</text>
+        <text x="304" y="738" class="serif fg" font-size="23">Frontier &amp; multimodal models</text>
+        <text x="646" y="725" text-anchor="end" class="serif" fill="#55dce0" font-size="32">149</text>
+        
+        <circle cx="308" cy="786" r="6" fill="#9bece8"/>
+        <text x="325" y="791" class="sans fg" font-size="14">Transformer · Attention</text>
+        <text x="646" y="791" text-anchor="end" class="mono" fill="#9bece8" font-size="13" font-weight="700">54</text>
+        <circle cx="308" cy="819" r="6" fill="#3fc5d2"/>
+        <text x="325" y="824" class="sans fg" font-size="14">Multimodal learning</text>
+        <text x="646" y="824" text-anchor="end" class="mono" fill="#3fc5d2" font-size="13" font-weight="700">33</text>
+        <circle cx="308" cy="852" r="6" fill="#78cde4"/>
+        <text x="325" y="857" class="sans fg" font-size="14">Generative · Diffusion</text>
+        <text x="646" y="857" text-anchor="end" class="mono" fill="#78cde4" font-size="13" font-weight="700">31</text>
+        <circle cx="308" cy="885" r="6" fill="#56dce0"/>
+        <text x="325" y="890" class="sans fg" font-size="14">Vision-language · Prompt</text>
+        <text x="646" y="890" text-anchor="end" class="mono" fill="#56dce0" font-size="13" font-weight="700">14</text>
+        <circle cx="308" cy="918" r="6" fill="#38b9c8"/>
+        <text x="325" y="923" class="sans fg" font-size="14">State space · Mamba</text>
+        <text x="646" y="923" text-anchor="end" class="mono" fill="#38b9c8" font-size="13" font-weight="700">10</text>
+        <circle cx="308" cy="951" r="6" fill="#7ee9e7"/>
+        <text x="325" y="956" class="sans fg" font-size="14">Foundation models</text>
+        <text x="646" y="956" text-anchor="end" class="mono" fill="#7ee9e7" font-size="13" font-weight="700">6</text>
+        <circle cx="308" cy="984" r="6" fill="#279dab"/>
+        <text x="325" y="989" class="sans fg" font-size="14">Emerging architectures</text>
+        <text x="646" y="989" text-anchor="end" class="mono" fill="#279dab" font-size="13" font-weight="700">1</text>
+      </g>
+      <g>
+        <rect x="670" y="675" width="390" height="430" rx="18" fill="#a998e4" fill-opacity=".07" stroke="#a998e4" stroke-opacity=".5"/>
+        <rect x="670" y="675" width="390" height="76" rx="18" fill="#a998e4" fill-opacity=".16"/>
+        <text x="694" y="709" class="mono" fill="#a998e4" font-size="13" font-weight="700">06 · LEARNING</text>
+        <text x="694" y="738" class="serif fg" font-size="23">Neural &amp; machine learning</text>
+        <text x="1036" y="725" text-anchor="end" class="serif" fill="#a998e4" font-size="32">73</text>
+        
+        <circle cx="698" cy="786" r="6" fill="#c5a7e0"/>
+        <text x="715" y="791" class="sans fg" font-size="14">Self · Semi · Unsupervised</text>
+        <text x="1036" y="791" text-anchor="end" class="mono" fill="#c5a7e0" font-size="13" font-weight="700">29</text>
+        <circle cx="698" cy="819" r="6" fill="#7c68b8"/>
+        <text x="715" y="824" class="sans fg" font-size="14">Neural · Machine learning</text>
+        <text x="1036" y="824" text-anchor="end" class="mono" fill="#7c68b8" font-size="13" font-weight="700">21</text>
+        <circle cx="698" cy="852" r="6" fill="#b19ce2"/>
+        <text x="715" y="857" class="sans fg" font-size="14">Few-shot · Incremental</text>
+        <text x="1036" y="857" text-anchor="end" class="mono" fill="#b19ce2" font-size="13" font-weight="700">16</text>
+        <circle cx="698" cy="885" r="6" fill="#9e8ed8"/>
+        <text x="715" y="890" class="sans fg" font-size="14">Representation · Metric</text>
+        <text x="1036" y="890" text-anchor="end" class="mono" fill="#9e8ed8" font-size="13" font-weight="700">5</text>
+        <circle cx="698" cy="918" r="6" fill="#819bd7"/>
+        <text x="715" y="923" class="sans fg" font-size="14">Transfer · Adaptation</text>
+        <text x="1036" y="923" text-anchor="end" class="mono" fill="#819bd7" font-size="13" font-weight="700">2</text>
+      </g>
+      <g>
+        <rect x="1060" y="675" width="390" height="430" rx="18" fill="#8ebad8" fill-opacity=".07" stroke="#8ebad8" stroke-opacity=".5"/>
+        <rect x="1060" y="675" width="390" height="76" rx="18" fill="#8ebad8" fill-opacity=".16"/>
+        <text x="1084" y="709" class="mono" fill="#8ebad8" font-size="13" font-weight="700">07 · IMAGING</text>
+        <text x="1084" y="738" class="serif fg" font-size="23">Computational imaging</text>
+        <text x="1426" y="725" text-anchor="end" class="serif" fill="#8ebad8" font-size="32">70</text>
+        
+        <circle cx="1088" cy="786" r="6" fill="#9ab3db"/>
+        <text x="1105" y="791" class="sans fg" font-size="14">Wavelet · Sparse</text>
+        <text x="1426" y="791" text-anchor="end" class="mono" fill="#9ab3db" font-size="13" font-weight="700">22</text>
+        <circle cx="1088" cy="819" r="6" fill="#8abbd9"/>
+        <text x="1105" y="824" class="sans fg" font-size="14">Super-resolution</text>
+        <text x="1426" y="824" text-anchor="end" class="mono" fill="#8abbd9" font-size="13" font-weight="700">18</text>
+        <circle cx="1088" cy="852" r="6" fill="#679bc3"/>
+        <text x="1105" y="857" class="sans fg" font-size="14">Reconstruction · Inverse</text>
+        <text x="1426" y="857" text-anchor="end" class="mono" fill="#679bc3" font-size="13" font-weight="700">14</text>
+        <circle cx="1088" cy="885" r="6" fill="#c1d9e8"/>
+        <text x="1105" y="890" class="sans fg" font-size="14">Computational imaging</text>
+        <text x="1426" y="890" text-anchor="end" class="mono" fill="#c1d9e8" font-size="13" font-weight="700">7</text>
+        <circle cx="1088" cy="918" r="6" fill="#b2d4e8"/>
+        <text x="1105" y="923" class="sans fg" font-size="14">Restoration · Denoising</text>
+        <text x="1426" y="923" text-anchor="end" class="mono" fill="#b2d4e8" font-size="13" font-weight="700">5</text>
+        <circle cx="1088" cy="951" r="6" fill="#73c1c7"/>
+        <text x="1105" y="956" class="sans fg" font-size="14">Fusion · Pansharpening</text>
+        <text x="1426" y="956" text-anchor="end" class="mono" fill="#73c1c7" font-size="13" font-weight="700">4</text>
+      </g>
+    <text x="85" y="1166" class="mono muted" font-size="13">Counts are single-label coordinates inferred from titles and venues; hybrid work may span multiple conceptual areas.</text>
+  </g>
+</svg>

@@ -43,11 +43,16 @@ const TOPICS = {
   }
 };
 
+let TASKS = {};
+
 const state = {
   papers: [],
   atlas: null,
+  milestones: null,
+  citations: null,
   filtered: [],
   topic: "",
+  task: "",
   year: "",
   type: "",
   query: "",
@@ -65,6 +70,205 @@ const $$ = (selector) => [...document.querySelectorAll(selector)];
 const escapeHtml = (value = "") => String(value).replace(/[&<>"']/g, (char) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
 }[char]));
+
+function splitAuthors(value = "") {
+  return String(value).split(/\s*;\s*/).map((name) => name.trim()).filter(Boolean);
+}
+
+function isJiaoName(value = "") {
+  const normalized = String(value).toLocaleLowerCase().replace(/[.\s-]/g, "");
+  return normalized === "lichengjiao"
+    || normalized === "ljiao"
+    || normalized === "jiaolicheng"
+    || normalized.includes("焦李成");
+}
+
+function formatAuthorsHtml(value = "", limit = Infinity) {
+  const authors = splitAuthors(value);
+  const shown = authors.slice(0, limit);
+  const content = shown.map((name, index) => {
+    const classes = ["author-name"];
+    if (index === 0) classes.push("first-author");
+    if (isJiaoName(name)) classes.push("jiao-author");
+    const role = index === 0 ? '<b class="author-role">1st</b>' : "";
+    return `<span class="${classes.join(" ")}">${role}${escapeHtml(name)}</span>`;
+  }).join('<span class="author-separator" aria-hidden="true">·</span>');
+  const remainder = authors.length - shown.length;
+  return remainder > 0
+    ? `${content}<span class="author-remainder">+${formatNumber(remainder)} 位作者</span>`
+    : content;
+}
+
+function taskMeta(paperOrKey) {
+  const key = typeof paperOrKey === "string" ? paperOrKey : paperOrKey?.task;
+  const topicKey = typeof paperOrKey === "string"
+    ? TASKS[key]?.topic
+    : paperOrKey?.topic;
+  return TASKS[key] || {
+    key: key || "unclassified",
+    topic: topicKey || "general",
+    label: "待细分任务",
+    short: "Unclassified task",
+    color: TOPICS[topicKey]?.color || TOPICS.general.color
+  };
+}
+
+function tasksForTopic(topicKey, includeEmpty = false) {
+  return Object.values(TASKS)
+    .filter((task) => task.topic === topicKey && (includeEmpty || (state.atlas.taskCounts[task.key] || 0) > 0))
+    .sort((a, b) => (state.atlas.taskCounts[b.key] || 0) - (state.atlas.taskCounts[a.key] || 0));
+}
+
+const NODE_SHAPES = ["circle", "diamond", "triangle", "square", "hexagon", "cross", "ring"];
+
+function taskVisual(taskKey) {
+  const task = taskMeta(taskKey);
+  const siblings = Object.values(TASKS).filter((item) => item.topic === task.topic);
+  const index = Math.max(0, siblings.findIndex((item) => item.key === task.key));
+  return {
+    shape: NODE_SHAPES[index % NODE_SHAPES.length],
+    opacity: .68 + (index % 4) * .09
+  };
+}
+
+function normalizeDoi(value = "") {
+  return String(value)
+    .trim()
+    .toLocaleLowerCase()
+    .replace(/^https?:\/\/(?:dx\.)?doi\.org\//, "");
+}
+
+function percentile(values, ratio) {
+  if (!values.length) return Infinity;
+  const sorted = [...values].sort((a, b) => a - b);
+  return sorted[Math.min(sorted.length - 1, Math.floor((sorted.length - 1) * ratio))];
+}
+
+function attachCitationData(citations) {
+  state.citations = citations;
+  const counts = citations?.counts || {};
+  const byYear = new Map();
+  state.papers.forEach((paper) => {
+    const doi = normalizeDoi(paper.doi);
+    const count = doi && Object.hasOwn(counts, doi) ? Number(counts[doi]) : null;
+    paper.citation_count = Number.isFinite(count) ? count : null;
+    if (paper.citation_count != null) {
+      const values = byYear.get(paper.year) || [];
+      values.push(paper.citation_count);
+      byYear.set(paper.year, values);
+    }
+  });
+  const thresholds = new Map([...byYear].map(([year, values]) => [year, {
+    high: Math.max(5, percentile(values, .9)),
+    landmark: Math.max(100, percentile(values, .99))
+  }]));
+  state.papers.forEach((paper) => {
+    if (paper.citation_count == null) {
+      paper.citation_level = "";
+      return;
+    }
+    const threshold = thresholds.get(paper.year);
+    paper.citation_level = paper.citation_count >= threshold.landmark
+      ? "landmark"
+      : paper.citation_count >= threshold.high || paper.citation_count >= 100
+        ? "high"
+        : "";
+  });
+}
+
+function citationMarkup(paper) {
+  if (paper.citation_count == null) return "";
+  const level = paper.citation_level ? ` ${paper.citation_level}` : "";
+  return `<span class="citation-badge${level}">Crossref 引用 ${formatNumber(paper.citation_count)}</span>`;
+}
+
+function drawCitationHalo(ctx, point, radius, graphScale) {
+  if (!point.paper.citation_level) return;
+  const landmark = point.paper.citation_level === "landmark";
+  ctx.save();
+  ctx.globalAlpha = landmark ? .95 : .72;
+  ctx.strokeStyle = landmark ? "#f2ff78" : "#c7ff69";
+  ctx.lineWidth = (landmark ? 1.35 : .9) / graphScale;
+  ctx.shadowColor = "#c7ff69";
+  ctx.shadowBlur = (landmark ? 18 : 11) / Math.sqrt(graphScale);
+  ctx.beginPath();
+  ctx.arc(point.x, point.y, radius * (landmark ? 3.15 : 2.45), 0, Math.PI * 2);
+  ctx.stroke();
+  if (landmark) {
+    ctx.globalAlpha = .38;
+    ctx.beginPath();
+    ctx.arc(point.x, point.y, radius * 4.5, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawNodeShape(ctx, x, y, radius, shape) {
+  ctx.beginPath();
+  if (shape === "square") {
+    ctx.rect(x - radius, y - radius, radius * 2, radius * 2);
+  } else if (shape === "diamond") {
+    ctx.moveTo(x, y - radius * 1.35);
+    ctx.lineTo(x + radius * 1.35, y);
+    ctx.lineTo(x, y + radius * 1.35);
+    ctx.lineTo(x - radius * 1.35, y);
+    ctx.closePath();
+  } else if (shape === "triangle") {
+    ctx.moveTo(x, y - radius * 1.45);
+    ctx.lineTo(x + radius * 1.28, y + radius * .9);
+    ctx.lineTo(x - radius * 1.28, y + radius * .9);
+    ctx.closePath();
+  } else if (shape === "hexagon") {
+    for (let index = 0; index < 6; index += 1) {
+      const angle = Math.PI / 3 * index - Math.PI / 2;
+      const pointX = x + Math.cos(angle) * radius * 1.2;
+      const pointY = y + Math.sin(angle) * radius * 1.2;
+      if (!index) ctx.moveTo(pointX, pointY);
+      else ctx.lineTo(pointX, pointY);
+    }
+    ctx.closePath();
+  } else if (shape === "cross") {
+    const arm = radius * .45;
+    ctx.moveTo(x - arm, y - radius * 1.25);
+    ctx.lineTo(x + arm, y - radius * 1.25);
+    ctx.lineTo(x + arm, y - arm);
+    ctx.lineTo(x + radius * 1.25, y - arm);
+    ctx.lineTo(x + radius * 1.25, y + arm);
+    ctx.lineTo(x + arm, y + arm);
+    ctx.lineTo(x + arm, y + radius * 1.25);
+    ctx.lineTo(x - arm, y + radius * 1.25);
+    ctx.lineTo(x - arm, y + arm);
+    ctx.lineTo(x - radius * 1.25, y + arm);
+    ctx.lineTo(x - radius * 1.25, y - arm);
+    ctx.lineTo(x - arm, y - arm);
+    ctx.closePath();
+  } else {
+    ctx.arc(x, y, shape === "ring" ? radius * 1.18 : radius, 0, Math.PI * 2);
+  }
+  if (shape === "ring") {
+    ctx.lineWidth = Math.max(.8, radius * .52);
+    ctx.strokeStyle = ctx.fillStyle;
+    ctx.stroke();
+  } else {
+    ctx.fill();
+  }
+}
+
+function paperTooltipMarkup(paper) {
+  const task = taskMeta(paper);
+  return `
+    <strong>${escapeHtml(paper.title)}</strong>
+    <div class="tooltip-authors">${formatAuthorsHtml(paper.authors, 6)}</div>
+    <div class="tooltip-meta">
+      <span>${paper.year}</span>
+      <span>${escapeHtml(paper.venue || "来源待补")}</span>
+    </div>
+    <div class="tooltip-classification">
+      <span class="tooltip-task" style="--task-color:${task.color}">${escapeHtml(task.label)}</span>
+      ${citationMarkup(paper)}
+    </div>
+  `;
+}
 
 function formatNumber(value) {
   return new Intl.NumberFormat("zh-CN").format(value || 0);
@@ -124,8 +328,9 @@ function drawHero() {
   ctx.restore();
 
   const stride = state.papers.length > 1150 ? 2 : 1;
-  for (let index = 0; index < state.papers.length; index += stride) {
+  for (let index = 0; index < state.papers.length; index += 1) {
     const paper = state.papers[index];
+    if (index % stride && !paper.citation_level) continue;
     const topicIndex = Math.max(0, topicKeys.indexOf(paper.topic));
     const sector = (Math.PI * 2) / topicKeys.length;
     const angle = -Math.PI / 2 + topicIndex * sector + (hash(paper.id) - 0.5) * sector * 0.78;
@@ -133,9 +338,10 @@ function drawHero() {
     const radius = maxRadius * (0.16 + normalizedYear * 0.78 + (hash(paper.title) - 0.5) * 0.05);
     const x = centerX + Math.cos(angle) * radius;
     const y = centerY + Math.sin(angle) * radius;
-    const topic = TOPICS[paper.topic] || TOPICS.general;
+    const task = taskMeta(paper);
     const pointSize = paper.oa_confirmed === "是" ? 2.2 : 1.35;
-    ctx.fillStyle = topic.color;
+    drawCitationHalo(ctx, { x, y, paper }, pointSize, 1);
+    ctx.fillStyle = task.color;
     ctx.globalAlpha = paper.year >= 2020 ? 0.82 : 0.48;
     ctx.beginPath();
     ctx.arc(x, y, pointSize, 0, Math.PI * 2);
@@ -164,12 +370,14 @@ function showTooltip(element, point, x, y, container, content) {
     return;
   }
   element.innerHTML = content;
+  element.classList.add("visible");
   const containerRect = container.getBoundingClientRect();
-  const left = Math.min(x + 14, containerRect.width - 326);
-  const top = Math.min(y + 14, containerRect.height - 125);
+  const tooltipWidth = element.offsetWidth || 360;
+  const tooltipHeight = element.offsetHeight || 180;
+  const left = Math.min(x + 14, containerRect.width - tooltipWidth - 8);
+  const top = Math.min(y + 14, containerRect.height - tooltipHeight - 8);
   element.style.left = `${Math.max(8, left)}px`;
   element.style.top = `${Math.max(8, top)}px`;
-  element.classList.add("visible");
 }
 
 function bindHeroInteraction() {
@@ -187,7 +395,7 @@ function bindHeroInteraction() {
       x,
       y,
       stage,
-      point ? `<strong>${escapeHtml(point.paper.title)}</strong><small>${point.paper.year} · ${escapeHtml(point.paper.venue || "未注明来源")}</small>` : ""
+      point ? paperTooltipMarkup(point.paper) : ""
     );
   });
   canvas.addEventListener("pointerleave", () => tooltip.classList.remove("visible"));
@@ -206,6 +414,10 @@ function renderStats() {
   $("#dataVersion").textContent = `${state.atlas.generatedAt.slice(0, 10)} · DBLP ${formatNumber(state.atlas.total)} 条`;
   $("#peakYear").textContent = state.atlas.peakYear;
   $("#peakCount").textContent = `${state.atlas.peakCount} 篇论文`;
+  const matched = state.citations?.coverage?.matched;
+  $("#citationCoverage").textContent = matched
+    ? `高被引荧光 · Crossref 已匹配 ${formatNumber(matched)}`
+    : "高被引荧光 · 引文数据更新中";
 }
 
 function renderTimeline() {
@@ -233,8 +445,52 @@ function renderTimeline() {
   }));
 }
 
+function renderMilestones() {
+  const milestones = state.milestones?.milestones || [];
+  const featured = milestones.filter((milestone) => milestone.featured);
+  const featuredContainer = $("#milestoneFeatured");
+  const ledgerContainer = $("#milestoneLedger");
+  if (!featuredContainer || !ledgerContainer || !milestones.length) return;
+
+  featuredContainer.innerHTML = featured.map((milestone) => {
+    const primary = milestone.records[0];
+    const countLabel = milestone.firstYearCount > 1
+      ? `首年收录 ${formatNumber(milestone.firstYearCount)} 篇`
+      : "首篇记录";
+    return `
+      <button class="milestone-card" type="button" data-paper-id="${escapeHtml(primary.id)}">
+        <span class="milestone-year">${milestone.year}</span>
+        <span class="milestone-venue">${escapeHtml(milestone.short)}</span>
+        <strong>${escapeHtml(primary.title)}</strong>
+        <span class="milestone-authors">${formatAuthorsHtml(primary.authors, 4)}</span>
+        <small>${countLabel} · ${escapeHtml(primary.venue)}</small>
+      </button>
+    `;
+  }).join("");
+
+  ledgerContainer.innerHTML = milestones.map((milestone, index) => {
+    const primary = milestone.records[0];
+    return `
+      <button type="button" data-paper-id="${escapeHtml(primary.id)}">
+        <span class="milestone-index">${String(index + 1).padStart(2, "0")}</span>
+        <time datetime="${milestone.year}">${milestone.year}</time>
+        <span>
+          <strong>${escapeHtml(milestone.label)}</strong>
+          <small>${escapeHtml(primary.title)}</small>
+        </span>
+        <b>${milestone.firstYearCount > 1 ? `${milestone.firstYearCount} 篇` : "查看 ↗"}</b>
+      </button>
+    `;
+  }).join("");
+
+  $$("[data-paper-id]").forEach((button) => button.addEventListener("click", () => {
+    const paper = state.papers.find((item) => item.id === button.dataset.paperId);
+    if (paper) openPaper(paper);
+  }));
+}
+
 function renderTopicFilters() {
-  const allButton = `<button type="button" class="${state.topic ? "" : "active"}" data-topic="" style="--topic-color:#55dce0"><i></i>全部主题</button>`;
+  const allButton = `<button type="button" class="${state.topic ? "" : "active"}" data-topic="" style="--topic-color:#55dce0"><i></i>全部领域</button>`;
   const topicButtons = Object.entries(TOPICS).map(([key, topic]) => {
     const count = state.atlas.topicCounts[key] || 0;
     return `<button type="button" class="${state.topic === key ? "active" : ""}" data-topic="${key}" style="--topic-color:${topic.color}">
@@ -244,8 +500,39 @@ function renderTopicFilters() {
   $("#topicFilter").innerHTML = allButton + topicButtons;
   $$("#topicFilter button").forEach((button) => button.addEventListener("click", () => {
     state.topic = button.dataset.topic;
+    state.task = "";
     state.visible = 24;
     renderTopicFilters();
+    applyFilters();
+  }));
+  renderTaskFilters();
+}
+
+function renderTaskFilters() {
+  const container = $("#taskFilter");
+  if (!state.topic) {
+    container.innerHTML = '<p class="task-filter-prompt">选择一个大领域，查看该领域下的研究任务。</p>';
+    return;
+  }
+  const topic = TOPICS[state.topic] || TOPICS.general;
+  const tasks = tasksForTopic(state.topic);
+  const allButton = `
+    <button type="button" class="${state.task ? "" : "active"}" data-task="" style="--task-color:${topic.color}">
+      <i class="task-shape shape-circle"></i>全部任务 ${formatNumber(state.atlas.topicCounts[state.topic] || 0)}
+    </button>
+  `;
+  container.innerHTML = allButton + tasks.map((task) => {
+    const visual = taskVisual(task.key);
+    return `
+    <button type="button" class="${state.task === task.key ? "active" : ""}" data-task="${task.key}" style="--task-color:${task.color}">
+      <i class="task-shape shape-${visual.shape}"></i>${escapeHtml(task.label)} ${formatNumber(state.atlas.taskCounts[task.key] || 0)}
+    </button>
+  `;
+  }).join("");
+  $$("#taskFilter button").forEach((button) => button.addEventListener("click", () => {
+    state.task = button.dataset.task;
+    state.visible = 24;
+    renderTaskFilters();
     applyFilters();
   }));
 }
@@ -260,6 +547,17 @@ function renderTopicCards() {
       <strong>${formatNumber(topic.count)}</strong>
       <h3>${topic.label}</h3>
       <p>${topic.description}</p>
+      <div class="topic-spectrum" aria-hidden="true">
+        ${tasksForTopic(topic.key).map((task) => `<i style="--task-color:${task.color}"></i>`).join("")}
+      </div>
+      <ul class="topic-task-list" aria-label="${escapeHtml(topic.label)}研究任务">
+        ${tasksForTopic(topic.key).map((task) => `
+          <li style="--task-color:${task.color}">
+            <span>${escapeHtml(task.label)}</span>
+            <b>${formatNumber(state.atlas.taskCounts[task.key] || 0)}</b>
+          </li>
+        `).join("")}
+      </ul>
     </article>
   `).join("");
 }
@@ -273,6 +571,7 @@ function applyFilters() {
   const query = state.query.trim().toLocaleLowerCase();
   state.filtered = state.papers.filter((paper) => {
     if (state.topic && paper.topic !== state.topic) return false;
+    if (state.task && paper.task !== state.task) return false;
     if (state.year && String(paper.year) !== state.year) return false;
     if (state.type && paper.pub_type !== state.type) return false;
     if (!query) return true;
@@ -288,12 +587,14 @@ function applyFilters() {
 }
 
 function paperItem(paper) {
-  const topic = TOPICS[paper.topic] || TOPICS.general;
-  return `<article class="paper-item" role="button" tabindex="0" data-id="${paper.id}" style="--topic-color:${topic.color}">
-    <time>${paper.year}<small>${escapeHtml(topic.short)}</small></time>
+  const task = taskMeta(paper);
+  const citationClass = paper.citation_level ? ` is-${paper.citation_level}` : "";
+  return `<article class="paper-item${citationClass}" role="button" tabindex="0" data-id="${paper.id}" style="--topic-color:${task.color}">
+    <time>${paper.year}<small>${escapeHtml(task.short)}</small></time>
     <div>
       <h3>${escapeHtml(paper.title)}</h3>
-      <p>${escapeHtml(paper.authors)} · ${escapeHtml(paper.venue || "来源待补")}</p>
+      <p class="paper-item-authors">${formatAuthorsHtml(paper.authors, 5)}</p>
+      <p class="paper-item-venue">${escapeHtml(paper.venue || "来源待补")} ${citationMarkup(paper)}</p>
     </div>
   </article>`;
 }
@@ -316,21 +617,61 @@ function renderPaperList() {
   });
 }
 
-function graphCoordinates(paper, width, height) {
+function topicCell(topicKey, width, height) {
   const topicKeys = Object.keys(TOPICS);
-  const topicIndex = Math.max(0, topicKeys.indexOf(paper.topic));
+  if (state.topic) {
+    return {
+      x: width * .05,
+      y: height * .08,
+      width: width * .9,
+      height: height * .84,
+      centerX: width * .5,
+      centerY: height * .51
+    };
+  }
+  const topicIndex = Math.max(0, topicKeys.indexOf(topicKey));
   const columns = 4;
   const rows = Math.ceil(topicKeys.length / columns);
   const cellWidth = width / columns;
   const cellHeight = height / rows;
-  const centerX = cellWidth * (topicIndex % columns + 0.5);
-  const centerY = cellHeight * (Math.floor(topicIndex / columns) + 0.5);
+  const x = cellWidth * (topicIndex % columns);
+  const y = cellHeight * Math.floor(topicIndex / columns);
+  return {
+    x: x + cellWidth * .04,
+    y: y + cellHeight * .06,
+    width: cellWidth * .92,
+    height: cellHeight * .88,
+    centerX: x + cellWidth * .5,
+    centerY: y + cellHeight * .52
+  };
+}
+
+function taskClusterCenter(topicKey, taskKey, width, height) {
+  const cell = topicCell(topicKey, width, height);
+  const tasks = state.task
+    ? tasksForTopic(topicKey).filter((task) => task.key === state.task)
+    : tasksForTopic(topicKey);
+  const taskIndex = Math.max(0, tasks.findIndex((task) => task.key === taskKey));
+  if (tasks.length <= 1) return { x: cell.centerX, y: cell.centerY, cell };
+  const angle = -Math.PI / 2 + (taskIndex / tasks.length) * Math.PI * 2;
+  const orbitX = cell.width * (state.topic ? .31 : .28);
+  const orbitY = cell.height * (state.topic ? .29 : .27);
+  return {
+    x: cell.centerX + Math.cos(angle) * orbitX,
+    y: cell.centerY + Math.sin(angle) * orbitY,
+    cell
+  };
+}
+
+function graphCoordinates(paper, width, height) {
+  const center = taskClusterCenter(paper.topic, paper.task, width, height);
   const yearPosition = (paper.year - state.atlas.minYear) / Math.max(1, state.atlas.maxYear - state.atlas.minYear);
-  const radius = 18 + yearPosition * Math.min(cellWidth, cellHeight) * 0.36;
+  const maxRadius = Math.min(center.cell.width, center.cell.height) * (state.topic ? .105 : .073);
+  const radius = 4 + yearPosition * maxRadius * (.66 + hash(paper.title) * .34);
   const angle = hash(paper.id) * Math.PI * 2;
   return {
-    x: centerX + Math.cos(angle) * radius + (hash(paper.title) - .5) * 18,
-    y: centerY + Math.sin(angle) * radius + (hash(paper.authors) - .5) * 18
+    x: center.x + Math.cos(angle) * radius + (hash(paper.title) - .5) * maxRadius * .28,
+    y: center.y + Math.sin(angle) * radius + (hash(paper.authors) - .5) * maxRadius * .28
   };
 }
 
@@ -346,26 +687,38 @@ function drawPaperGraph() {
   state.paperPoints = [];
 
   const papers = state.filtered.length > 1250
-    ? state.filtered.filter((_, index) => index % 2 === 0)
+    ? state.filtered.filter((paper, index) => index % 2 === 0 || paper.citation_level)
     : state.filtered;
-  const topicGroups = {};
+  const taskGroups = {};
+
+  const visibleTopics = state.topic ? [[state.topic, TOPICS[state.topic]]] : Object.entries(TOPICS);
+  ctx.lineWidth = .7 / graph.scale;
+  visibleTopics.forEach(([topicKey, topic]) => {
+    const cell = topicCell(topicKey, width, height);
+    ctx.strokeStyle = `${topic.color}20`;
+    ctx.strokeRect(cell.x, cell.y, cell.width, cell.height);
+    ctx.beginPath();
+    ctx.ellipse(cell.centerX, cell.centerY, cell.width * .36, cell.height * .31, 0, 0, Math.PI * 2);
+    ctx.stroke();
+  });
+
   papers.forEach((paper) => {
     const position = graphCoordinates(paper, width, height);
     const screenX = (position.x - width / 2) * graph.scale + width / 2 + graph.x;
     const screenY = (position.y - height / 2) * graph.scale + height / 2 + graph.y;
     const point = { ...position, screenX, screenY, paper };
     state.paperPoints.push(point);
-    (topicGroups[paper.topic] ||= []).push(point);
+    (taskGroups[paper.task] ||= []).push(point);
   });
 
   ctx.lineWidth = .6 / graph.scale;
-  Object.entries(topicGroups).forEach(([topicKey, points]) => {
-    const color = TOPICS[topicKey]?.color || TOPICS.general.color;
+  Object.entries(taskGroups).forEach(([taskKey, points]) => {
+    const color = taskMeta(taskKey).color;
     ctx.strokeStyle = `${color}22`;
     points
       .sort((a, b) => a.paper.year - b.paper.year || a.paper.title.localeCompare(b.paper.title))
       .forEach((point, index) => {
-        if (!index || index % 2) return;
+        if (!index || index % 3) return;
         const previous = points[index - 1];
         ctx.beginPath();
         ctx.moveTo(previous.x, previous.y);
@@ -375,28 +728,39 @@ function drawPaperGraph() {
   });
 
   state.paperPoints.forEach((point) => {
-    const topic = TOPICS[point.paper.topic] || TOPICS.general;
+    const task = taskMeta(point.paper);
+    const visual = taskVisual(point.paper.task);
     const radius = (point.paper.oa_confirmed === "是" ? 2.7 : 1.8) / Math.sqrt(graph.scale);
-    ctx.fillStyle = topic.color;
-    ctx.globalAlpha = point.paper.year >= 2020 ? .92 : .58;
-    ctx.beginPath();
-    ctx.arc(point.x, point.y, radius, 0, Math.PI * 2);
-    ctx.fill();
+    drawCitationHalo(ctx, point, radius, graph.scale);
+    ctx.fillStyle = task.color;
+    ctx.globalAlpha = visual.opacity * (point.paper.year >= 2020 ? 1 : .78);
+    drawNodeShape(ctx, point.x, point.y, radius, visual.shape);
   });
   ctx.globalAlpha = 1;
 
-  Object.entries(TOPICS).forEach(([key, topic], index) => {
-    if (state.topic && state.topic !== key) return;
-    const center = graphCoordinates({ topic: key, year: state.atlas.minYear, id: key, title: key, authors: key }, width, height);
-    const columns = 4;
-    const cellWidth = width / columns;
-    const cellHeight = height / Math.ceil(Object.keys(TOPICS).length / columns);
-    const x = cellWidth * (index % columns + .5);
-    const y = cellHeight * (Math.floor(index / columns) + .5);
+  visibleTopics.forEach(([key, topic]) => {
+    const cell = topicCell(key, width, height);
     ctx.fillStyle = `${topic.color}bb`;
-    ctx.font = `${10 / graph.scale}px SFMono-Regular, monospace`;
-    ctx.textAlign = "center";
-    ctx.fillText(topic.short.toUpperCase(), x, y);
+    ctx.font = `600 ${10 / graph.scale}px SFMono-Regular, monospace`;
+    ctx.textAlign = "left";
+    ctx.fillText(topic.short.toUpperCase(), cell.x + 10 / graph.scale, cell.y + 18 / graph.scale);
+
+    const taskLabels = tasksForTopic(key)
+      .filter((task) => !state.task || task.key === state.task)
+      .slice(0, state.topic ? Infinity : 4);
+    taskLabels.forEach((task) => {
+      const center = taskClusterCenter(key, task.key, width, height);
+      const count = state.atlas.taskCounts[task.key] || 0;
+      const label = `${task.label} · ${formatNumber(count)}`;
+      const labelY = center.y - Math.min(cell.width, cell.height) * (state.topic ? .12 : .082);
+      ctx.textAlign = "center";
+      ctx.font = `500 ${8 / graph.scale}px SFMono-Regular, monospace`;
+      ctx.lineWidth = 3 / graph.scale;
+      ctx.strokeStyle = "rgba(6, 22, 31, .88)";
+      ctx.strokeText(label, center.x, labelY);
+      ctx.fillStyle = `${task.color}dd`;
+      ctx.fillText(label, center.x, labelY);
+    });
   });
   ctx.restore();
 }
@@ -434,7 +798,7 @@ function bindPaperGraph() {
       x,
       y,
       wrapper,
-      point ? `<strong>${escapeHtml(point.paper.title)}</strong><small>${point.paper.year} · ${escapeHtml(TOPICS[point.paper.topic]?.label)}</small>` : ""
+      point ? paperTooltipMarkup(point.paper) : ""
     );
   });
   const stopDrag = () => { state.graph.dragging = false; };
@@ -591,15 +955,17 @@ function openPaper(paper) {
   if (!paper) return;
   const bibtex = buildBibtex(paper);
   const topic = TOPICS[paper.topic] || TOPICS.general;
-  $("#drawerMeta").textContent = `${paper.year} · ${topic.label} · ${paper.pub_type === "article" ? "期刊论文" : paper.pub_type === "inproceedings" ? "会议论文" : "学术记录"}`;
+  const task = taskMeta(paper);
+  $("#drawerMeta").textContent = `${paper.year} · ${topic.label} / ${task.label} · ${paper.pub_type === "article" ? "期刊论文" : paper.pub_type === "inproceedings" ? "会议论文" : "学术记录"}`;
   $("#drawerTitle").textContent = paper.title;
-  $("#drawerAuthors").textContent = paper.authors;
+  $("#drawerAuthors").innerHTML = formatAuthorsHtml(paper.authors);
   $("#drawerFacts").innerHTML = [
     fact("Venue / 来源", paper.venue),
     fact("Pages / 卷页", paper.volume_pages),
     fact("DOI", paper.doi),
     fact("DBLP Key", paper.dblp_key),
     fact("Publisher / 出版方", paper.publisher_group),
+    fact("Crossref citations / 引用", paper.citation_count == null ? "未匹配" : formatNumber(paper.citation_count)),
     fact("Access / 访问状态", paper.access === "open" ? "开放获取" : "出版信息可用")
   ].join("");
   $("#drawerAbstract").textContent = paper.abstract || "暂未收录来源明确的摘要，请访问论文原始页面查看完整信息。";
@@ -646,6 +1012,7 @@ function bindControls() {
   });
   $("#resetFilters").addEventListener("click", () => {
     state.topic = "";
+    state.task = "";
     state.year = "";
     state.type = "";
     state.query = "";
@@ -679,17 +1046,27 @@ function bindControls() {
 
 async function init() {
   try {
-    const [papersResponse, atlasResponse] = await Promise.all([
+    const [papersResponse, atlasResponse, citations, milestones] = await Promise.all([
       fetch("./data/publications.json"),
-      fetch("./data/atlas.json")
+      fetch("./data/atlas.json"),
+      fetch("./data/citations.json")
+        .then((response) => response.ok ? response.json() : null)
+        .catch(() => null),
+      fetch("./data/milestones.json")
+        .then((response) => response.ok ? response.json() : null)
+        .catch(() => null)
     ]);
     if (!papersResponse.ok || !atlasResponse.ok) throw new Error("数据文件载入失败");
     state.papers = await papersResponse.json();
     state.atlas = await atlasResponse.json();
+    state.milestones = milestones;
+    TASKS = Object.fromEntries((state.atlas.tasks || []).map((task) => [task.key, task]));
+    attachCitationData(citations);
     state.filtered = [...state.papers];
     buildHeroLegend();
     renderStats();
     renderTimeline();
+    renderMilestones();
     renderTopicFilters();
     renderTopicCards();
     populateFilters();

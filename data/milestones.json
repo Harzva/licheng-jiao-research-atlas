@@ -1,0 +1,341 @@
+{
+  "generatedAt": "2026-07-28",
+  "scope": "First appearance in the DBLP-anchored public corpus; not a claim about records outside this dataset.",
+  "milestones": [
+    {
+      "key": "career",
+      "label": "DBLP 语料起点",
+      "short": "Career record",
+      "kind": "career",
+      "featured": false,
+      "year": 1998,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-1827",
+          "title": "Total least mean squares algorithm.",
+          "authors": "Da-Zheng Feng; Zheng Bao; Licheng Jiao",
+          "year": 1998,
+          "venue": "IEEE Trans. Signal Process.",
+          "doi": "10.1109/78.705421",
+          "landing_url": "https://doi.org/10.1109/78.705421",
+          "dblp_url": "https://dblp.org/rec/journals/tsp/FengBJ98"
+        }
+      ]
+    },
+    {
+      "key": "tnn",
+      "label": "IEEE TNN / TNNLS 首篇",
+      "short": "TNN · TNNLS",
+      "kind": "journal",
+      "featured": false,
+      "year": 2001,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-1819",
+          "title": "Multiwavelet neural network and its approximation properties.",
+          "authors": "Licheng Jiao; Jin Pan; Yangwang Fang",
+          "year": 2001,
+          "venue": "IEEE Trans. Neural Networks",
+          "doi": "10.1109/72.950135",
+          "landing_url": "https://doi.org/10.1109/72.950135",
+          "dblp_url": "https://dblp.org/rec/journals/tnn/JiaoPF01"
+        }
+      ]
+    },
+    {
+      "key": "pattern-recognition",
+      "label": "Pattern Recognition 首篇",
+      "short": "Pattern Recognition",
+      "kind": "journal",
+      "featured": false,
+      "year": 2002,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-1816",
+          "title": "Linear programming support vector machines.",
+          "authors": "Weida Zhou; Li Zhang; Licheng Jiao",
+          "year": 2002,
+          "venue": "Pattern Recognit.",
+          "doi": "10.1016/S0031-3203(01)00210-2",
+          "landing_url": "https://doi.org/10.1016/S0031-3203(01)00210-2",
+          "dblp_url": "https://dblp.org/rec/journals/pr/ZhouZJ02"
+        }
+      ]
+    },
+    {
+      "key": "neurips",
+      "label": "NeurIPS / NIPS 首篇",
+      "short": "NeurIPS",
+      "kind": "conference",
+      "featured": false,
+      "year": 2005,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-1773",
+          "title": "Response Analysis of Neuronal Population with Synaptic Depression.",
+          "authors": "Wentao Huang; Licheng Jiao; Tan Shan; Maoguo Gong",
+          "year": 2005,
+          "venue": "NIPS",
+          "doi": "",
+          "landing_url": "https://proceedings.neurips.cc/paper/2005/hash/4b29fa4efe4fb7bc667c7b301b74d52d-Abstract.html",
+          "dblp_url": "https://dblp.org/rec/conf/nips/HuangJSG05"
+        }
+      ]
+    },
+    {
+      "key": "tevc",
+      "label": "IEEE TEVC 首篇",
+      "short": "IEEE TEVC",
+      "kind": "journal",
+      "featured": false,
+      "year": 2006,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-1683",
+          "title": "An organizational coevolutionary algorithm for classification.",
+          "authors": "Licheng Jiao; Jing Liu; Weicai Zhong",
+          "year": 2006,
+          "venue": "IEEE Trans. Evol. Comput.",
+          "doi": "10.1109/TEVC.2005.856068",
+          "landing_url": "https://doi.org/10.1109/TEVC.2005.856068",
+          "dblp_url": "https://dblp.org/rec/journals/tec/JiaoLZ06"
+        }
+      ]
+    },
+    {
+      "key": "tgrs",
+      "label": "IEEE TGRS 首篇",
+      "short": "IEEE TGRS",
+      "kind": "journal",
+      "featured": false,
+      "year": 2008,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-1644",
+          "title": "Spectral Clustering Ensemble Applied to SAR Image Segmentation.",
+          "authors": "Xiangrong Zhang; Licheng Jiao; Fang Liu; Liefeng Bo; Maoguo Gong",
+          "year": 2008,
+          "venue": "IEEE Trans. Geosci. Remote. Sens.",
+          "doi": "10.1109/TGRS.2008.918647",
+          "landing_url": "https://doi.org/10.1109/TGRS.2008.918647",
+          "dblp_url": "https://dblp.org/rec/journals/tgrs/ZhangJLBG08"
+        }
+      ]
+    },
+    {
+      "key": "tip",
+      "label": "IEEE TIP 首篇",
+      "short": "IEEE TIP",
+      "kind": "journal",
+      "featured": false,
+      "year": 2008,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-1648",
+          "title": "Wavelet-Based Bayesian Image Estimation: From Marginal and Bivariate Prior Models to Multivariate Prior Models.",
+          "authors": "Tan Shan; Licheng Jiao; Ioannis A. Kakadiaris",
+          "year": 2008,
+          "venue": "IEEE Trans. Image Process.",
+          "doi": "10.1109/TIP.2008.918018",
+          "landing_url": "https://doi.org/10.1109/TIP.2008.918018",
+          "dblp_url": "https://dblp.org/rec/journals/tip/TanJK08"
+        }
+      ]
+    },
+    {
+      "key": "aaai",
+      "label": "AAAI 首篇",
+      "short": "AAAI",
+      "kind": "conference",
+      "featured": true,
+      "year": 2019,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-0982",
+          "title": "Multi-Precision Quantized Neural Networks via Encoding Decomposition of {-1, +1}.",
+          "authors": "Qigong Sun; Fanhua Shang; Kang Yang; Xiufang Li; Yan Ren; Licheng Jiao",
+          "year": 2019,
+          "venue": "AAAI",
+          "doi": "10.1609/aaai.v33i01.33015024",
+          "landing_url": "https://doi.org/10.1609/aaai.v33i01.33015024",
+          "dblp_url": "https://dblp.org/rec/conf/aaai/SunSYLRJ19"
+        }
+      ]
+    },
+    {
+      "key": "iccv",
+      "label": "ICCV 主会首篇",
+      "short": "ICCV",
+      "kind": "conference",
+      "featured": true,
+      "year": 2019,
+      "firstYearCount": 2,
+      "records": [
+        {
+          "id": "JIAO-0944",
+          "title": "AFD-Net: Aggregated Feature Difference Learning for Cross-Spectral Image Patch Matching.",
+          "authors": "Dou Quan; Xuefeng Liang; Shuang Wang; Shaowei Wei; Yanfeng Li; Ning Huyan; Licheng Jiao",
+          "year": 2019,
+          "venue": "ICCV",
+          "doi": "10.1109/ICCV.2019.00311",
+          "landing_url": "https://doi.org/10.1109/ICCV.2019.00311",
+          "dblp_url": "https://dblp.org/rec/conf/iccv/QuanL0WLHJ19"
+        },
+        {
+          "id": "JIAO-0947",
+          "title": "Better and Faster: Exponential Loss for Image Patch Matching.",
+          "authors": "Shuang Wang; Yanfeng Li; Xuefeng Liang; Dou Quan; Bowu Yang; Shaowei Wei; Licheng Jiao",
+          "year": 2019,
+          "venue": "ICCV",
+          "doi": "10.1109/ICCV.2019.00491",
+          "landing_url": "https://doi.org/10.1109/ICCV.2019.00491",
+          "dblp_url": "https://dblp.org/rec/conf/iccv/WangLLQYWJ19"
+        }
+      ]
+    },
+    {
+      "key": "ijcai",
+      "label": "IJCAI 首篇",
+      "short": "IJCAI",
+      "kind": "conference",
+      "featured": false,
+      "year": 2019,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-0937",
+          "title": "Accelerated Incremental Gradient Descent using Momentum Acceleration with Scaling Factor.",
+          "authors": "Yuanyuan Liu; Fanhua Shang; Licheng Jiao",
+          "year": 2019,
+          "venue": "IJCAI",
+          "doi": "10.24963/ijcai.2019/422",
+          "landing_url": "https://doi.org/10.24963/ijcai.2019/422",
+          "dblp_url": "https://dblp.org/rec/conf/ijcai/LiuSJ19"
+        }
+      ]
+    },
+    {
+      "key": "acm-mm",
+      "label": "ACM MM 首篇",
+      "short": "ACM MM",
+      "kind": "conference",
+      "featured": true,
+      "year": 2020,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-0840",
+          "title": "A Novel Object Re-Track Framework for 3D Point Clouds.",
+          "authors": "Tuo Feng; Licheng Jiao; Hao Zhu; Long Sun",
+          "year": 2020,
+          "venue": "ACM Multimedia",
+          "doi": "10.1145/3394171.3413742",
+          "landing_url": "https://doi.org/10.1145/3394171.3413742",
+          "dblp_url": "https://dblp.org/rec/conf/mm/FengJZS20"
+        }
+      ]
+    },
+    {
+      "key": "eccv",
+      "label": "ECCV 首篇",
+      "short": "ECCV",
+      "kind": "conference",
+      "featured": true,
+      "year": 2020,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-0911",
+          "title": "Supervised Edge Attention Network for Accurate Image Instance Segmentation.",
+          "authors": "Xier Chen; Yanchao Lian; Licheng Jiao; Haoran Wang; Yanjie Gao; Lingling Shi",
+          "year": 2020,
+          "venue": "ECCV (27)",
+          "doi": "10.1007/978-3-030-58583-9_37",
+          "landing_url": "https://doi.org/10.1007/978-3-030-58583-9_37",
+          "dblp_url": "https://dblp.org/rec/conf/eccv/ChenLJWGS20"
+        }
+      ]
+    },
+    {
+      "key": "tpami",
+      "label": "IEEE TPAMI 首篇",
+      "short": "IEEE TPAMI",
+      "kind": "journal",
+      "featured": true,
+      "year": 2021,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-0742",
+          "title": "Accelerated Variance Reduction Stochastic ADMM for Large-Scale Machine Learning.",
+          "authors": "Yuanyuan Liu; Fanhua Shang; Hongying Liu; Lin Kong; Licheng Jiao; Zhouchen Lin",
+          "year": 2021,
+          "venue": "IEEE Trans. Pattern Anal. Mach. Intell.",
+          "doi": "10.1109/TPAMI.2020.3000512",
+          "landing_url": "https://doi.org/10.1109/TPAMI.2020.3000512",
+          "dblp_url": "https://dblp.org/rec/journals/pami/LiuSLKJL21"
+        }
+      ]
+    },
+    {
+      "key": "cvpr",
+      "label": "CVPR 主会首年",
+      "short": "CVPR",
+      "kind": "conference",
+      "featured": true,
+      "year": 2023,
+      "firstYearCount": 2,
+      "records": [
+        {
+          "id": "JIAO-0470",
+          "title": "Curvature-Balanced Feature Manifold Learning for Long-Tailed Classification.",
+          "authors": "Yanbiao Ma; Licheng Jiao; Fang Liu; Shuyuan Yang; Xu Liu; Lingling Li",
+          "year": 2023,
+          "venue": "CVPR",
+          "doi": "10.1109/CVPR52729.2023.01519",
+          "landing_url": "https://doi.org/10.1109/CVPR52729.2023.01519",
+          "dblp_url": "https://dblp.org/rec/conf/cvpr/MaJLY0023"
+        },
+        {
+          "id": "JIAO-0561",
+          "title": "Towards Better Stability and Adaptability: Improve Online Self-Training for Model Adaptation in Semantic Segmentation.",
+          "authors": "Dong Zhao; Shuang Wang; Qi Zang; Dou Quan; Xiutiao Ye; Licheng Jiao",
+          "year": 2023,
+          "venue": "CVPR",
+          "doi": "10.1109/CVPR52729.2023.01129",
+          "landing_url": "https://doi.org/10.1109/CVPR52729.2023.01129",
+          "dblp_url": "https://dblp.org/rec/conf/cvpr/ZhaoWZQYJ23"
+        }
+      ]
+    },
+    {
+      "key": "iclr",
+      "label": "ICLR 首篇",
+      "short": "ICLR",
+      "kind": "conference",
+      "featured": false,
+      "year": 2023,
+      "firstYearCount": 1,
+      "records": [
+        {
+          "id": "JIAO-0477",
+          "title": "Delving into Semantic Scale Imbalance.",
+          "authors": "Yanbiao Ma; Licheng Jiao; Fang Liu; Yuxin Li; Shuyuan Yang; Xu Liu",
+          "year": 2023,
+          "venue": "ICLR",
+          "doi": "",
+          "landing_url": "https://openreview.net/forum?id=07tc5kKRIo",
+          "dblp_url": "https://dblp.org/rec/conf/iclr/MaJ0LY023"
+        }
+      ]
+    }
+  ]
+}
