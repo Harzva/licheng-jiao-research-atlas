@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071923">
+  <meta name="description" content="焦李成教授学术研究图谱：论文、合作网络与研究主题演化。">
+  <title>焦李成 · Research Atlas</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要内容</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="焦李成学术图谱首页">
+      <span class="brand-mark">焦</span>
+      <span>
+        <strong>LICHENG JIAO</strong>
+        <small>RESEARCH ATLAS</small>
+      </span>
+    </a>
+    <nav aria-label="主要导航">
+      <a href="#evolution">研究演化</a>
+      <a href="#publications">论文图谱</a>
+      <a href="#collaboration">合作网络</a>
+      <a href="#methodology">数据说明</a>
+    </nav>
+    <a class="header-link" href="https://web.xidian.edu.cn/lchjiao/index.html" target="_blank" rel="noopener">
+      西电主页 <span aria-hidden="true">↗</span>
+    </a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="kicker"><span>西安电子科技大学</span> · 人工智能与模式识别</p>
+        <h1>
+          <span>焦李成</span>
+          <em>Licheng Jiao</em>
+        </h1>
+        <p class="hero-lead">
+          沿着近三十年的论文轨迹，观察神经计算、进化优化、遥感智能解译与多模态学习如何交汇成一幅持续生长的研究星图。
+        </p>
+        <div class="hero-actions">
+          <a class="primary-action" href="#publications">进入论文图谱</a>
+          <a class="text-action" href="https://dblp.org/pid/40/3714" target="_blank" rel="noopener">查看 DBLP 档案 ↗</a>
+        </div>
+        <div class="hero-note">
+          <span class="pulse" aria-hidden="true"></span>
+          <span>数据版本 <strong id="dataVersion">载入中</strong></span>
+        </div>
+      </div>
+
+      <div class="atlas-stage" aria-label="论文年份与主题星图">
+        <canvas id="heroAtlas"></canvas>
+        <div class="atlas-label atlas-label-start"><span>1998</span> DBLP 起点</div>
+        <div class="atlas-label atlas-label-now"><span>2026</span> 持续更新</div>
+        <div class="atlas-center" aria-hidden="true">
+          <span>焦</span>
+          <small>L. JIAO</small>
+        </div>
+        <div class="atlas-tooltip" id="heroTooltip" role="status" aria-live="polite"></div>
+        <div class="atlas-legend" id="heroLegend"></div>
+      </div>
+    </section>
+
+    <section class="ledger" aria-label="学术数据概览">
+      <article>
+        <span class="ledger-index">01</span>
+        <strong id="totalPapers">—</strong>
+        <p>已核验学术记录</p>
+      </article>
+      <article>
+        <span class="ledger-index">02</span>
+        <strong id="yearRange">—</strong>
+        <p>DBLP 收录跨度</p>
+      </article>
+      <article>
+        <span class="ledger-index">03</span>
+        <strong id="coauthorCount">—</strong>
+        <p>数据内合作作者</p>
+      </article>
+      <article>
+        <span class="ledger-index">04</span>
+        <strong id="venueCount">—</strong>
+        <p>期刊与会议来源</p>
+      </article>
+    </section>
+
+    <section class="manifesto">
+      <div>
+        <p class="section-tag">Research coordinates</p>
+        <h2>四条主轴，<br>一套持续演化的方法论。</h2>
+      </div>
+      <div class="manifesto-copy">
+        <p>
+          焦李成教授长期从事人工智能、图像智能感知、自然计算与大数据解译研究。本图谱不按“代表作清单”陈列成果，而是让每篇论文回到它所处的时间、合作者与问题语境中。
+        </p>
+        <div class="axis-list">
+          <span>人工智能与模式识别</span>
+          <span>图像智能感知与自然计算</span>
+          <span>进化优化与深度学习</span>
+          <span>类脑计算与大数据解译</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section evolution" id="evolution">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Research evolution</p>
+          <h2>研究主题如何穿越时间</h2>
+        </div>
+        <p>柱高代表年度论文数量，颜色代表该阶段最活跃的主题。拖动时间窗或点击年份可筛选论文。</p>
+      </div>
+
+      <div class="timeline-shell">
+        <div class="timeline-summary">
+          <span>年度峰值</span>
+          <strong id="peakYear">—</strong>
+          <small id="peakCount">—</small>
+        </div>
+        <div class="timeline-chart" id="timelineChart" role="img" aria-label="1998年至2026年论文数量时间轴"></div>
+      </div>
+
+      <div class="era-grid">
+        <article>
+          <time>1998—2007</time>
+          <h3>神经计算与自然计算</h3>
+          <p>神经网络、进化计算、小波分析与聚类方法构成早期研究骨架。</p>
+        </article>
+        <article>
+          <time>2008—2014</time>
+          <h3>优化方法进入遥感场景</h3>
+          <p>多目标优化、稀疏表示与 SAR 遥感解译逐渐形成稳定交叉方向。</p>
+        </article>
+        <article>
+          <time>2015—2020</time>
+          <h3>深度视觉感知</h3>
+          <p>卷积网络推动分类、检测、跟踪与变化检测研究快速扩展。</p>
+        </article>
+        <article>
+          <time>2021—2026</time>
+          <h3>基础模型与多模态</h3>
+          <p>Transformer、视觉语言、提示学习、Mamba 与生成模型汇入新的研究前沿。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section publication-atlas" id="publications">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Publication constellation</p>
+          <h2>每篇论文，都是一个坐标</h2>
+        </div>
+        <p>轨道表示年份，扇区表示主题。悬停查看论文，点击节点打开完整元数据。</p>
+      </div>
+
+      <div class="explorer">
+        <div class="explorer-controls">
+          <label class="search-field">
+            <span>搜索全部论文</span>
+            <input id="paperSearch" type="search" placeholder="标题、作者、期刊、DOI…" autocomplete="off">
+          </label>
+          <label>
+            <span>年份</span>
+            <select id="yearFilter">
+              <option value="">全部年份</option>
+            </select>
+          </label>
+          <label>
+            <span>出版类型</span>
+            <select id="typeFilter">
+              <option value="">全部类型</option>
+              <option value="article">期刊论文</option>
+              <option value="inproceedings">会议论文</option>
+              <option value="proceedings">会议录</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="topic-filter" id="topicFilter" aria-label="研究主题筛选"></div>
+
+        <div class="paper-graph-wrap">
+          <canvas id="paperGraph" aria-label="可交互论文知识图谱"></canvas>
+          <div class="graph-instruction">滚轮缩放 · 拖动平移 · 点击节点查看论文</div>
+          <div class="graph-tooltip" id="graphTooltip" role="status"></div>
+        </div>
+
+        <div class="results-head">
+          <p id="resultCount">正在载入论文数据…</p>
+          <button id="resetFilters" type="button">清除筛选</button>
+        </div>
+        <div class="paper-list" id="paperList"></div>
+        <button class="load-more" id="loadMore" type="button">显示更多论文</button>
+      </div>
+    </section>
+
+    <section class="section collaboration" id="collaboration">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Collaboration network</p>
+          <h2>知识由合作关系共同塑形</h2>
+        </div>
+        <p>节点大小代表共同署名次数，连线强度代表合作密度。第一版展示数据集中最活跃的合作作者。</p>
+      </div>
+      <div class="collaboration-layout">
+        <div class="coauthor-stage">
+          <canvas id="coauthorGraph" aria-label="焦李成教授合作作者网络"></canvas>
+          <div class="coauthor-tooltip" id="coauthorTooltip" role="status"></div>
+        </div>
+        <div class="coauthor-ranking">
+          <div class="ranking-head">
+            <span>合作作者</span>
+            <span>共同论文</span>
+          </div>
+          <ol id="coauthorList"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section topic-observatory">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Topic observatory</p>
+          <h2>六条主线，一个交叉区</h2>
+        </div>
+        <p>当前主题由标题关键词进行可解释分类；下一版将引入摘要向量聚类与人工校正。</p>
+      </div>
+      <div class="topic-cards" id="topicCards"></div>
+    </section>
+
+    <section class="methodology" id="methodology">
+      <div>
+        <p class="section-tag">Data provenance</p>
+        <h2>可验证，才能长期维护。</h2>
+      </div>
+      <div class="method-grid">
+        <article>
+          <strong>01 / 身份基线</strong>
+          <p>以 DBLP 固定 PID <code>40/3714</code> 为第一版身份锚点，避免把同名作者成果混入公开页面。</p>
+        </article>
+        <article>
+          <strong>02 / 版本关系</strong>
+          <p>DOI、DBLP Key 与 arXiv ID 用于识别同一工作的不同版本；记录数量不等同于唯一研究工作数。</p>
+        </article>
+        <article>
+          <strong>03 / 摘要策略</strong>
+          <p>仅展示来源明确的原始摘要。缺失摘要将通过 Crossref、OpenAlex、arXiv 与合法论文原文逐步补全。</p>
+        </article>
+        <article>
+          <strong>04 / 持续更新</strong>
+          <p>论文下载、元数据校验与网站构建相互独立；新数据经过校验后才能进入公开图谱。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <span class="brand-mark">焦</span>
+      <div>
+        <strong>LICHENG JIAO · RESEARCH ATLAS</strong>
+        <p>个人学术成果可视化项目 · Preview V1</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="https://web.xidian.edu.cn/lchjiao/index.html" target="_blank" rel="noopener">西电主页 ↗</a>
+      <a href="https://dblp.org/pid/40/3714" target="_blank" rel="noopener">DBLP ↗</a>
+      <a href="#top">回到顶部 ↑</a>
+    </div>
+  </footer>
+
+  <dialog class="paper-drawer" id="paperDrawer" aria-labelledby="drawerTitle">
+    <button class="drawer-close" id="drawerClose" type="button" aria-label="关闭论文详情">×</button>
+    <div class="drawer-content">
+      <p class="drawer-meta" id="drawerMeta"></p>
+      <h2 id="drawerTitle"></h2>
+      <p class="drawer-authors" id="drawerAuthors"></p>
+      <dl class="paper-facts" id="drawerFacts"></dl>
+      <section class="abstract-block">
+        <span>ABSTRACT / 摘要</span>
+        <p id="drawerAbstract"></p>
+      </section>
+      <div class="drawer-actions" id="drawerActions"></div>
+      <details>
+        <summary>BibTeX</summary>
+        <pre id="drawerBibtex"></pre>
+      </details>
+    </div>
+  </dialog>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

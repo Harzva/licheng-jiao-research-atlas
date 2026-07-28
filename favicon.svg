@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#071923"/>
+  <path d="M7 7h36l14 14v36H21L7 43z" fill="#b84a3a"/>
+  <text x="32" y="43" text-anchor="middle" font-family="serif" font-size="34" font-weight="700" fill="#fff7ec">焦</text>
+</svg>

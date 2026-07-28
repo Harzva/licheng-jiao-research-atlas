@@ -1,0 +1,489 @@
+{
+  "generatedAt": "2026-07-28T03:10:22.333Z",
+  "source": "DBLP fixed PID 40/3714 via local canonical catalog",
+  "total": 1827,
+  "minYear": 1998,
+  "maxYear": 2026,
+  "peakYear": 2024,
+  "peakCount": 210,
+  "coauthorCount": 2163,
+  "venueCount": 260,
+  "topicCounts": {
+    "frontier": 149,
+    "remote": 667,
+    "vision": 198,
+    "general": 434,
+    "learning": 73,
+    "imaging": 70,
+    "evolution": 236
+  },
+  "yearCounts": [
+    {
+      "year": 1998,
+      "count": 1,
+      "dominantTopic": "general"
+    },
+    {
+      "year": 1999,
+      "count": 1,
+      "dominantTopic": "evolution"
+    },
+    {
+      "year": 2000,
+      "count": 5,
+      "dominantTopic": "general"
+    },
+    {
+      "year": 2001,
+      "count": 4,
+      "dominantTopic": "learning"
+    },
+    {
+      "year": 2002,
+      "count": 2,
+      "dominantTopic": "imaging"
+    },
+    {
+      "year": 2003,
+      "count": 1,
+      "dominantTopic": "evolution"
+    },
+    {
+      "year": 2004,
+      "count": 30,
+      "dominantTopic": "general"
+    },
+    {
+      "year": 2005,
+      "count": 71,
+      "dominantTopic": "general"
+    },
+    {
+      "year": 2006,
+      "count": 40,
+      "dominantTopic": "general"
+    },
+    {
+      "year": 2007,
+      "count": 24,
+      "dominantTopic": "general"
+    },
+    {
+      "year": 2008,
+      "count": 23,
+      "dominantTopic": "evolution"
+    },
+    {
+      "year": 2009,
+      "count": 27,
+      "dominantTopic": "evolution"
+    },
+    {
+      "year": 2010,
+      "count": 49,
+      "dominantTopic": "evolution"
+    },
+    {
+      "year": 2011,
+      "count": 43,
+      "dominantTopic": "general"
+    },
+    {
+      "year": 2012,
+      "count": 31,
+      "dominantTopic": "general"
+    },
+    {
+      "year": 2013,
+      "count": 38,
+      "dominantTopic": "general"
+    },
+    {
+      "year": 2014,
+      "count": 82,
+      "dominantTopic": "evolution"
+    },
+    {
+      "year": 2015,
+      "count": 71,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2016,
+      "count": 104,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2017,
+      "count": 76,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2018,
+      "count": 77,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2019,
+      "count": 112,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2020,
+      "count": 90,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2021,
+      "count": 95,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2022,
+      "count": 152,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2023,
+      "count": 152,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2024,
+      "count": 210,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2025,
+      "count": 151,
+      "dominantTopic": "remote"
+    },
+    {
+      "year": 2026,
+      "count": 65,
+      "dominantTopic": "frontier"
+    }
+  ],
+  "topCoauthors": [
+    {
+      "name": "Fang Liu",
+      "count": 433
+    },
+    {
+      "name": "Shuyuan Yang",
+      "count": 297
+    },
+    {
+      "name": "Lingling Li",
+      "count": 249
+    },
+    {
+      "name": "Xiangrong Zhang",
+      "count": 245
+    },
+    {
+      "name": "Xu Liu",
+      "count": 238
+    },
+    {
+      "name": "Biao Hou",
+      "count": 237
+    },
+    {
+      "name": "Ronghua Shang",
+      "count": 177
+    },
+    {
+      "name": "Shuang Wang",
+      "count": 158
+    },
+    {
+      "name": "Wenping Ma",
+      "count": 138
+    },
+    {
+      "name": "Yangyang Li",
+      "count": 135
+    },
+    {
+      "name": "Xu Tang",
+      "count": 127
+    },
+    {
+      "name": "Maoguo Gong",
+      "count": 112
+    },
+    {
+      "name": "Puhua Chen",
+      "count": 110
+    },
+    {
+      "name": "Jie Feng",
+      "count": 83
+    },
+    {
+      "name": "Jingjing Ma",
+      "count": 70
+    },
+    {
+      "name": "Shuiping Gou",
+      "count": 56
+    },
+    {
+      "name": "Hao Zhu",
+      "count": 54
+    },
+    {
+      "name": "Bo Ren",
+      "count": 50
+    },
+    {
+      "name": "Shuo Li",
+      "count": 50
+    },
+    {
+      "name": "Dou Quan",
+      "count": 49
+    },
+    {
+      "name": "Ruochen Liu",
+      "count": 49
+    },
+    {
+      "name": "Fanhua Shang",
+      "count": 47
+    },
+    {
+      "name": "Min Wang",
+      "count": 47
+    },
+    {
+      "name": "Hongying Liu",
+      "count": 45
+    },
+    {
+      "name": "Jing Bai",
+      "count": 40
+    },
+    {
+      "name": "Zhixi Feng",
+      "count": 40
+    },
+    {
+      "name": "Jing Liu",
+      "count": 38
+    },
+    {
+      "name": "Yuwei Guo",
+      "count": 37
+    },
+    {
+      "name": "Rustam Stolkin",
+      "count": 34
+    },
+    {
+      "name": "Xianghai Cao",
+      "count": 31
+    },
+    {
+      "name": "Weitong Zhang",
+      "count": 29
+    },
+    {
+      "name": "Zhu Xiao",
+      "count": 29
+    },
+    {
+      "name": "Jiahao Wang",
+      "count": 28
+    },
+    {
+      "name": "Yuting Yang",
+      "count": 28
+    },
+    {
+      "name": "Zhongle Ren",
+      "count": 28
+    },
+    {
+      "name": "Hao Wang",
+      "count": 24
+    },
+    {
+      "name": "Huiyu Zhou",
+      "count": 24
+    },
+    {
+      "name": "Jiaxuan Zhao",
+      "count": 24
+    },
+    {
+      "name": "Jianshe Wu",
+      "count": 23
+    },
+    {
+      "name": "Jocelyn Chanussot",
+      "count": 23
+    },
+    {
+      "name": "Yue Wu",
+      "count": 23
+    },
+    {
+      "name": "Guanchun Wang",
+      "count": 22
+    },
+    {
+      "name": "Kexin Zhang",
+      "count": 22
+    },
+    {
+      "name": "Qigong Sun",
+      "count": 22
+    },
+    {
+      "name": "Tianyang Zhang",
+      "count": 22
+    },
+    {
+      "name": "Yanqiao Chen",
+      "count": 22
+    },
+    {
+      "name": "Cheolkon Jung",
+      "count": 21
+    },
+    {
+      "name": "Haifeng Du",
+      "count": 21
+    },
+    {
+      "name": "Xiaohua Zhang",
+      "count": 21
+    },
+    {
+      "name": "Rongfang Wang",
+      "count": 20
+    },
+    {
+      "name": "Shasha Mao",
+      "count": 20
+    },
+    {
+      "name": "Weibin Li",
+      "count": 20
+    },
+    {
+      "name": "Xiaolin Tian",
+      "count": 20
+    },
+    {
+      "name": "Yanbiao Ma",
+      "count": 20
+    },
+    {
+      "name": "Zaidao Wen",
+      "count": 20
+    },
+    {
+      "name": "Jin Zhao",
+      "count": 19
+    },
+    {
+      "name": "Jing Gu",
+      "count": 19
+    },
+    {
+      "name": "Ling Wang",
+      "count": 19
+    },
+    {
+      "name": "Ning Huyan",
+      "count": 19
+    },
+    {
+      "name": "Zitong Wu",
+      "count": 19
+    },
+    {
+      "name": "Chen Yang",
+      "count": 18
+    },
+    {
+      "name": "Huaji Zhou",
+      "count": 18
+    },
+    {
+      "name": "Jiawei Chen",
+      "count": 18
+    },
+    {
+      "name": "Mengru Ma",
+      "count": 18
+    },
+    {
+      "name": "Qian Wu",
+      "count": 18
+    },
+    {
+      "name": "Xianpeng Guo",
+      "count": 18
+    },
+    {
+      "name": "Xiao Han",
+      "count": 18
+    },
+    {
+      "name": "Xiaotong Li",
+      "count": 18
+    },
+    {
+      "name": "Dan Zhang",
+      "count": 17
+    },
+    {
+      "name": "Liefeng Bo",
+      "count": 17
+    },
+    {
+      "name": "Weicai Zhong",
+      "count": 17
+    },
+    {
+      "name": "Yuanyuan Liu",
+      "count": 17
+    },
+    {
+      "name": "Chao Wang",
+      "count": 16
+    },
+    {
+      "name": "Dong Zhao",
+      "count": 16
+    },
+    {
+      "name": "Lin Xiong",
+      "count": 16
+    },
+    {
+      "name": "Long Sun",
+      "count": 16
+    },
+    {
+      "name": "Yi Zuo",
+      "count": 16
+    },
+    {
+      "name": "Jiaqi Zhao",
+      "count": 15
+    },
+    {
+      "name": "Miaomiao Liang",
+      "count": 15
+    },
+    {
+      "name": "Tan Shan",
+      "count": 15
+    }
+  ]
+}
