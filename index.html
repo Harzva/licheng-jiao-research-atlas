@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071923">
   <meta name="description" content="焦李成教授学术研究图谱：论文、合作网络与研究主题演化。">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
   <title>焦李成 · Research Atlas</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
@@ -48,7 +50,7 @@
         </div>
         <div class="hero-note">
           <span class="pulse" aria-hidden="true"></span>
-          <span>数据版本 <strong id="dataVersion">载入中</strong></span>
+          <span>数据更新 <strong id="dataVersion">正在读取</strong></span>
         </div>
       </div>
 
@@ -203,7 +205,7 @@
           <p class="section-tag">Collaboration network</p>
           <h2>知识由合作关系共同塑形</h2>
         </div>
-        <p>节点大小代表共同署名次数，连线强度代表合作密度。第一版展示数据集中最活跃的合作作者。</p>
+        <p>节点大小代表共同署名次数，连线强度代表合作密度。网络图聚焦高频合作关系，排行榜可检索全部合作作者。</p>
       </div>
       <div class="collaboration-layout">
         <div class="coauthor-stage">
@@ -211,10 +213,18 @@
           <div class="coauthor-tooltip" id="coauthorTooltip" role="status"></div>
         </div>
         <div class="coauthor-ranking">
+          <div class="coauthor-tools">
+            <label class="coauthor-search">
+              <span>搜索合作作者</span>
+              <input id="coauthorSearch" type="search" placeholder="输入作者姓名…" autocomplete="off">
+            </label>
+            <button id="coauthorToggle" type="button">显示全部</button>
+          </div>
           <div class="ranking-head">
             <span>合作作者</span>
             <span>共同论文</span>
           </div>
+          <p class="coauthor-result" id="coauthorResult"></p>
           <ol id="coauthorList"></ol>
         </div>
       </div>
@@ -226,7 +236,7 @@
           <p class="section-tag">Topic observatory</p>
           <h2>六条主线，一个交叉区</h2>
         </div>
-        <p>当前主题由标题关键词进行可解释分类；下一版将引入摘要向量聚类与人工校正。</p>
+        <p>主题依据论文标题、领域词汇与发表语境进行可解释归类，并通过持续校验保持一致性。</p>
       </div>
       <div class="topic-cards" id="topicCards"></div>
     </section>
@@ -239,7 +249,7 @@
       <div class="method-grid">
         <article>
           <strong>01 / 身份基线</strong>
-          <p>以 DBLP 固定 PID <code>40/3714</code> 为第一版身份锚点，避免把同名作者成果混入公开页面。</p>
+          <p>以 DBLP 作者档案 <code>40/3714</code> 与 DOI 为身份锚点，降低同名作者与重复版本造成的误差。</p>
         </article>
         <article>
           <strong>02 / 版本关系</strong>
@@ -247,11 +257,11 @@
         </article>
         <article>
           <strong>03 / 摘要策略</strong>
-          <p>仅展示来源明确的原始摘要。缺失摘要将通过 Crossref、OpenAlex、arXiv 与合法论文原文逐步补全。</p>
+          <p>仅展示来源明确的摘要；缺失时直接链接论文页面，不以推测性文本替代原始内容。</p>
         </article>
         <article>
-          <strong>04 / 持续更新</strong>
-          <p>论文下载、元数据校验与网站构建相互独立；新数据经过校验后才能进入公开图谱。</p>
+          <strong>04 / 数据更新</strong>
+          <p>公开数据经过字段白名单与来源校验，更新日期显示在首页，便于读者判断数据时效。</p>
         </article>
       </div>
     </section>
@@ -262,7 +272,7 @@
       <span class="brand-mark">焦</span>
       <div>
         <strong>LICHENG JIAO · RESEARCH ATLAS</strong>
-        <p>个人学术成果可视化项目 · Preview V1</p>
+        <p>论文 · 合作网络 · 研究主题演化</p>
       </div>
     </div>
     <div class="footer-links">

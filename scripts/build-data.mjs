@@ -1,10 +1,10 @@
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { access, readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const projectDir = resolve(scriptDir, "..");
-const sourcePath = resolve(projectDir, "..", "output", "jiao_full_catalog_20260717", "data", "publications_full.json");
+const sourcePath = resolve(process.cwd(), process.argv[2] || "source/publications.json");
 const outputDir = resolve(projectDir, "data");
 
 const TOPIC_RULES = [
@@ -24,11 +24,68 @@ function inferTopic(paper) {
   return "general";
 }
 
+function cleanText(value = "") {
+  return String(value)
+    .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "")
+    .trim();
+}
+
+function cleanAuthorName(value = "") {
+  return cleanText(value).replace(/\s+\d{4}$/, "").trim();
+}
+
 function normalizedAuthors(value = "") {
   return String(value)
     .split(/\s*;\s*|\s+and\s+/i)
-    .map((author) => author.trim().replace(/\s+\d{4}$/, ""))
+    .map(cleanAuthorName)
     .filter(Boolean);
+}
+
+function publicUrl(value = "") {
+  const text = cleanText(value);
+  if (!text) return "";
+  try {
+    const parsed = new URL(text);
+    return parsed.protocol === "https:" ? parsed.href : "";
+  } catch {
+    return "";
+  }
+}
+
+function bibtexValue(value = "") {
+  return cleanText(value)
+    .replaceAll("\\", "\\\\")
+    .replaceAll("{", "\\{")
+    .replaceAll("}", "\\}");
+}
+
+function buildBibtex(paper) {
+  const type = paper.pub_type === "article"
+    ? "article"
+    : paper.pub_type === "inproceedings"
+      ? "inproceedings"
+      : paper.pub_type === "proceedings"
+        ? "proceedings"
+        : "misc";
+  const fallbackKey = cleanText(paper.id || `Jiao${paper.year}`);
+  const rawKey = cleanText(paper.bib_key || paper.dblp_key?.split("/").at(-1) || fallbackKey);
+  const key = rawKey.replace(/[^A-Za-z0-9:_-]/g, "") || fallbackKey;
+  const authors = normalizedAuthors(paper.authors).join(" and ");
+  const landingUrl = publicUrl(paper.landing_url) || publicUrl(paper.dblp_url);
+  const fields = [
+    ["title", paper.title],
+    ["author", authors],
+    ["year", paper.year]
+  ];
+  if (paper.venue) fields.push([type === "article" ? "journal" : type === "inproceedings" ? "booktitle" : "howpublished", paper.venue]);
+  if (paper.volume_pages) fields.push(["note", paper.volume_pages]);
+  if (paper.doi) fields.push(["doi", paper.doi]);
+  if (landingUrl) fields.push(["url", landingUrl]);
+  const body = fields
+    .filter(([, value]) => value !== "" && value != null)
+    .map(([name, value]) => `  ${name} = {${bibtexValue(value)}}`)
+    .join(",\n");
+  return `@${type}{${key},\n${body}\n}`;
 }
 
 function isTargetAuthor(name) {
@@ -36,28 +93,38 @@ function isTargetAuthor(name) {
   return normalized === "lichengjiao" || normalized === "ljiao" || normalized.includes("焦李成");
 }
 
+try {
+  await access(sourcePath);
+} catch {
+  throw new Error(`Source catalog not found. Pass it explicitly: node scripts/build-data.mjs ./source/publications.json`);
+}
+
 const source = JSON.parse(await readFile(sourcePath, "utf8"));
-const papers = source.map((paper) => ({
-  id: paper.id,
-  title: paper.title,
-  authors: paper.authors,
-  year: Number(paper.year),
-  pub_type: paper.pub_type,
-  venue: paper.venue,
-  volume_pages: paper.volume_pages,
-  doi: paper.doi,
-  dblp_key: paper.dblp_key,
-  dblp_url: paper.dblp_url,
-  landing_url: paper.landing_url,
-  direct_pdf_url: paper.direct_pdf_url,
-  local_pdf: paper.local_pdf,
-  publisher_group: paper.publisher_group,
-  access_status: paper.access_status,
-  oa_confirmed: paper.oa_confirmed,
-  source_url: paper.source_url,
-  bibtex: paper.bibtex,
-  topic: inferTopic(paper)
-}));
+const papers = source.map((paper) => {
+  const openAccess = paper.oa_confirmed === "是";
+  const authors = normalizedAuthors(paper.authors).join("; ");
+  const sanitized = {
+    id: cleanText(paper.id),
+    title: cleanText(paper.title),
+    authors,
+    year: Number(paper.year),
+    pub_type: cleanText(paper.pub_type),
+    venue: cleanText(paper.venue),
+    volume_pages: cleanText(paper.volume_pages),
+    doi: cleanText(paper.doi),
+    dblp_key: cleanText(paper.dblp_key),
+    dblp_url: publicUrl(paper.dblp_url),
+    landing_url: publicUrl(paper.landing_url) || publicUrl(paper.dblp_url),
+    direct_pdf_url: openAccess ? publicUrl(paper.direct_pdf_url) : "",
+    publisher_group: cleanText(paper.publisher_group),
+    access: openAccess ? "open" : "landing",
+    oa_confirmed: openAccess ? "是" : "否",
+    topic: inferTopic(paper)
+  };
+  if (cleanText(paper.abstract)) sanitized.abstract = cleanText(paper.abstract);
+  sanitized.bibtex = buildBibtex({ ...paper, ...sanitized });
+  return sanitized;
+});
 
 const years = papers.map((paper) => paper.year).filter(Number.isFinite);
 const yearMap = new Map();
@@ -87,14 +154,14 @@ const yearCounts = [...yearMap.values()]
     dominantTopic: Object.entries(item.topics).sort((a, b) => b[1] - a[1])[0]?.[0] || "general"
   }));
 const peak = [...yearCounts].sort((a, b) => b.count - a.count)[0];
-const topCoauthors = [...coauthorCounts.entries()]
+const coauthors = [...coauthorCounts.entries()]
   .map(([name, count]) => ({ name, count }))
-  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
-  .slice(0, 80);
+  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+const topCoauthors = coauthors.slice(0, 80);
 
 const atlas = {
   generatedAt: new Date().toISOString(),
-  source: "DBLP fixed PID 40/3714 via local canonical catalog",
+  source: "DBLP author profile 40/3714 and DOI-linked public metadata",
   total: papers.length,
   minYear: Math.min(...years),
   maxYear: Math.max(...years),
@@ -104,6 +171,7 @@ const atlas = {
   venueCount: venues.size,
   topicCounts,
   yearCounts,
+  coauthors,
   topCoauthors
 };
 

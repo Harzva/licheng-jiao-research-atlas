@@ -52,6 +52,8 @@ const state = {
   type: "",
   query: "",
   visible: 24,
+  coauthorQuery: "",
+  coauthorShowAll: false,
   graph: { scale: 1, x: 0, y: 0, dragging: false, startX: 0, startY: 0 },
   heroPoints: [],
   paperPoints: [],
@@ -509,9 +511,21 @@ function drawCoauthors() {
 }
 
 function renderCoauthorList() {
-  $("#coauthorList").innerHTML = state.atlas.topCoauthors.slice(0, 12).map((author, index) => `
+  const allAuthors = state.atlas.coauthors || state.atlas.topCoauthors;
+  const query = state.coauthorQuery.trim().toLocaleLowerCase();
+  const matches = query
+    ? allAuthors.filter((author) => author.name.toLocaleLowerCase().includes(query))
+    : allAuthors;
+  const visibleAuthors = state.coauthorShowAll || query ? matches : matches.slice(0, 12);
+  $("#coauthorList").innerHTML = visibleAuthors.length
+    ? visibleAuthors.map((author, index) => `
     <li><span>${String(index + 1).padStart(2, "0")}</span><span>${escapeHtml(author.name)}</span><strong>${author.count}</strong></li>
-  `).join("");
+  `).join("")
+    : `<li><span>—</span><span>没有匹配作者</span><strong>0</strong></li>`;
+  $("#coauthorResult").textContent = query
+    ? `找到 ${formatNumber(matches.length)} 位作者`
+    : `共 ${formatNumber(allAuthors.length)} 位合作作者 · 当前显示 ${formatNumber(visibleAuthors.length)} 位`;
+  $("#coauthorToggle").textContent = state.coauthorShowAll ? "仅看前12位" : `显示全部 ${formatNumber(allAuthors.length)}`;
 }
 
 function bindCoauthorInteraction() {
@@ -551,10 +565,10 @@ function openPaper(paper) {
     fact("DOI", paper.doi),
     fact("DBLP Key", paper.dblp_key),
     fact("Publisher / 出版方", paper.publisher_group),
-    fact("Access / 访问状态", paper.access_status)
+    fact("Access / 访问状态", paper.access === "open" ? "开放获取" : "出版信息可用")
   ].join("");
-  $("#drawerAbstract").textContent = paper.abstract || "该记录尚未补充可验证摘要。后续将从 Crossref、OpenAlex、arXiv 或合法论文原文补齐；本站不会用推测性文本替代原始摘要。";
-  const primary = paper.landing_url || paper.dblp_url || paper.source_url;
+  $("#drawerAbstract").textContent = paper.abstract || "暂未收录来源明确的摘要，请访问论文原始页面查看完整信息。";
+  const primary = paper.landing_url || paper.dblp_url;
   const actions = [];
   if (primary) actions.push(`<a href="${escapeHtml(primary)}" target="_blank" rel="noopener">访问论文页面 ↗</a>`);
   if (paper.direct_pdf_url) actions.push(`<a href="${escapeHtml(paper.direct_pdf_url)}" target="_blank" rel="noopener">开放 PDF ↗</a>`);
@@ -612,6 +626,15 @@ function bindControls() {
     state.visible += 24;
     renderPaperList();
     $("#resultCount").textContent = `找到 ${formatNumber(state.filtered.length)} 篇论文 · 当前显示 ${Math.min(state.visible, state.filtered.length)} 篇`;
+  });
+  $("#coauthorSearch").addEventListener("input", (event) => {
+    state.coauthorQuery = event.target.value;
+    renderCoauthorList();
+  });
+  $("#coauthorToggle").addEventListener("click", () => {
+    state.coauthorShowAll = !state.coauthorShowAll;
+    renderCoauthorList();
+    $(".coauthor-ranking").scrollTop = 0;
   });
   $("#drawerClose").addEventListener("click", () => $("#paperDrawer").close());
   $("#paperDrawer").addEventListener("click", (event) => {

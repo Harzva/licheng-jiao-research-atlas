@@ -1,0 +1,25 @@
+name: Public data safety
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check JavaScript syntax
+        run: |
+          node --check app.js
+          node --check scripts/build-data.mjs
+          node --check scripts/check-public-safety.mjs
+      - name: Check public data boundary
+        run: node scripts/check-public-safety.mjs
