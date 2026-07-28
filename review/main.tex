@@ -153,6 +153,47 @@ Broad domains & 7 & Observed fine tasks & 48 \\
 \end{tabular}
 \end{table}
 
+\subsection{Cross-database discovery and Chinese-language coverage}
+
+The DBLP corpus is a reproducible public baseline, not an estimate of every
+scholarly output. A user-supplied Scopus profile snapshot reports 2,564
+documents, while a Baidu Scholar search snapshot reports approximately 3,983
+results. Google Scholar currently yields no stable total because access
+verification interrupts reproducible querying. These values are discovery
+signals rather than additive counts: author identity, document type, and work
+version must be reconciled before a unique-output total can be estimated.
+Scopus profiles are generated from documents indexed in Scopus
+\cite{scopus-author-profile}, while Google Scholar explicitly covers a broader
+mixture of articles, conferences, theses, books, preprints, abstracts, and
+technical reports \cite{google-scholar-scope}.
+
+\begin{table}[ht]
+\centering
+\caption{Cross-database discovery signals used for expansion planning. External
+counts are user-supplied snapshots and have not yet been exported or
+deduplicated.}
+\label{tab:cross-database}
+\begin{tabular}{lrl}
+\toprule
+Source & Discovery scale & Current role \\
+\midrule
+DBLP-anchored corpus & 1,827 & Reproducible public baseline \\
+Scopus & 2,564 & Profile expansion signal \\
+Baidu Scholar & $\approx$3,983 & Broad search-result signal \\
+Google Scholar & --- & No stable reproducible total \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+DBLP mainly focuses on international, English-language computer-science
+publications and does not attempt to cover every venue \cite{dblp-scope}. This
+scope is visible in the audit: the current corpus contains 453 conference
+records across 126 venue labels, but no conference record whose title or venue
+contains native Chinese-language metadata. Only three Chinese-title records
+are present, all from a journal source. This is evidence of a coverage gap, not
+of the absence of Chinese conference outputs. CNKI, Wanfang, and institutional
+records require a separate identity-audited ingestion pass.
+
 \subsection{Collection, inclusion, and exclusion}
 
 Records are included when they are traceable to the selected DBLP profile.

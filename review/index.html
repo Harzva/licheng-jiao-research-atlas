@@ -8,20 +8,28 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none';">
   <title>Research Review · Licheng Jiao Research Atlas</title>
-  <link rel="stylesheet" href="./review.css">
+  <link rel="canonical" href="https://harzva.github.io/licheng-jiao-research-atlas/review/">
+  <link rel="alternate" hreflang="en" href="https://harzva.github.io/licheng-jiao-research-atlas/review/">
+  <link rel="alternate" hreflang="zh-CN" href="https://harzva.github.io/licheng-jiao-research-atlas/review/zh/">
+  <link rel="alternate" hreflang="x-default" href="https://harzva.github.io/licheng-jiao-research-atlas/review/">
+  <link rel="stylesheet" href="./review.css?v=20260728b">
 </head>
 <body>
   <a class="skip-link" href="#article">Skip to article</a>
 
   <header class="review-header">
-    <a class="review-brand" href="../">
+    <a class="review-brand" href="../en/">
       <i aria-hidden="true">焦</i>
       <span>LICHENG JIAO · RESEARCH ATLAS</span>
     </a>
     <nav class="review-actions" aria-label="Review resources">
-      <a href="../">Interactive atlas</a>
+      <a href="../en/">Interactive atlas</a>
       <a href="./main.pdf">PDF</a>
       <a href="./main.tex">LaTeX source</a>
+      <span class="review-language" aria-label="Language">
+        <span aria-current="page">EN</span>
+        <a href="./zh/" hreflang="zh-CN" lang="zh-CN">中文</a>
+      </span>
     </nav>
   </header>
 
@@ -145,6 +153,35 @@
           <div><strong>7</strong><span>Broad research domains</span></div>
           <div><strong>48</strong><span>Observed research tasks</span></div>
         </div>
+
+        <h3>Cross-database discovery and the Chinese-language gap</h3>
+        <p>
+          The 1,827-record corpus is the reproducible public baseline, not an
+          estimate of every scholarly output. A user-supplied Scopus profile
+          snapshot reports 2,564 documents, while a Baidu Scholar search reports
+          approximately 3,983 results. Google Scholar currently provides no
+          stable, reproducible total because access verification interrupts the
+          query. These values cannot be added: they use different identity,
+          document-type, and version policies.
+        </p>
+        <div class="review-coverage" aria-label="Cross-database discovery signals">
+          <article class="verified"><span>DBLP core</span><strong>1,827</strong><p>Versioned public records with a strict field allowlist.</p></article>
+          <article><span>Scopus</span><strong>2,564</strong><p>User-supplied document count; export and deduplication remain pending.</p></article>
+          <article><span>Baidu Scholar</span><strong>≈3,983</strong><p>Search results may mix homonyms, versions, books, and theses.</p></article>
+          <article class="pending"><span>Google Scholar</span><strong>—</strong><p>No stable total is reported while verification blocks reproducible access.</p></article>
+        </div>
+        <aside class="coverage-warning">
+          <strong>Chinese-language coverage gap</strong>
+          <p>
+            The current corpus contains 453 conference records across 126 venue
+            labels, but zero conference records with native Chinese-language
+            titles or venue metadata. Only three Chinese-title records are
+            present, all from a journal source. This is a database-scope gap, not
+            evidence that Chinese conference outputs do not exist. CNKI,
+            Wanfang, and institutional records require a separate,
+            identity-audited ingestion pass.
+          </p>
+        </aside>
 
         <h3>Collection and inclusion</h3>
         <p>
@@ -544,6 +581,9 @@
           <li><a href="https://arxiv.org/abs/2607.13104">Ren et al.: Self-Improvements in Modern Agentic Systems — A Survey</a>.</li>
           <li><a href="https://info.arxiv.org/about/accessible_HTML.html">arXiv: HTML as an accessible format for papers</a>.</li>
           <li><a href="https://info.arxiv.org/help/submit_latex_best_practices.html">arXiv: LaTeX markup best practices for successful HTML papers</a>.</li>
+          <li><a href="https://dblp.org/faq/1474671">DBLP: Scope of the bibliography</a>.</li>
+          <li><a href="https://service.elsevier.com/app/answers/detail/a_id/29506/supporthub/scopus/p/10524/">Scopus: Author Profile FAQs</a>.</li>
+          <li><a href="https://scholar.google.com/intl/us/scholar/help.html">Google Scholar: Search help and coverage</a>.</li>
         </ol>
       </section>
     </article>
@@ -551,7 +591,7 @@
 
   <footer class="review-footer">
     <span>Licheng Jiao Research Atlas · Open systematic mapping review</span>
-    <span>Data snapshot: 2026-07-28 · Citation source: Crossref Cited-by</span>
+    <span>Data snapshot: 2026-07-28 · Citation source: Crossref Cited-by · <a href="./zh/" hreflang="zh-CN">中文版</a></span>
   </footer>
 </body>
 </html>

@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build:coverage": "node scripts/build-coverage.mjs",
     "build:milestones": "node scripts/build-milestones.mjs",
     "build:review-assets": "node scripts/generate-review-assets.mjs",
-    "check": "node --check app.js && node --check scripts/build-data.mjs && node --check scripts/build-milestones.mjs && node --check scripts/generate-review-assets.mjs && node --check scripts/check-qr.mjs && node --check scripts/refresh-citations.mjs && node --check scripts/check-public-safety.mjs && node scripts/check-public-safety.mjs && node scripts/check-qr.mjs"
+    "check": "node --check app.js && node --check scripts/build-data.mjs && node --check scripts/build-coverage.mjs && node --check scripts/build-milestones.mjs && node --check scripts/generate-review-assets.mjs && node --check scripts/check-i18n.mjs && node --check scripts/check-qr.mjs && node --check scripts/refresh-citations.mjs && node --check scripts/check-public-safety.mjs && node scripts/check-public-safety.mjs && node scripts/check-i18n.mjs && node scripts/check-qr.mjs"
   },
   "devDependencies": {
     "jsqr": "^1.4.0",

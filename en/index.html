@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071923">
+  <meta name="description" content="Licheng Jiao Research Atlas: publications, collaboration networks, research evolution, venue milestones, and cross-database coverage.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
+  <title>Licheng Jiao · Research Atlas</title>
+  <link rel="canonical" href="https://harzva.github.io/licheng-jiao-research-atlas/en/">
+  <link rel="alternate" hreflang="zh-CN" href="https://harzva.github.io/licheng-jiao-research-atlas/">
+  <link rel="alternate" hreflang="en" href="https://harzva.github.io/licheng-jiao-research-atlas/en/">
+  <link rel="alternate" hreflang="x-default" href="https://harzva.github.io/licheng-jiao-research-atlas/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css?v=20260728b">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Licheng Jiao Research Atlas home">
+      <span class="brand-mark">焦</span>
+      <span>
+        <strong>LICHENG JIAO</strong>
+        <small>RESEARCH ATLAS</small>
+      </span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#evolution">Evolution</a>
+      <a href="#milestones">Venue firsts</a>
+      <a href="#publications">Paper atlas</a>
+      <a href="#collaboration">Collaboration</a>
+      <a href="#coverage">Coverage</a>
+      <a href="../review/">Research review</a>
+      <a href="#methodology">Methods</a>
+    </nav>
+    <div class="header-tools">
+      <div class="language-switch" aria-label="Language">
+        <a href="../" hreflang="zh-CN" lang="zh-CN">中</a>
+        <span aria-current="page">EN</span>
+      </div>
+      <a class="header-link" href="https://web.xidian.edu.cn/lchjiao/index.html" target="_blank" rel="noopener">
+        Xidian profile <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="kicker"><span>Xidian University</span> · AI and pattern recognition</p>
+        <h1>
+          <span>焦李成</span>
+          <em>Licheng Jiao</em>
+        </h1>
+        <p class="hero-lead">
+          Follow nearly three decades of publications to see how neural
+          computation, evolutionary optimization, remote-sensing intelligence,
+          and multimodal learning converge into a continuously expanding
+          research constellation.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-action" href="#publications">Enter the paper atlas</a>
+          <a class="text-action" href="https://dblp.org/pid/40/3714" target="_blank" rel="noopener">Open DBLP profile ↗</a>
+        </div>
+        <div class="hero-note">
+          <span class="pulse" aria-hidden="true"></span>
+          <span>Data release <strong id="dataVersion">Loading</strong></span>
+        </div>
+      </div>
+
+      <div class="atlas-stage" aria-label="Publication-year and research-theme constellation">
+        <canvas id="heroAtlas"></canvas>
+        <div class="atlas-label atlas-label-start"><span>1998</span> DBLP start</div>
+        <div class="atlas-label atlas-label-now"><span>2026</span> Continuously updated</div>
+        <div class="atlas-center" aria-hidden="true">
+          <span>焦</span>
+          <small>L. JIAO</small>
+        </div>
+        <div class="atlas-tooltip" id="heroTooltip" role="status" aria-live="polite"></div>
+        <div class="atlas-legend" id="heroLegend"></div>
+      </div>
+    </section>
+
+    <section class="ledger" aria-label="Academic data overview">
+      <article>
+        <span class="ledger-index">01</span>
+        <strong id="totalPapers">—</strong>
+        <p>Verified bibliographic records</p>
+      </article>
+      <article>
+        <span class="ledger-index">02</span>
+        <strong id="yearRange">—</strong>
+        <p>DBLP coverage span</p>
+      </article>
+      <article>
+        <span class="ledger-index">03</span>
+        <strong id="coauthorCount">—</strong>
+        <p>Coauthors in the corpus</p>
+      </article>
+      <article>
+        <span class="ledger-index">04</span>
+        <strong id="venueCount">—</strong>
+        <p>Journal and conference sources</p>
+      </article>
+    </section>
+
+    <section class="section coverage-observatory" id="coverage">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Cross-database coverage</p>
+          <h2>Discovery scale is not<br>a unique-paper total.</h2>
+        </div>
+        <p>
+          Scopus, Baidu Scholar, and Google Scholar use different document units
+          and coverage boundaries. Their discovery-scale signals are shown side
+          by side, but they are not added to DBLP until author identities,
+          document types, and work versions have been reconciled.
+        </p>
+      </div>
+      <div class="coverage-cards" id="coverageCards" aria-label="Cross-database discovery scale"></div>
+      <div class="conference-audit" id="conferenceAudit" aria-live="polite"></div>
+      <p class="coverage-source-note">
+        External planning snapshots: Scopus reports 2,564 documents; Baidu
+        Scholar returns approximately 3,983 results; Google Scholar currently
+        has no reproducible total because of access verification. The next
+        ingestion pass will prioritize Chinese conference and journal records
+        from CNKI, Wanfang, and institutional sources.
+      </p>
+    </section>
+
+    <section class="manifesto">
+      <div>
+        <p class="section-tag">Research coordinates</p>
+        <h2>Four axes,<br>one evolving methodology.</h2>
+      </div>
+      <div class="manifesto-copy">
+        <p>
+          Licheng Jiao’s research spans artificial intelligence, intelligent
+          image perception, natural computation, and large-scale data
+          interpretation. This Atlas does not reduce the record to a list of
+          representative works. It places every paper back into its temporal,
+          collaborative, and problem-setting context.
+        </p>
+        <div class="axis-list">
+          <span>Artificial intelligence and pattern recognition</span>
+          <span>Image perception and natural computation</span>
+          <span>Evolutionary optimization and deep learning</span>
+          <span>Brain-inspired computing and data interpretation</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section evolution" id="evolution">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Research evolution</p>
+          <h2>How research themes move through time</h2>
+        </div>
+        <p>Bar height represents annual publication volume; color represents the most active theme. Select a year to filter the paper atlas.</p>
+      </div>
+
+      <div class="timeline-shell">
+        <div class="timeline-summary">
+          <span>Annual peak</span>
+          <strong id="peakYear">—</strong>
+          <small id="peakCount">—</small>
+        </div>
+        <div class="timeline-chart" id="timelineChart" role="img" aria-label="Publication-count timeline from 1998 to 2026"></div>
+      </div>
+
+      <div class="era-grid">
+        <article>
+          <time>1998—2007</time>
+          <h3>Neural and natural computation</h3>
+          <p>Neural networks, evolutionary computation, wavelets, and clustering establish the early methodological base.</p>
+        </article>
+        <article>
+          <time>2008—2014</time>
+          <h3>Optimization meets remote sensing</h3>
+          <p>Multiobjective optimization, sparse representation, and SAR interpretation form a stable intersection.</p>
+        </article>
+        <article>
+          <time>2015—2020</time>
+          <h3>Deep visual perception</h3>
+          <p>Convolutional learning expands classification, detection, tracking, and change analysis.</p>
+        </article>
+        <article>
+          <time>2021—2026</time>
+          <h3>Foundation models and multimodality</h3>
+          <p>Transformers, vision-language systems, prompting, Mamba, and generative models define a new frontier.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section milestones" id="milestones">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">First-venue milestones</p>
+          <h2>First appearances at selected academic coordinates</h2>
+        </div>
+        <p>
+          The earliest appearances of AAAI, TPAMI, CVPR, ICCV, ECCV, ACM MM,
+          and other venues are identified within the current DBLP-anchored
+          corpus. Same-year records are grouped rather than assigned a false
+          within-conference chronology.
+        </p>
+      </div>
+      <div class="milestone-featured" id="milestoneFeatured" aria-label="Featured first-venue records"></div>
+      <div class="milestone-ledger" id="milestoneLedger" aria-label="Complete first-venue ledger"></div>
+      <p class="milestone-scope">
+        Scope note: “first” means first appearance in this public corpus. It is
+        not a claim about records absent from DBLP, identity-merging errors, or
+        unresolved version relationships.
+      </p>
+    </section>
+
+    <section class="section publication-atlas" id="publications">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Publication constellation</p>
+          <h2>Every paper is a coordinate</h2>
+        </div>
+        <p>Broad domains form galaxies; fine-grained tasks form related clusters. Hover for authors, venue, and year; select a node for complete metadata.</p>
+      </div>
+
+      <div class="explorer">
+        <div class="explorer-controls">
+          <label class="search-field">
+            <span>Search all papers</span>
+            <input id="paperSearch" type="search" placeholder="Title, author, venue, DOI…" autocomplete="off">
+          </label>
+          <label>
+            <span>Year</span>
+            <select id="yearFilter">
+              <option value="">All years</option>
+            </select>
+          </label>
+          <label>
+            <span>Publication type</span>
+            <select id="typeFilter">
+              <option value="">All types</option>
+              <option value="article">Journal article</option>
+              <option value="inproceedings">Conference paper</option>
+              <option value="proceedings">Proceedings</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="filter-tiers">
+          <div class="filter-tier">
+            <span class="filter-tier-label">01 / Broad domain</span>
+            <div class="topic-filter" id="topicFilter" aria-label="Research-domain filters"></div>
+          </div>
+          <div class="filter-tier task-tier">
+            <span class="filter-tier-label">02 / Research task</span>
+            <div class="task-filter" id="taskFilter" aria-label="Fine-grained research-task filters"></div>
+          </div>
+          <div class="author-legend" aria-label="Author and citation legend">
+            <span class="first-author"><b class="author-role">1st</b>First author</span>
+            <span class="jiao-author">Licheng Jiao</span>
+            <span class="citation-legend"><i aria-hidden="true"></i><b id="citationCoverage">High-impact papers</b></span>
+          </div>
+        </div>
+
+        <div class="paper-graph-wrap">
+          <canvas id="paperGraph" aria-label="Interactive paper knowledge graph"></canvas>
+          <div class="graph-instruction">Wheel to zoom · drag to pan · hover for author roles · select a paper</div>
+          <div class="graph-tooltip" id="graphTooltip" role="status"></div>
+        </div>
+
+        <div class="results-head">
+          <p id="resultCount">Loading publication data…</p>
+          <button id="resetFilters" type="button">Clear filters</button>
+        </div>
+        <div class="paper-list" id="paperList"></div>
+        <button class="load-more" id="loadMore" type="button">Show more papers</button>
+      </div>
+    </section>
+
+    <section class="section collaboration" id="collaboration">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Collaboration network</p>
+          <h2>Knowledge takes shape through collaboration</h2>
+        </div>
+        <p>Node size represents shared publication count; edge strength represents collaboration density. The network focuses on frequent relationships, while the ranking searches every coauthor.</p>
+      </div>
+      <div class="collaboration-layout">
+        <div class="coauthor-stage">
+          <canvas id="coauthorGraph" aria-label="Licheng Jiao coauthor network"></canvas>
+          <div class="coauthor-tooltip" id="coauthorTooltip" role="status"></div>
+        </div>
+        <div class="coauthor-ranking">
+          <div class="coauthor-tools">
+            <label class="coauthor-search">
+              <span>Search coauthors</span>
+              <input id="coauthorSearch" type="search" placeholder="Enter an author name…" autocomplete="off">
+            </label>
+            <button id="coauthorToggle" type="button">Show all</button>
+          </div>
+          <div class="ranking-head">
+            <span>Coauthor</span>
+            <span>Shared papers</span>
+          </div>
+          <p class="coauthor-result" id="coauthorResult"></p>
+          <ol id="coauthorList"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section topic-observatory">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Topic observatory</p>
+          <h2>Seven domains, a layered task taxonomy</h2>
+        </div>
+        <p>Each domain is decomposed into concrete research tasks. Related hues preserve domain identity while variations in lightness and saturation make tasks distinguishable.</p>
+      </div>
+      <div class="topic-cards" id="topicCards"></div>
+    </section>
+
+    <section class="methodology" id="methodology">
+      <div>
+        <p class="section-tag">Data provenance</p>
+        <h2>Long-term maintenance begins with verifiability.</h2>
+      </div>
+      <div class="method-grid">
+        <article>
+          <strong>01 / Identity baseline</strong>
+          <p>DBLP profile <code>40/3714</code> and DOI identifiers anchor identity and reduce homonym and duplicate-version errors.</p>
+        </article>
+        <article>
+          <strong>02 / Version relations</strong>
+          <p>DOI, DBLP key, and arXiv ID help identify versions of the same work. Record count is not a unique-work count.</p>
+        </article>
+        <article>
+          <strong>03 / Abstract policy</strong>
+          <p>Only source-verified abstracts are shown. Missing abstracts link to the original publication rather than inferred text.</p>
+        </article>
+        <article>
+          <strong>04 / Data releases</strong>
+          <p>Public records pass a strict field allowlist and source checks; the release date remains visible on the home page.</p>
+        </article>
+        <article>
+          <strong>05 / Two-level taxonomy</strong>
+          <p>Broad domains and tasks use explainable title and venue keywords for navigation, not an author-supplied classification.</p>
+        </article>
+        <article>
+          <strong>06 / Citation layer</strong>
+          <p>Citations come from Crossref Cited-by and are normalized within publication-year cohorts; they are not Google Scholar totals.</p>
+        </article>
+        <article>
+          <strong>07 / Database boundary</strong>
+          <p>Scopus and Baidu Scholar values remain expansion signals. Cross-database merging requires identity, document-type, and version reconciliation.</p>
+        </article>
+        <article>
+          <strong>08 / Chinese-language sources</strong>
+          <p>The DBLP corpus contains 453 conference records but no native Chinese-language conference metadata, reflecting DBLP’s international, English-language emphasis rather than an absence of Chinese outputs.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <span class="brand-mark">焦</span>
+      <div>
+        <strong>LICHENG JIAO · RESEARCH ATLAS</strong>
+        <p>Papers · collaboration · research evolution</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="https://web.xidian.edu.cn/lchjiao/index.html" target="_blank" rel="noopener">Xidian profile ↗</a>
+      <a href="https://dblp.org/pid/40/3714" target="_blank" rel="noopener">DBLP ↗</a>
+      <a href="../review/">Research review</a>
+      <a href="../" hreflang="zh-CN" lang="zh-CN">中文</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <dialog class="paper-drawer" id="paperDrawer" aria-labelledby="drawerTitle">
+    <button class="drawer-close" id="drawerClose" type="button" aria-label="Close paper details">×</button>
+    <div class="drawer-content">
+      <p class="drawer-meta" id="drawerMeta"></p>
+      <h2 id="drawerTitle"></h2>
+      <p class="drawer-authors" id="drawerAuthors"></p>
+      <dl class="paper-facts" id="drawerFacts"></dl>
+      <section class="abstract-block">
+        <span>ABSTRACT</span>
+        <p id="drawerAbstract"></p>
+      </section>
+      <div class="drawer-actions" id="drawerActions"></div>
+      <details>
+        <summary>BibTeX</summary>
+        <pre id="drawerBibtex"></pre>
+      </details>
+    </div>
+  </dialog>
+
+  <script src="../app.js?v=20260728b" defer></script>
+</body>
+</html>

@@ -1,45 +1,199 @@
+const LANG = document.documentElement.lang.toLocaleLowerCase().startsWith("en") ? "en" : "zh";
+const LOCALE = LANG === "en" ? "en-US" : "zh-CN";
+const APP_ROOT = new URL(".", document.querySelector('script[src*="app.js"]')?.src || window.location.href);
+const COPY = {
+  zh: {
+    moreAuthors: "+{count} 位作者",
+    unclassifiedTask: "待细分任务",
+    citations: "Crossref 引用 {count}",
+    missingVenue: "来源待补",
+    dataVersion: "{date} · DBLP {count} 条",
+    peakCount: "{count} 篇论文",
+    citationCoverage: "高被引荧光 · Crossref 已匹配 {count}",
+    citationLoading: "高被引荧光 · 引文数据更新中",
+    timelineTitle: "{year} · {count} 篇",
+    timelineAria: "筛选 {year} 年的 {count} 篇论文",
+    firstYearCount: "首年收录 {count} 篇",
+    firstRecord: "首篇记录",
+    paperCount: "{count} 篇",
+    view: "查看 ↗",
+    milestoneFirst: "{venue} 首篇",
+    allDomains: "全部领域",
+    chooseDomain: "选择一个大领域，查看该领域下的研究任务。",
+    allTasks: "全部任务 {count}",
+    topicTasks: "{topic}研究任务",
+    results: "找到 {count} 篇论文 · 当前显示 {visible} 篇",
+    noPapers: "没有匹配论文。尝试缩短关键词或清除筛选。",
+    jiaoName: "焦李成",
+    noAuthors: "没有匹配作者",
+    authorsFound: "找到 {count} 位作者",
+    authorsSummary: "共 {count} 位合作作者 · 当前显示 {visible} 位",
+    showTop: "仅看前12位",
+    showAll: "显示全部 {count}",
+    coauthored: "共同署名 {count} 篇",
+    journalArticle: "期刊论文",
+    conferencePaper: "会议论文",
+    academicRecord: "学术记录",
+    factVenue: "Venue / 来源",
+    factPages: "Pages / 卷页",
+    factPublisher: "Publisher / 出版方",
+    factCitations: "Crossref citations / 引用",
+    factAccess: "Access / 访问状态",
+    unmatched: "未匹配",
+    openAccess: "开放获取",
+    publicationAvailable: "出版信息可用",
+    missingAbstract: "暂未收录来源明确的摘要，请访问论文原始页面查看完整信息。",
+    visitPaper: "访问论文页面 ↗",
+    openPdf: "开放 PDF ↗",
+    copyBib: "复制 BibTeX",
+    copied: "已复制",
+    copyFailed: "复制失败",
+    loadFailed: "论文数据载入失败。请通过 Web 服务器访问本页面。",
+    dataLoadFailed: "数据载入失败",
+    sourceSnapshot: "外部发现规模，不可直接相加",
+    primaryCorpus: "可复现主语料",
+    primaryCorpusNote: "DBLP 身份锚定、字段白名单、版本化发布",
+    scopusLabel: "用户提供的档案文献数",
+    scopusNote: "用户提供的档案快照；待导出后进行身份与版本去重",
+    baiduLabel: "约计检索成果",
+    baiduNote: "用户提供的检索快照；可能混有重名、重复版本、书籍与学位成果",
+    scholarLabel: "暂无可靠总数",
+    scholarNote: "访问验证阻止稳定复现，不使用估算值",
+    conferenceAudit: "会议覆盖审计",
+    conferenceAuditSummary: "{records} 条会议记录 · {venues} 个会议来源",
+    chineseConferenceGap: "中文会议缺口",
+    chineseConferenceGapSummary: "当前原生中文会议元数据 {count} 条；中文题名记录 {titles} 条",
+    coverageBoundary: "这些数字描述不同数据库的发现规模。只有完成作者身份消歧、文献类型统一和版本聚合后，才能形成唯一成果总数。"
+  },
+  en: {
+    moreAuthors: "+{count} authors",
+    unclassifiedTask: "Unclassified task",
+    citations: "{count} Crossref citations",
+    missingVenue: "Venue pending",
+    dataVersion: "{date} · {count} DBLP records",
+    peakCount: "{count} papers",
+    citationCoverage: "High-impact glow · {count} Crossref matches",
+    citationLoading: "High-impact glow · citation data updating",
+    timelineTitle: "{year} · {count} papers",
+    timelineAria: "Filter the {count} papers published in {year}",
+    firstYearCount: "{count} records in first year",
+    firstRecord: "First corpus record",
+    paperCount: "{count} papers",
+    view: "View ↗",
+    milestoneFirst: "First {venue} appearance",
+    allDomains: "All domains",
+    chooseDomain: "Choose a broad domain to inspect its research tasks.",
+    allTasks: "All tasks {count}",
+    topicTasks: "{topic} research tasks",
+    results: "{count} papers found · showing {visible}",
+    noPapers: "No matching papers. Shorten the query or clear the filters.",
+    jiaoName: "Licheng Jiao",
+    noAuthors: "No matching coauthors",
+    authorsFound: "{count} coauthors found",
+    authorsSummary: "{count} coauthors · showing {visible}",
+    showTop: "Show top 12",
+    showAll: "Show all {count}",
+    coauthored: "{count} coauthored papers",
+    journalArticle: "Journal article",
+    conferencePaper: "Conference paper",
+    academicRecord: "Academic record",
+    factVenue: "Venue",
+    factPages: "Volume / pages",
+    factPublisher: "Publisher",
+    factCitations: "Crossref citations",
+    factAccess: "Access status",
+    unmatched: "Not matched",
+    openAccess: "Open access",
+    publicationAvailable: "Publication page available",
+    missingAbstract: "No source-verified abstract is available yet. Open the publication page for the complete record.",
+    visitPaper: "Open publication page ↗",
+    openPdf: "Open PDF ↗",
+    copyBib: "Copy BibTeX",
+    copied: "Copied",
+    copyFailed: "Copy failed",
+    loadFailed: "Publication data could not be loaded. Access this page through a web server.",
+    dataLoadFailed: "Data load failed",
+    sourceSnapshot: "Discovery-scale signals — not additive",
+    primaryCorpus: "Reproducible core corpus",
+    primaryCorpusNote: "DBLP identity anchor, public field allowlist, and versioned release",
+    scopusLabel: "Documents in supplied profile",
+    scopusNote: "User-supplied profile snapshot; identity and version reconciliation remains pending",
+    baiduLabel: "Approximate discovery results",
+    baiduNote: "User-supplied search snapshot; may mix homonyms, duplicate versions, books, and theses",
+    scholarLabel: "No stable total",
+    scholarNote: "Access verification prevents a stable, reproducible total",
+    conferenceAudit: "Conference audit",
+    conferenceAuditSummary: "{records} conference records · {venues} venue labels",
+    chineseConferenceGap: "Chinese-language gap",
+    chineseConferenceGapSummary: "{count} native Chinese-language conference records; {titles} Chinese-title records",
+    coverageBoundary: "These values describe discovery scale in different databases. A unique-work total requires author disambiguation, document-type normalization, and version aggregation."
+  }
+};
+
+function t(key, values = {}) {
+  const template = COPY[LANG][key] || key;
+  return Object.entries(values).reduce(
+    (text, [name, value]) => text.replaceAll(`{${name}}`, String(value)),
+    template
+  );
+}
+
 const TOPICS = {
   frontier: {
-    label: "基础模型与多模态",
+    label: LANG === "en" ? "Foundation models and multimodality" : "基础模型与多模态",
     short: "Frontier AI",
     color: "#55dce0",
-    description: "Transformer、视觉语言、提示学习、Mamba、扩散模型与生成式学习。"
+    description: LANG === "en"
+      ? "Transformers, vision-language models, prompting, Mamba, diffusion, and generative learning."
+      : "Transformer、视觉语言、提示学习、Mamba、扩散模型与生成式学习。"
   },
   remote: {
-    label: "遥感智能解译",
+    label: LANG === "en" ? "Remote-sensing intelligence" : "遥感智能解译",
     short: "Remote sensing",
     color: "#e1b75d",
-    description: "SAR、极化遥感、高光谱、卫星与航空影像的分类、检测及变化分析。"
+    description: LANG === "en"
+      ? "Classification, detection, and change analysis for SAR, PolSAR, hyperspectral, satellite, and aerial imagery."
+      : "SAR、极化遥感、高光谱、卫星与航空影像的分类、检测及变化分析。"
   },
   vision: {
-    label: "视觉感知与理解",
+    label: LANG === "en" ? "Visual perception and understanding" : "视觉感知与理解",
     short: "Visual perception",
     color: "#ee8e78",
-    description: "目标检测、跟踪、分割、识别、图像分类与场景理解。"
+    description: LANG === "en"
+      ? "Object detection, tracking, segmentation, recognition, image classification, and scene understanding."
+      : "目标检测、跟踪、分割、识别、图像分类与场景理解。"
   },
   evolution: {
-    label: "进化与智能优化",
+    label: LANG === "en" ? "Evolutionary and intelligent optimization" : "进化与智能优化",
     short: "Evolutionary optimization",
     color: "#a7d48b",
-    description: "进化计算、多目标优化、群体智能与复杂优化方法。"
+    description: LANG === "en"
+      ? "Evolutionary computation, multiobjective optimization, swarm intelligence, and complex search."
+      : "进化计算、多目标优化、群体智能与复杂优化方法。"
   },
   learning: {
-    label: "神经与机器学习",
+    label: LANG === "en" ? "Neural and machine learning" : "神经与机器学习",
     short: "Neural learning",
     color: "#a998e4",
-    description: "神经网络、深度学习、迁移学习、图学习与小样本学习。"
+    description: LANG === "en"
+      ? "Neural networks, deep learning, transfer learning, graph learning, and few-shot learning."
+      : "神经网络、深度学习、迁移学习、图学习与小样本学习。"
   },
   imaging: {
-    label: "信号与计算成像",
+    label: LANG === "en" ? "Signal and computational imaging" : "信号与计算成像",
     short: "Computational imaging",
     color: "#8ebad8",
-    description: "小波、稀疏表示、图像融合、重建、恢复与超分辨率。"
+    description: LANG === "en"
+      ? "Wavelets, sparse representation, image fusion, reconstruction, restoration, and super-resolution."
+      : "小波、稀疏表示、图像融合、重建、恢复与超分辨率。"
   },
   general: {
-    label: "交叉方法与应用",
+    label: LANG === "en" ? "Interdisciplinary methods and applications" : "交叉方法与应用",
     short: "Interdisciplinary",
     color: "#9fb5b3",
-    description: "跨方向方法、系统应用与尚待进一步语义聚类的研究工作。"
+    description: LANG === "en"
+      ? "Cross-domain methods, system applications, and records awaiting finer semantic clustering."
+      : "跨方向方法、系统应用与尚待进一步语义聚类的研究工作。"
   }
 };
 
@@ -50,6 +204,7 @@ const state = {
   atlas: null,
   milestones: null,
   citations: null,
+  coverage: null,
   filtered: [],
   topic: "",
   task: "",
@@ -95,7 +250,7 @@ function formatAuthorsHtml(value = "", limit = Infinity) {
   }).join('<span class="author-separator" aria-hidden="true">·</span>');
   const remainder = authors.length - shown.length;
   return remainder > 0
-    ? `${content}<span class="author-remainder">+${formatNumber(remainder)} 位作者</span>`
+    ? `${content}<span class="author-remainder">${t("moreAuthors", { count: formatNumber(remainder) })}</span>`
     : content;
 }
 
@@ -107,7 +262,7 @@ function taskMeta(paperOrKey) {
   return TASKS[key] || {
     key: key || "unclassified",
     topic: topicKey || "general",
-    label: "待细分任务",
+    label: t("unclassifiedTask"),
     short: "Unclassified task",
     color: TOPICS[topicKey]?.color || TOPICS.general.color
   };
@@ -179,7 +334,7 @@ function attachCitationData(citations) {
 function citationMarkup(paper) {
   if (paper.citation_count == null) return "";
   const level = paper.citation_level ? ` ${paper.citation_level}` : "";
-  return `<span class="citation-badge${level}">Crossref 引用 ${formatNumber(paper.citation_count)}</span>`;
+  return `<span class="citation-badge${level}">${t("citations", { count: formatNumber(paper.citation_count) })}</span>`;
 }
 
 function drawCitationHalo(ctx, point, radius, graphScale) {
@@ -261,7 +416,7 @@ function paperTooltipMarkup(paper) {
     <div class="tooltip-authors">${formatAuthorsHtml(paper.authors, 6)}</div>
     <div class="tooltip-meta">
       <span>${paper.year}</span>
-      <span>${escapeHtml(paper.venue || "来源待补")}</span>
+      <span>${escapeHtml(paper.venue || t("missingVenue"))}</span>
     </div>
     <div class="tooltip-classification">
       <span class="tooltip-task" style="--task-color:${task.color}">${escapeHtml(task.label)}</span>
@@ -271,7 +426,7 @@ function paperTooltipMarkup(paper) {
 }
 
 function formatNumber(value) {
-  return new Intl.NumberFormat("zh-CN").format(value || 0);
+  return new Intl.NumberFormat(LOCALE).format(value || 0);
 }
 
 function hash(value) {
@@ -411,13 +566,82 @@ function renderStats() {
   $("#yearRange").textContent = `${state.atlas.minYear}—${state.atlas.maxYear}`;
   $("#coauthorCount").textContent = formatNumber(state.atlas.coauthorCount);
   $("#venueCount").textContent = formatNumber(state.atlas.venueCount);
-  $("#dataVersion").textContent = `${state.atlas.generatedAt.slice(0, 10)} · DBLP ${formatNumber(state.atlas.total)} 条`;
+  $("#dataVersion").textContent = t("dataVersion", {
+    date: state.atlas.generatedAt.slice(0, 10),
+    count: formatNumber(state.atlas.total)
+  });
   $("#peakYear").textContent = state.atlas.peakYear;
-  $("#peakCount").textContent = `${state.atlas.peakCount} 篇论文`;
+  $("#peakCount").textContent = t("peakCount", { count: formatNumber(state.atlas.peakCount) });
   const matched = state.citations?.coverage?.matched;
   $("#citationCoverage").textContent = matched
-    ? `高被引荧光 · Crossref 已匹配 ${formatNumber(matched)}`
-    : "高被引荧光 · 引文数据更新中";
+    ? t("citationCoverage", { count: formatNumber(matched) })
+    : t("citationLoading");
+}
+
+function renderCoverage() {
+  const coverage = state.coverage;
+  const container = $("#coverageCards");
+  const conference = $("#conferenceAudit");
+  if (!coverage || !container || !conference) return;
+  const [scopus, baidu, scholar] = coverage.externalSignals;
+  const cards = [
+    {
+      source: "DBLP",
+      value: formatNumber(coverage.primaryCorpus.records),
+      label: t("primaryCorpus"),
+      note: t("primaryCorpusNote"),
+      tone: "verified"
+    },
+    {
+      source: "Scopus",
+      value: formatNumber(scopus.count),
+      label: t("scopusLabel"),
+      note: t("scopusNote"),
+      tone: "external"
+    },
+    {
+      source: LANG === "en" ? "Baidu Scholar" : "百度学术",
+      value: `≈${formatNumber(baidu.count)}`,
+      label: t("baiduLabel"),
+      note: t("baiduNote"),
+      tone: "external"
+    },
+    {
+      source: "Google Scholar",
+      value: "—",
+      label: t("scholarLabel"),
+      note: t("scholarNote"),
+      tone: "pending"
+    }
+  ];
+  container.innerHTML = cards.map((card, index) => `
+    <article class="coverage-card ${card.tone}">
+      <span>${String(index + 1).padStart(2, "0")} / ${escapeHtml(card.source)}</span>
+      <strong>${escapeHtml(card.value)}</strong>
+      <h3>${escapeHtml(card.label)}</h3>
+      <p>${escapeHtml(card.note)}</p>
+    </article>
+  `).join("");
+  const audit = coverage.conferenceAudit;
+  conference.innerHTML = `
+    <article>
+      <span>${t("conferenceAudit")}</span>
+      <strong>${formatNumber(audit.conferenceRecords)}</strong>
+      <p>${t("conferenceAuditSummary", {
+        records: formatNumber(audit.conferenceRecords),
+        venues: formatNumber(audit.conferenceVenues)
+      })}</p>
+    </article>
+    <article class="coverage-gap">
+      <span>${t("chineseConferenceGap")}</span>
+      <strong>${formatNumber(audit.nativeCjkConferenceRecords)}</strong>
+      <p>${t("chineseConferenceGapSummary", {
+        count: formatNumber(audit.nativeCjkConferenceRecords),
+        titles: formatNumber(audit.cjkTitleRecords)
+      })}</p>
+    </article>
+    <p>${t("coverageBoundary")}</p>
+  `;
 }
 
 function renderTimeline() {
@@ -430,8 +654,8 @@ function renderTimeline() {
       class="year-bar${String(item.year) === state.year ? " active" : ""}"
       style="--height:${height};--bar-color:${color}"
       data-year="${item.year}"
-      title="${item.year} · ${item.count} 篇"
-      aria-label="筛选 ${item.year} 年的 ${item.count} 篇论文"
+      title="${t("timelineTitle", { year: item.year, count: formatNumber(item.count) })}"
+      aria-label="${t("timelineAria", { year: item.year, count: formatNumber(item.count) })}"
     ></button>`;
   }).join("");
 
@@ -455,8 +679,8 @@ function renderMilestones() {
   featuredContainer.innerHTML = featured.map((milestone) => {
     const primary = milestone.records[0];
     const countLabel = milestone.firstYearCount > 1
-      ? `首年收录 ${formatNumber(milestone.firstYearCount)} 篇`
-      : "首篇记录";
+      ? t("firstYearCount", { count: formatNumber(milestone.firstYearCount) })
+      : t("firstRecord");
     return `
       <button class="milestone-card" type="button" data-paper-id="${escapeHtml(primary.id)}">
         <span class="milestone-year">${milestone.year}</span>
@@ -470,15 +694,20 @@ function renderMilestones() {
 
   ledgerContainer.innerHTML = milestones.map((milestone, index) => {
     const primary = milestone.records[0];
+    const label = LANG === "en"
+      ? t("milestoneFirst", { venue: milestone.short })
+      : milestone.label;
     return `
       <button type="button" data-paper-id="${escapeHtml(primary.id)}">
         <span class="milestone-index">${String(index + 1).padStart(2, "0")}</span>
         <time datetime="${milestone.year}">${milestone.year}</time>
         <span>
-          <strong>${escapeHtml(milestone.label)}</strong>
+          <strong>${escapeHtml(label)}</strong>
           <small>${escapeHtml(primary.title)}</small>
         </span>
-        <b>${milestone.firstYearCount > 1 ? `${milestone.firstYearCount} 篇` : "查看 ↗"}</b>
+        <b>${milestone.firstYearCount > 1
+          ? t("paperCount", { count: formatNumber(milestone.firstYearCount) })
+          : t("view")}</b>
       </button>
     `;
   }).join("");
@@ -490,7 +719,7 @@ function renderMilestones() {
 }
 
 function renderTopicFilters() {
-  const allButton = `<button type="button" class="${state.topic ? "" : "active"}" data-topic="" style="--topic-color:#55dce0"><i></i>全部领域</button>`;
+  const allButton = `<button type="button" class="${state.topic ? "" : "active"}" data-topic="" style="--topic-color:#55dce0"><i></i>${t("allDomains")}</button>`;
   const topicButtons = Object.entries(TOPICS).map(([key, topic]) => {
     const count = state.atlas.topicCounts[key] || 0;
     return `<button type="button" class="${state.topic === key ? "active" : ""}" data-topic="${key}" style="--topic-color:${topic.color}">
@@ -511,14 +740,14 @@ function renderTopicFilters() {
 function renderTaskFilters() {
   const container = $("#taskFilter");
   if (!state.topic) {
-    container.innerHTML = '<p class="task-filter-prompt">选择一个大领域，查看该领域下的研究任务。</p>';
+    container.innerHTML = `<p class="task-filter-prompt">${t("chooseDomain")}</p>`;
     return;
   }
   const topic = TOPICS[state.topic] || TOPICS.general;
   const tasks = tasksForTopic(state.topic);
   const allButton = `
     <button type="button" class="${state.task ? "" : "active"}" data-task="" style="--task-color:${topic.color}">
-      <i class="task-shape shape-circle"></i>全部任务 ${formatNumber(state.atlas.topicCounts[state.topic] || 0)}
+      <i class="task-shape shape-circle"></i>${t("allTasks", { count: formatNumber(state.atlas.topicCounts[state.topic] || 0) })}
     </button>
   `;
   container.innerHTML = allButton + tasks.map((task) => {
@@ -550,7 +779,7 @@ function renderTopicCards() {
       <div class="topic-spectrum" aria-hidden="true">
         ${tasksForTopic(topic.key).map((task) => `<i style="--task-color:${task.color}"></i>`).join("")}
       </div>
-      <ul class="topic-task-list" aria-label="${escapeHtml(topic.label)}研究任务">
+      <ul class="topic-task-list" aria-label="${escapeHtml(t("topicTasks", { topic: topic.label }))}">
         ${tasksForTopic(topic.key).map((task) => `
           <li style="--task-color:${task.color}">
             <span>${escapeHtml(task.label)}</span>
@@ -583,7 +812,10 @@ function applyFilters() {
   state.filtered.sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
   renderPaperList();
   drawPaperGraph();
-  $("#resultCount").textContent = `找到 ${formatNumber(state.filtered.length)} 篇论文 · 当前显示 ${Math.min(state.visible, state.filtered.length)} 篇`;
+  $("#resultCount").textContent = t("results", {
+    count: formatNumber(state.filtered.length),
+    visible: formatNumber(Math.min(state.visible, state.filtered.length))
+  });
 }
 
 function paperItem(paper) {
@@ -594,7 +826,7 @@ function paperItem(paper) {
     <div>
       <h3>${escapeHtml(paper.title)}</h3>
       <p class="paper-item-authors">${formatAuthorsHtml(paper.authors, 5)}</p>
-      <p class="paper-item-venue">${escapeHtml(paper.venue || "来源待补")} ${citationMarkup(paper)}</p>
+      <p class="paper-item-venue">${escapeHtml(paper.venue || t("missingVenue"))} ${citationMarkup(paper)}</p>
     </div>
   </article>`;
 }
@@ -603,7 +835,7 @@ function renderPaperList() {
   const visible = state.filtered.slice(0, state.visible);
   $("#paperList").innerHTML = visible.length
     ? visible.map(paperItem).join("")
-    : `<p style="padding:48px 0;color:#789798">没有匹配论文。尝试缩短关键词或清除筛选。</p>`;
+    : `<p style="padding:48px 0;color:#789798">${t("noPapers")}</p>`;
   $("#loadMore").hidden = state.visible >= state.filtered.length;
   $$(".paper-item").forEach((item) => {
     const open = () => openPaper(state.papers.find((paper) => paper.id === item.dataset.id));
@@ -868,7 +1100,7 @@ function drawCoauthors() {
   ctx.fillStyle = "#f7faf8";
   ctx.font = "500 22px Iowan Old Style, Georgia, serif";
   ctx.textAlign = "center";
-  ctx.fillText("焦李成", centerX, centerY + 2);
+  ctx.fillText(t("jiaoName"), centerX, centerY + 2);
   ctx.fillStyle = "#55dce0";
   ctx.font = "8px SFMono-Regular, monospace";
   ctx.fillText("L. JIAO", centerX, centerY + 20);
@@ -885,11 +1117,16 @@ function renderCoauthorList() {
     ? visibleAuthors.map((author, index) => `
     <li><span>${String(index + 1).padStart(2, "0")}</span><span>${escapeHtml(author.name)}</span><strong>${author.count}</strong></li>
   `).join("")
-    : `<li><span>—</span><span>没有匹配作者</span><strong>0</strong></li>`;
+    : `<li><span>—</span><span>${t("noAuthors")}</span><strong>0</strong></li>`;
   $("#coauthorResult").textContent = query
-    ? `找到 ${formatNumber(matches.length)} 位作者`
-    : `共 ${formatNumber(allAuthors.length)} 位合作作者 · 当前显示 ${formatNumber(visibleAuthors.length)} 位`;
-  $("#coauthorToggle").textContent = state.coauthorShowAll ? "仅看前12位" : `显示全部 ${formatNumber(allAuthors.length)}`;
+    ? t("authorsFound", { count: formatNumber(matches.length) })
+    : t("authorsSummary", {
+      count: formatNumber(allAuthors.length),
+      visible: formatNumber(visibleAuthors.length)
+    });
+  $("#coauthorToggle").textContent = state.coauthorShowAll
+    ? t("showTop")
+    : t("showAll", { count: formatNumber(allAuthors.length) });
 }
 
 function bindCoauthorInteraction() {
@@ -907,7 +1144,9 @@ function bindCoauthorInteraction() {
       x,
       y,
       wrapper,
-      point ? `<strong>${escapeHtml(point.author.name)}</strong><small>共同署名 ${point.author.count} 篇</small>` : ""
+      point
+        ? `<strong>${escapeHtml(point.author.name)}</strong><small>${t("coauthored", { count: formatNumber(point.author.count) })}</small>`
+        : ""
     );
   });
   canvas.addEventListener("pointerleave", () => tooltip.classList.remove("visible"));
@@ -956,33 +1195,38 @@ function openPaper(paper) {
   const bibtex = buildBibtex(paper);
   const topic = TOPICS[paper.topic] || TOPICS.general;
   const task = taskMeta(paper);
-  $("#drawerMeta").textContent = `${paper.year} · ${topic.label} / ${task.label} · ${paper.pub_type === "article" ? "期刊论文" : paper.pub_type === "inproceedings" ? "会议论文" : "学术记录"}`;
+  const publicationType = paper.pub_type === "article"
+    ? t("journalArticle")
+    : paper.pub_type === "inproceedings"
+      ? t("conferencePaper")
+      : t("academicRecord");
+  $("#drawerMeta").textContent = `${paper.year} · ${topic.label} / ${task.label} · ${publicationType}`;
   $("#drawerTitle").textContent = paper.title;
   $("#drawerAuthors").innerHTML = formatAuthorsHtml(paper.authors);
   $("#drawerFacts").innerHTML = [
-    fact("Venue / 来源", paper.venue),
-    fact("Pages / 卷页", paper.volume_pages),
+    fact(t("factVenue"), paper.venue),
+    fact(t("factPages"), paper.volume_pages),
     fact("DOI", paper.doi),
     fact("DBLP Key", paper.dblp_key),
-    fact("Publisher / 出版方", paper.publisher_group),
-    fact("Crossref citations / 引用", paper.citation_count == null ? "未匹配" : formatNumber(paper.citation_count)),
-    fact("Access / 访问状态", paper.access === "open" ? "开放获取" : "出版信息可用")
+    fact(t("factPublisher"), paper.publisher_group),
+    fact(t("factCitations"), paper.citation_count == null ? t("unmatched") : formatNumber(paper.citation_count)),
+    fact(t("factAccess"), paper.access === "open" ? t("openAccess") : t("publicationAvailable"))
   ].join("");
-  $("#drawerAbstract").textContent = paper.abstract || "暂未收录来源明确的摘要，请访问论文原始页面查看完整信息。";
+  $("#drawerAbstract").textContent = paper.abstract || t("missingAbstract");
   const primary = paper.landing_url || paper.dblp_url;
   const actions = [];
-  if (primary) actions.push(`<a href="${escapeHtml(primary)}" target="_blank" rel="noopener">访问论文页面 ↗</a>`);
-  if (paper.direct_pdf_url) actions.push(`<a href="${escapeHtml(paper.direct_pdf_url)}" target="_blank" rel="noopener">开放 PDF ↗</a>`);
+  if (primary) actions.push(`<a href="${escapeHtml(primary)}" target="_blank" rel="noopener">${t("visitPaper")}</a>`);
+  if (paper.direct_pdf_url) actions.push(`<a href="${escapeHtml(paper.direct_pdf_url)}" target="_blank" rel="noopener">${t("openPdf")}</a>`);
   if (paper.dblp_url && paper.dblp_url !== primary) actions.push(`<a href="${escapeHtml(paper.dblp_url)}" target="_blank" rel="noopener">DBLP ↗</a>`);
-  actions.push(`<button type="button" id="copyBib">复制 BibTeX</button>`);
+  actions.push(`<button type="button" id="copyBib">${t("copyBib")}</button>`);
   $("#drawerActions").innerHTML = actions.join("");
   $("#drawerBibtex").textContent = bibtex;
   $("#copyBib").addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(bibtex);
-      $("#copyBib").textContent = "已复制";
+      $("#copyBib").textContent = t("copied");
     } catch {
-      $("#copyBib").textContent = "复制失败";
+      $("#copyBib").textContent = t("copyFailed");
     }
   });
   const drawer = $("#paperDrawer");
@@ -1027,7 +1271,10 @@ function bindControls() {
   $("#loadMore").addEventListener("click", () => {
     state.visible += 24;
     renderPaperList();
-    $("#resultCount").textContent = `找到 ${formatNumber(state.filtered.length)} 篇论文 · 当前显示 ${Math.min(state.visible, state.filtered.length)} 篇`;
+    $("#resultCount").textContent = t("results", {
+      count: formatNumber(state.filtered.length),
+      visible: formatNumber(Math.min(state.visible, state.filtered.length))
+    });
   });
   $("#coauthorSearch").addEventListener("input", (event) => {
     state.coauthorQuery = event.target.value;
@@ -1046,25 +1293,33 @@ function bindControls() {
 
 async function init() {
   try {
-    const [papersResponse, atlasResponse, citations, milestones] = await Promise.all([
-      fetch("./data/publications.json"),
-      fetch("./data/atlas.json"),
-      fetch("./data/citations.json")
+    const [papersResponse, atlasResponse, citations, milestones, coverage] = await Promise.all([
+      fetch(new URL("data/publications.json", APP_ROOT)),
+      fetch(new URL("data/atlas.json", APP_ROOT)),
+      fetch(new URL("data/citations.json", APP_ROOT))
         .then((response) => response.ok ? response.json() : null)
         .catch(() => null),
-      fetch("./data/milestones.json")
+      fetch(new URL("data/milestones.json", APP_ROOT))
+        .then((response) => response.ok ? response.json() : null)
+        .catch(() => null),
+      fetch(new URL("data/coverage.json", APP_ROOT))
         .then((response) => response.ok ? response.json() : null)
         .catch(() => null)
     ]);
-    if (!papersResponse.ok || !atlasResponse.ok) throw new Error("数据文件载入失败");
+    if (!papersResponse.ok || !atlasResponse.ok) throw new Error(t("dataLoadFailed"));
     state.papers = await papersResponse.json();
     state.atlas = await atlasResponse.json();
     state.milestones = milestones;
-    TASKS = Object.fromEntries((state.atlas.tasks || []).map((task) => [task.key, task]));
+    state.coverage = coverage;
+    TASKS = Object.fromEntries((state.atlas.tasks || []).map((task) => [task.key, {
+      ...task,
+      label: LANG === "en" ? task.short : task.label
+    }]));
     attachCitationData(citations);
     state.filtered = [...state.papers];
     buildHeroLegend();
     renderStats();
+    renderCoverage();
     renderTimeline();
     renderMilestones();
     renderTopicFilters();
@@ -1089,8 +1344,8 @@ async function init() {
     });
   } catch (error) {
     console.error(error);
-    $("#resultCount").textContent = "论文数据载入失败。请通过本地 Web 服务器访问本页面。";
-    $("#dataVersion").textContent = "数据载入失败";
+    $("#resultCount").textContent = t("loadFailed");
+    $("#dataVersion").textContent = t("dataLoadFailed");
   }
 }
 

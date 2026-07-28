@@ -5,14 +5,17 @@ const root = resolve(import.meta.dirname, "..");
 const textFiles = [
   "README.md",
   "index.html",
+  "en/index.html",
   "app.js",
   "styles.css",
   "data/atlas.json",
   "data/publications.json",
   "data/citations.json",
+  "data/coverage.json",
   "data/milestones.json",
   "review/README.md",
   "review/index.html",
+  "review/zh/index.html",
   "review/review.css",
   "review/main.tex",
   "review/references.bib",
@@ -28,7 +31,9 @@ const textFiles = [
   "review/qr/citation-impact-landscape.svg",
   "review/qr/collaboration-constellation.svg",
   "scripts/build-milestones.mjs",
+  "scripts/build-coverage.mjs",
   "scripts/generate-review-assets.mjs",
+  "scripts/check-i18n.mjs",
   "scripts/check-qr.mjs"
 ];
 const forbiddenPatterns = [
@@ -82,6 +87,7 @@ for (const relativePath of textFiles) {
 const papers = JSON.parse(await readFile(resolve(root, "data/publications.json"), "utf8"));
 const atlas = JSON.parse(await readFile(resolve(root, "data/atlas.json"), "utf8"));
 const citations = JSON.parse(await readFile(resolve(root, "data/citations.json"), "utf8"));
+const coverage = JSON.parse(await readFile(resolve(root, "data/coverage.json"), "utf8"));
 const milestoneData = JSON.parse(await readFile(resolve(root, "data/milestones.json"), "utf8"));
 const figureManifest = JSON.parse(await readFile(resolve(root, "review/figures/manifest.json"), "utf8"));
 const taskKeys = new Set((atlas.tasks || []).map((task) => task.key));
@@ -106,6 +112,33 @@ for (const [doi, count] of citationEntries) {
 }
 if (citations.coverage?.matched !== citationEntries.length) {
   failures.push("citation: coverage count does not match cached DOI entries");
+}
+
+const conferenceRecords = papers.filter((paper) => paper.pub_type === "inproceedings");
+const conferenceVenues = new Set(conferenceRecords.map((paper) => paper.venue).filter(Boolean));
+const hasCjk = (value = "") => /[\u3400-\u9fff]/u.test(String(value));
+const nativeCjkConferenceRecords = conferenceRecords.filter(
+  (paper) => hasCjk(paper.title) || hasCjk(paper.venue)
+);
+if (coverage.primaryCorpus?.records !== papers.length) {
+  failures.push("coverage: primary corpus count does not match publication data");
+}
+if (coverage.conferenceAudit?.conferenceRecords !== conferenceRecords.length) {
+  failures.push("coverage: conference record count does not match publication data");
+}
+if (coverage.conferenceAudit?.conferenceVenues !== conferenceVenues.size) {
+  failures.push("coverage: conference venue count does not match publication data");
+}
+if (coverage.conferenceAudit?.nativeCjkConferenceRecords !== nativeCjkConferenceRecords.length) {
+  failures.push("coverage: native CJK conference count does not match publication data");
+}
+for (const signal of coverage.externalSignals || []) {
+  if (!signal.source || !signal.display || !signal.verification || !signal.caveat) {
+    failures.push("coverage: incomplete external discovery signal");
+  }
+}
+for (const [name, url] of Object.entries(coverage.methodologyLinks || {})) {
+  if (!url.startsWith("https://")) failures.push(`coverage: non-public methodology link "${name}"`);
 }
 
 for (const milestone of milestoneData.milestones || []) {

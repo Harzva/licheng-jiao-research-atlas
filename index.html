@@ -8,8 +8,12 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
   <title>焦李成 · Research Atlas</title>
+  <link rel="canonical" href="https://harzva.github.io/licheng-jiao-research-atlas/">
+  <link rel="alternate" hreflang="zh-CN" href="https://harzva.github.io/licheng-jiao-research-atlas/">
+  <link rel="alternate" hreflang="en" href="https://harzva.github.io/licheng-jiao-research-atlas/en/">
+  <link rel="alternate" hreflang="x-default" href="https://harzva.github.io/licheng-jiao-research-atlas/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=20260728b">
 </head>
 <body>
   <a class="skip-link" href="#main">跳至主要内容</a>
@@ -27,12 +31,19 @@
       <a href="#milestones">首篇里程碑</a>
       <a href="#publications">论文图谱</a>
       <a href="#collaboration">合作网络</a>
+      <a href="#coverage">数据库覆盖</a>
       <a href="./review/">学术综述</a>
       <a href="#methodology">数据说明</a>
     </nav>
-    <a class="header-link" href="https://web.xidian.edu.cn/lchjiao/index.html" target="_blank" rel="noopener">
-      西电主页 <span aria-hidden="true">↗</span>
-    </a>
+    <div class="header-tools">
+      <div class="language-switch" aria-label="语言">
+        <span aria-current="page">中</span>
+        <a href="./en/" hreflang="en" lang="en">EN</a>
+      </div>
+      <a class="header-link" href="https://web.xidian.edu.cn/lchjiao/index.html" target="_blank" rel="noopener">
+        西电主页 <span aria-hidden="true">↗</span>
+      </a>
+    </div>
   </header>
 
   <main id="main">
@@ -90,6 +101,25 @@
         <strong id="venueCount">—</strong>
         <p>期刊与会议来源</p>
       </article>
+    </section>
+
+    <section class="section coverage-observatory" id="coverage">
+      <div class="section-heading">
+        <div>
+          <p class="section-tag">Cross-database coverage</p>
+          <h2>发现规模不等于<br>唯一论文总数。</h2>
+        </div>
+        <p>
+          Scopus、百度学术和 Google Scholar 的统计单位与收录边界不同。
+          这里并列展示发现规模，但在完成作者身份消歧、文献类型统一和版本聚合前，不把它们与 DBLP 直接相加。
+        </p>
+      </div>
+      <div class="coverage-cards" id="coverageCards" aria-label="多数据库文献发现规模"></div>
+      <div class="conference-audit" id="conferenceAudit" aria-live="polite"></div>
+      <p class="coverage-source-note">
+        外部数字为本轮扩展规划所采用的人工快照：Scopus 2,564 documents；百度学术约 3,983 项成果；
+        Google Scholar 因访问验证暂不提供可复现总数。下一轮将优先从 CNKI、万方及机构来源补采中文会议与中文期刊记录。
+      </p>
     </section>
 
     <section class="manifesto">
@@ -302,6 +332,14 @@
           <strong>06 / 引用层</strong>
           <p>引文来自 Crossref Cited-by；页面保留原始计数，并按发表年份识别相对高被引记录，不等同于 Google Scholar 总引用。</p>
         </article>
+        <article>
+          <strong>07 / 数据库边界</strong>
+          <p>Scopus 与百度学术数字作为扩展线索保存，尚未导入主语料；跨库合并必须先完成作者、类型和版本三层去重。</p>
+        </article>
+        <article>
+          <strong>08 / 中文来源</strong>
+          <p>当前 DBLP 语料覆盖 453 条会议记录，但原生中文会议元数据为 0；这反映 DBLP 偏重英文国际出版物的收录范围，而非中文成果不存在。</p>
+        </article>
       </div>
     </section>
   </main>
@@ -318,6 +356,7 @@
       <a href="https://web.xidian.edu.cn/lchjiao/index.html" target="_blank" rel="noopener">西电主页 ↗</a>
       <a href="https://dblp.org/pid/40/3714" target="_blank" rel="noopener">DBLP ↗</a>
       <a href="./review/">学术综述</a>
+      <a href="./en/" hreflang="en" lang="en">English</a>
       <a href="#top">回到顶部 ↑</a>
     </div>
   </footer>
@@ -341,6 +380,6 @@
     </div>
   </dialog>
 
-  <script src="./app.js" defer></script>
+  <script src="./app.js?v=20260728b" defer></script>
 </body>
 </html>

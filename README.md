@@ -5,8 +5,15 @@ collaboration networks.
 
 Live site: <https://harzva.github.io/licheng-jiao-research-atlas/>
 
-The repository also includes an accessible HTML and LaTeX research review in
-[`review/`](./review/).
+Public language routes:
+
+- Chinese Atlas: <https://harzva.github.io/licheng-jiao-research-atlas/>
+- English Atlas: <https://harzva.github.io/licheng-jiao-research-atlas/en/>
+- English review: <https://harzva.github.io/licheng-jiao-research-atlas/review/>
+- Chinese review: <https://harzva.github.io/licheng-jiao-research-atlas/review/zh/>
+
+Both Atlas routes share the same publication, citation, milestone, and coverage
+data. The review is also available as accessible HTML, LaTeX source, and PDF.
 
 ## Build data
 
@@ -24,6 +31,7 @@ Rebuild corpus-scoped first-venue milestones and the review figures/QR codes:
 
 ```bash
 npm install
+npm run build:coverage
 npm run build:milestones
 npm run build:review-assets
 ```
@@ -38,6 +46,12 @@ paths, download-queue state, internal notes, and non-public URLs are excluded.
 ## Data policy
 
 - DBLP author profile `40/3714` and DOI identifiers are identity anchors.
+- Scopus and Baidu Scholar values are retained only as external discovery-scale
+  signals until author identity, document type, and work versions are
+  reconciled.
+- The current corpus contains 453 conference records across 126 venue labels,
+  but zero native Chinese-language conference records; Chinese sources require
+  a separate CNKI/Wanfang/institutional ingestion pass.
 - Domains and fine-grained task labels are explainable keyword classifications,
   not claims made by the author.
 - High-citation highlighting is year-normalized and retains the raw,
