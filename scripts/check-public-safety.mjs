@@ -35,8 +35,7 @@ const allowedPaperKeys = new Set([
   "access",
   "oa_confirmed",
   "topic",
-  "abstract",
-  "bibtex"
+  "abstract"
 ]);
 const blockedPaperKeys = new Set([
   "local_pdf",

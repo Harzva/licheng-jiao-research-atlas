@@ -553,8 +553,43 @@ function fact(label, value) {
   return `<div><dt>${label}</dt><dd>${escapeHtml(value || "—")}</dd></div>`;
 }
 
+function bibtexValue(value = "") {
+  return String(value)
+    .replaceAll("\\", "\\\\")
+    .replaceAll("{", "\\{")
+    .replaceAll("}", "\\}");
+}
+
+function buildBibtex(paper) {
+  const type = paper.pub_type === "article"
+    ? "article"
+    : paper.pub_type === "inproceedings"
+      ? "inproceedings"
+      : paper.pub_type === "proceedings"
+        ? "proceedings"
+        : "misc";
+  const fallbackKey = paper.id || `Jiao${paper.year}`;
+  const rawKey = paper.dblp_key?.split("/").at(-1) || fallbackKey;
+  const key = rawKey.replace(/[^A-Za-z0-9:_-]/g, "") || fallbackKey;
+  const fields = [
+    ["title", paper.title],
+    ["author", paper.authors.split(/\s*;\s*/).join(" and ")],
+    ["year", paper.year]
+  ];
+  if (paper.venue) fields.push([type === "article" ? "journal" : type === "inproceedings" ? "booktitle" : "howpublished", paper.venue]);
+  if (paper.volume_pages) fields.push(["note", paper.volume_pages]);
+  if (paper.doi) fields.push(["doi", paper.doi]);
+  if (paper.landing_url || paper.dblp_url) fields.push(["url", paper.landing_url || paper.dblp_url]);
+  const body = fields
+    .filter(([, value]) => value !== "" && value != null)
+    .map(([name, value]) => `  ${name} = {${bibtexValue(value)}}`)
+    .join(",\n");
+  return `@${type}{${key},\n${body}\n}`;
+}
+
 function openPaper(paper) {
   if (!paper) return;
+  const bibtex = buildBibtex(paper);
   const topic = TOPICS[paper.topic] || TOPICS.general;
   $("#drawerMeta").textContent = `${paper.year} · ${topic.label} · ${paper.pub_type === "article" ? "期刊论文" : paper.pub_type === "inproceedings" ? "会议论文" : "学术记录"}`;
   $("#drawerTitle").textContent = paper.title;
@@ -575,10 +610,10 @@ function openPaper(paper) {
   if (paper.dblp_url && paper.dblp_url !== primary) actions.push(`<a href="${escapeHtml(paper.dblp_url)}" target="_blank" rel="noopener">DBLP ↗</a>`);
   actions.push(`<button type="button" id="copyBib">复制 BibTeX</button>`);
   $("#drawerActions").innerHTML = actions.join("");
-  $("#drawerBibtex").textContent = paper.bibtex || "暂无 BibTeX";
+  $("#drawerBibtex").textContent = bibtex;
   $("#copyBib").addEventListener("click", async () => {
     try {
-      await navigator.clipboard.writeText(paper.bibtex || "");
+      await navigator.clipboard.writeText(bibtex);
       $("#copyBib").textContent = "已复制";
     } catch {
       $("#copyBib").textContent = "复制失败";

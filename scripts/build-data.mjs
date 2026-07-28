@@ -52,42 +52,6 @@ function publicUrl(value = "") {
   }
 }
 
-function bibtexValue(value = "") {
-  return cleanText(value)
-    .replaceAll("\\", "\\\\")
-    .replaceAll("{", "\\{")
-    .replaceAll("}", "\\}");
-}
-
-function buildBibtex(paper) {
-  const type = paper.pub_type === "article"
-    ? "article"
-    : paper.pub_type === "inproceedings"
-      ? "inproceedings"
-      : paper.pub_type === "proceedings"
-        ? "proceedings"
-        : "misc";
-  const fallbackKey = cleanText(paper.id || `Jiao${paper.year}`);
-  const rawKey = cleanText(paper.bib_key || paper.dblp_key?.split("/").at(-1) || fallbackKey);
-  const key = rawKey.replace(/[^A-Za-z0-9:_-]/g, "") || fallbackKey;
-  const authors = normalizedAuthors(paper.authors).join(" and ");
-  const landingUrl = publicUrl(paper.landing_url) || publicUrl(paper.dblp_url);
-  const fields = [
-    ["title", paper.title],
-    ["author", authors],
-    ["year", paper.year]
-  ];
-  if (paper.venue) fields.push([type === "article" ? "journal" : type === "inproceedings" ? "booktitle" : "howpublished", paper.venue]);
-  if (paper.volume_pages) fields.push(["note", paper.volume_pages]);
-  if (paper.doi) fields.push(["doi", paper.doi]);
-  if (landingUrl) fields.push(["url", landingUrl]);
-  const body = fields
-    .filter(([, value]) => value !== "" && value != null)
-    .map(([name, value]) => `  ${name} = {${bibtexValue(value)}}`)
-    .join(",\n");
-  return `@${type}{${key},\n${body}\n}`;
-}
-
 function isTargetAuthor(name) {
   const normalized = name.toLowerCase().replace(/[.\s-]/g, "");
   return normalized === "lichengjiao" || normalized === "ljiao" || normalized.includes("焦李成");
@@ -122,7 +86,6 @@ const papers = source.map((paper) => {
     topic: inferTopic(paper)
   };
   if (cleanText(paper.abstract)) sanitized.abstract = cleanText(paper.abstract);
-  sanitized.bibtex = buildBibtex({ ...paper, ...sanitized });
   return sanitized;
 });
 
