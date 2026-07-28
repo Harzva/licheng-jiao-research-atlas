@@ -123,7 +123,7 @@ const coauthors = [...coauthorCounts.entries()]
 const topCoauthors = coauthors.slice(0, 80);
 
 const atlas = {
-  generatedAt: new Date().toISOString(),
+  generatedAt: new Date().toISOString().slice(0, 10),
   source: "DBLP author profile 40/3714 and DOI-linked public metadata",
   total: papers.length,
   minYear: Math.min(...years),
